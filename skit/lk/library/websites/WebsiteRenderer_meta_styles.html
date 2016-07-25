@@ -1,0 +1,108 @@
+<style type="text/css">
+  {{#if website.customCss}}
+    {{{website.customCss}}}
+  {{/if}}
+
+  {{#if website.font}}
+    #public-landing-page .container {
+      font-family: '{{website.font}}', sans-serif !important;
+    }
+  {{/if}}
+
+  {{#if website.primaryColor}}
+    #public-landing-page.template-1 .hero,
+    #public-landing-page.template-2 .hero,
+    #public-landing-page.template-3 .hero,
+    #public-landing-page.template-4 .hero,
+    #public-landing-page.template-7 .hero,
+    #public-landing-page.template-8 .hero .graphic,
+    #public-landing-page.template-9 .bg-color,
+    #public-landing-page .store-badge-white-text,
+    #public-landing-page.template-1color .hero,
+    #public-landing-page.template-2color .hero {
+      background: {{website.primaryColor}};
+    }
+    #public-landing-page.template-5 .hero h2,
+    #public-landing-page.template-6 .hero h1,
+    #public-landing-page.template-8 .hero,
+    #public-landing-page.template-9 .hero h2,
+    #public-landing-page .hero .btn,
+    #public-landing-page .navbar .btn,
+    #public-landing-page .navbar.invert-navbar a,
+    #public-landing-page footer a,
+    #public-landing-page .benefit-header {
+      color: {{website.primaryColor}};
+    }
+    #public-landing-page .btn.btn-primary.btn-primary-invert,
+    #public-landing-page .navbar.invert-navbar .btn.btn-primary,
+    #public-landing-page .navbar .navbar-collapse.in .btn.btn-primary,
+    #public-landing-page .navbar .navbar-toggle .icon-bar,
+    #public-landing-page .download-text {
+      color: white;
+      background-color: {{website.primaryColor}};
+    }
+  {{/if}}
+
+
+  {{#if website.images.background}}
+    #public-landing-page.template-1 .hero,
+    #public-landing-page.template-2 .hero,
+    #public-landing-page.template-4 .hero {
+      background-image: url('{{website.images.background.url}}=s1600');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    }
+    #public-landing-page .hero .blurred-cover .darken {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 2px;
+      background: rgba(0,0,0,.3);
+    }
+  {{else}}
+    #public-landing-page.template-1 .hero,
+    #public-landing-page.template-2 .hero,
+    #public-landing-page.template-4 .hero {
+      overflow: hidden;
+    }
+    #public-landing-page .hero .blurred-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1px;
+      background-image: url('{{website.images.screenshots.iPhone.[0].url}}');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      -webkit-filter: blur(50px);
+      -moz-filter: blur(50px);
+      -o-filter: blur(50px);
+      -ms-filter: blur(50px);
+      filter: blur(50px);
+      margin: -60% -40% -40%;
+    }
+    #public-landing-page .hero .blurred-cover .darken {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 2px;
+      background: rgba(0,0,0,.3);
+    }
+  {{/if}}
+
+  @media screen and (max-width: 767px) {
+    {{#if website.primaryColor}}
+      #public-landing-page.template-9 .hero h1 {
+        background: {{website.primaryColor}};
+      }
+    {{/if}}
+  }
+
+</style>

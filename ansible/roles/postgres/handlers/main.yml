@@ -1,0 +1,9 @@
+- name: reload postgres
+  service: name=postgres state=reloaded
+- name: restart postgres
+  service: name=postgresql state=restarted
+  ignore_errors: yes
+
+- name: upstart start postgres
+  command: start postgres
+  ignore_errors: yes

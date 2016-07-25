@@ -1,0 +1,72 @@
+<form id="app-website-edit-form" class="form">
+
+  <div id="content-header" class="row">
+    <div class="col-md-12">
+      <a href="/websites/dashboard/" class="extended-back-link"><i class="fa fa-chevron-left"></i>Back to Website List</a>
+    </div>
+    <div class="col-sm-12">
+      <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-check"></i> <span>Save</span></button>
+      <a class="btn btn-sm btn-default" href="/websites/{{website.id}}/" target="_blank"><span>Preview</span></a>
+      <a id="maybe-delete" class="btn btn-sm btn-default btn-default-warning"><i class="fa fa-trash-o"></i> <span>Delete</span></a>
+
+      <div class="dropdown" id="page-switcher">
+        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <h1>
+            {{#if website.images.icon}}
+              <img src="{{website.images.icon.url}}" height="50" class="img-rounded">
+            {{/if}}
+            Edit Website
+            <span class="caret"></span>
+          </h1>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          {{#each websites }}
+            <li>
+              <a href="/websites/dashboard/{{id}}/" title="{{appName}}">
+                {{#if images.icon}}
+                  <img src="{{images.icon.url}}" height="40" class="img-rounded">
+                {{/if}}
+                <span>{{appName}}</span>
+              </a>
+            </li>
+          {{/each}}
+          <li class="app add">
+            <a href="/websites/onboard/">
+              <span class="glyphicon glyphicon-plus-sign"></span><span>Build New Website</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="filters" class="row">
+    <div class="col-xs-12">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#landing-page" aria-controls="all" role="tab" data-toggle="tab">App Info</a>
+        </li>
+        <li role="presentation">
+          <a href="#screenshots" aria-controls="current" role="tab" data-toggle="tab">Styles &amp; Images</a>
+        </li>
+        <li role="presentation">
+          <a href="#legal" aria-controls="current" role="tab" data-toggle="tab">Terms &amp; Privacy</a>
+        </li>
+        <li role="presentation">
+          <a href="#support" aria-controls="best" role="tab" data-toggle="tab">Support &amp; FAQ</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <input type="hidden" name="id" class="form-control" value="{{ website.id }}">
+  <input type="hidden" name="template" class="form-control" value="{{ website.template }}">
+
+  <div class="tab-content">
+    {{> __module__.app_info.html }}
+    {{> __module__.styles.html }}
+    {{> __module__.legal.html }}
+    {{> __module__.support.html }}
+  </div>
+
+</form>

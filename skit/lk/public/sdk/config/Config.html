@@ -1,0 +1,72 @@
+<ul class="steps list-unstyled">
+  <li>
+    <p>
+      Once you have <a href="/sdk/install/">set up the SDK</a>, we will
+      load your latest configuration settings for the current app version at startup,
+      then you can read them however you want in your app.
+    </p>
+
+    <p><strong>Swift:</strong></p>
+
+    <pre>func application(application: ..., didFinishLaunchingWithOptions: ...) {
+  <strong>LKConfigReady</strong>({
+    ThumbnailUploadService.setImageWidth(<strong>LKConfigInteger("imageWidth", 2048)</strong>,
+                               andHeight:<strong>LKConfigInteger("imageHeight", 2048)</strong>)
+  })
+}</pre>
+  </li>
+
+  <li>
+    <h4>Add Variables to Your Code</h4>
+
+    <p>Use config settings in your code, just like you might use application-wide constants.</p>
+
+    <pre>func onTapButton(sender: UIButton) {
+  let overlayTitle = <strong>LKConfigString(&quot;promoOverlayTitle&quot;, &quot;Upgrade&quot;)</strong>
+  let alert = UIAlertController(title: overlayTitle, message: &quot;...&quot;, preferredStyle: .Alert)
+  ...
+}
+</pre>
+
+    <p>
+      The SDK provides typed wrapper functions for fetching config variables. They require
+      a second parameter, a default, in order to ensure your code will work in conditions
+      where there is no network access.
+    </p>
+  </li>
+
+  <li>
+    <h4>How It Works</h4>
+    <p>
+      The latest configuration values are loaded at application startup and
+      periodically while the app is in the foreground. If you&rsquo;d like to ensure variables are available before using them,
+      you can use our handy <strong>ready</strong> wrapper:
+    </p>
+
+    <pre>func application(application: ..., didFinishLaunchingWithOptions: ...) {
+  LaunchKit.launchWithToken("...")
+  <strong>LKConfigReady</strong>({
+    ThumbnailUploadService.setImageWidth(<strong>LKConfigInteger("imageWidth", 2048)</strong>,
+                               andHeight:<strong>LKConfigInteger("imageHeight", 2048)</strong>)
+  })
+}</pre>
+
+    <p>
+      We have the following typed wrapper functions:
+    </p>
+
+    <p><code>LKConfigInteger()</code>,
+       <code>LKConfigDouble()</code>,
+       <code>LKConfigBool()</code>, and
+       <code>LKConfigString()</code>.
+    </p>
+
+    <p>
+      If you access the <code>LKConfigXXX()</code> functions before the configuration has been
+      fetched from our server, the SDK will return <strong>the most recently fetched value</strong>
+      from a previous response, <strong>or the default</strong> if we have not been able to
+      talk to the SDK at all yet.
+    </p>
+  </li>
+
+</ul>

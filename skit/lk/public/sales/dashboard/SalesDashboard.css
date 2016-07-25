@@ -1,0 +1,127 @@
+.download-email {
+  font-family: "Open Sans", sans-serif;
+  border-collapse: inherit;
+  width: 100%;
+}
+.download-email table {
+  width: 100%;
+  text-align: center;
+}
+table.download-email-header,
+table.download-email-totals,
+table.download-email-apps tr.individual-app {
+  border-bottom: 1px solid #dde8ed;
+}
+
+@media (max-width: 480px) {
+  table.download-email-nav td,
+  table.download-email-totals td.download-email-number-change,
+  table.download-email-apps tr.individual-app table td {
+    padding: 10px 20px;
+  }
+}
+
+
+table.download-email-header {
+  text-align: left;
+}
+table.download-email-header td {
+  font-family: "Raleway", "Open Sans", Arial, sans-serif;
+  font-size: 20px;
+  color: #999;
+  padding: 15px;
+  border-bottom: 1px solid #dde8ed;
+  line-height: 1;
+}
+table.download-email-header img {
+  height: 25px;
+  vertical-align: bottom;
+}
+table.download-email-header .launchkit-name {
+  text-align: right;
+  color: #ccc;
+  font-size: .9em;
+}
+
+
+table.download-email-nav td:first-child { text-align: left; }
+table.download-email-nav td:last-child { text-align: right; }
+table.download-email-nav td.data-nav-header {
+  text-transform: uppercase;
+  font-size: 1.1em;
+}
+
+
+table.download-email-totals td.download-email-primary-number {
+  border-top: 1px solid #dde8ed;
+  font-size: 80px;
+  font-weight: 100;
+  line-height: 110px;
+}
+
+table.download-email-totals > tbody > tr > td,
+table.download-email-apps td {
+  padding: 10px 0;
+}
+
+table.download-email-apps td {
+  text-align: left;
+}
+
+tr.download-email-app-revenue td {
+  border-top: 1px solid #dde8ed;
+}
+tr.download-email-app-revenue td:first-child {
+  border-top: none;
+}
+
+td.download-email-app-icon {
+  width: 70px;
+}
+td.download-email-app-icon span {
+  display: block;
+  width: 52px;
+  height: 52px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid #EFEFEF;
+}
+td.download-email-app-icon img {
+  width: 50px;
+  height: 50px;
+}
+td.download-email-app-count {
+  padding-left: 0 !important;
+  font-size: 40px;
+  font-weight: 100;
+  line-height: 50px;
+}
+td.download-email-app-change {
+  text-align: right !important;
+}
+
+
+
+
+.download-email-number-change {
+  font-size: 12px;
+  color: #979797;
+}
+.download-email-number-change .negative { color: #DB2023; }
+.download-email-number-change .positive { color: #417505;}
+
+
+table.footer td {
+  text-align: center;
+  font-size: .8em;
+  padding-top: 30px;
+  color: #666;
+}
+table.footer .alert {
+  margin: 0;
+}
+
+
+.currency-selector .dropdown-menu {
+  max-height: 295px;
+}

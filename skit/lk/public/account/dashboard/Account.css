@@ -1,0 +1,71 @@
+div.name .inline-editable {
+  height: 25px;
+  border-style: dashed;
+}
+div.name .inline-editable.editing {
+  height: 40px;
+}
+
+.account-list,
+.account-list li {
+  padding: 0;
+  list-style: none;
+  line-height: 1;
+}
+
+.account-list li {
+  margin: 0 0 20px;
+}
+.account-list li:last-child {
+  margin: 0;
+}
+
+.account-section-separator,
+.account-list .separator,
+.account-settings .separator {
+  color: #999;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-size: .8em;
+}
+
+.account-section-separator {
+  margin-top: 20px;
+}
+
+.account-list .connection,
+.account-list .tappable-row{
+  display: block;
+}
+
+.account-list .label {
+  margin-left: 10px;
+  font-weight: inherit;
+}
+.account-list a:hover {
+  text-decoration: none;
+}
+.account-list a:hover span.email {
+  text-decoration: underline;
+}
+
+.pro-website-list {
+  list-style: none;
+  padding: 0;
+}
+.pro-website-list button {
+  margin-left: 5px;
+}
+
+
+/* Add email overlays. */
+
+.add-email-overlay {
+  width: 280px;
+}
+
+.add-email-overlay input {
+  width: 200px;
+}
+

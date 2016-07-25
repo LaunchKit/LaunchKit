@@ -1,0 +1,65 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-sm-12">
+    <h1>Confirm App Info</h1>
+    <p>
+      Edit below to set up your app website.
+    </p>
+  </div>
+</div>
+
+<div class="narrow-content">
+  <div class="row">
+    <div class="col-md-12">
+      <form id="app-website-confirm-form" class="form form-horizontal">
+        <div class="row">
+
+          <div class="col-sm-12">
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">App Name</label>
+              <div class="col-sm-9">
+                <input type="text" name="app_name" class="form-control" value="{{ website.appName }}">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Tagline</label>
+              <div class="col-sm-9">
+                <input type="text" name="tagline" class="form-control" value="{{ website.tagline }}">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Short Description</label>
+              <div class="col-sm-9">
+                <textarea name="short_description" class="form-control" rows="5" maxlength="500">{{ website.shortDescription }}</textarea>
+                <div class="help-block">This is used in your site's <code>&lt;META&gt;</code> description, as well as the description in Twitter and Facebook share tags.</div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Primary Color</label>
+              <div class="col-sm-9">
+                <div class="input-group">
+                  <span id="primary-color-label" class="input-group-addon" style="background-color: {{ website.primaryColor }}">&nbsp;</span>
+                  <input id="primary-color-input" class="form-control" placeholder="#efefef" name="primary_color"
+                         type="text" maxlength="7" value="{{website.primaryColor}}">
+                </div>
+                <div class="help-block">This will be used for backgrounds and links.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="buttons-container">
+              <a class="btn btn-sm btn-default" href="/websites/onboard/">
+                Cancel
+              </a>
+              <button class="btn btn-sm btn-primary" type="submit">Continue</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

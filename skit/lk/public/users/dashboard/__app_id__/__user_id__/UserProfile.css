@@ -1,0 +1,59 @@
+.dashboard .visit-row {
+  border-right: 1px solid #DADCDE;
+}
+
+.dashboard dt {
+  color: #999;
+}
+h1 .status-icon img {
+  height: 35px;
+}
+
+
+.usage-grid {
+  overflow: hidden;
+  min-width: 700px;
+  border-right: 1px solid #DADCDE;
+}
+
+.usage-grid .day {
+  float: left;
+  text-align: right;
+  width: 20px;
+  height: 20px;
+  margin: 2px;
+  border: 1px solid transparent;
+  background: #F5F7F8;
+  padding: 0;
+  line-height: 20px;
+}
+.usage-grid .day:hover {
+  border-color: #343F4B;
+}
+
+.usage-grid .day.empty {
+  content: ' ';
+  background: none;
+}
+.usage-grid .day.label {
+  background: transparent;
+  color: #666;
+  margin-left: 5px;
+  border: none;
+}
+.usage-grid .day.first {
+  clear: left;
+}
+.usage-grid .day.today {
+  border: 1px dashed #2A88A8;
+}
+
+.usage-grid .day.light {
+  background: #DDE8ED;
+}
+.usage-grid .day.medium {
+  background: #4BAED0;
+}
+.usage-grid .day.heavy {
+  background: #2A88A8;
+}

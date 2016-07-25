@@ -1,0 +1,40 @@
+
+.sdk-nav {
+  margin-bottom: 20px;
+}
+.sdk-nav a i {
+  margin-right: 5px;
+}
+.sdk-nav a {
+  display: block;
+  padding: 7px 10px;
+}
+.sdk-nav a:hover {
+  text-decoration: none;
+  background: rgba(255,255,255,.5);
+}
+.sdk-nav a.selected {
+  font-weight: bold;
+  background: #FFF;
+  border-radius: 3px;
+}
+
+
+#sdk-docs pre {
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  /* overwrite boostrap */
+  word-break: normal;
+  word-wrap: normal;
+}
+#sdk-docs pre * {
+  white-space: pre;
+}
+
+#sdk-docs .sdk-add {
+  color: #1400FF;
+}
+#sdk-docs .sdk-token {
+  color: #d00;
+}

@@ -1,0 +1,72 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-md-12">
+    <h1>Suggested Settings</h1>
+    <p>
+      We provide a default set of settings that we think every app should use.
+    </p>
+    <p>
+      There&rsquo;s no reason to lock all these down in compiled code &mdash; set them here and you can easily change them in your app later.
+    </p>
+  </div>
+</div>
+
+<form id="config-form" class="row" method=POST>
+  <div class="col-xs-12">
+    <ul class="list-unstyled inspector-list white-container">
+      <li class="row inspector-col-labels" style="padding-top: 0;">
+        <div class="col-sm-3">
+          <label class="above-field">Key</label>
+        </div>
+        <div class="col-sm-2">
+          <label class="above-field">Type</label>
+        </div>
+        <div class="col-sm-3">
+          <label class="above-field">Default Value</label>
+        </div>
+        <div class="col-sm-4">
+          <label class="above-field">Description</label>
+        </div>
+      </li>
+      {{#each exampleRules }}
+        <li class="row">
+          <div class="col-sm-3">
+            <input type="text" class="form-control" value="{{ key }}" disabled>
+          </div>
+          <div class="col-sm-2">
+            <select class="form-control" disabled>
+              <option selected>{{ kind }}</option>
+            </select>
+          </div>
+          <div class="col-sm-3">
+            {{#if select }}
+              <select class="form-control" disabled>
+                <option selected>{{ value }}</option>
+              </select>
+            {{else}}
+              <input type="text" class="form-control" name="{{ key }}" value="{{ value }}"
+                     placeholder="What is the default value?">
+            {{/if}}
+          </div>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" name="{{ key }}-description" value="{{ description }}"
+                   placeholder="What's this variable do?">
+          </div>
+
+          {{#if additionalRule }}
+            <div class="col-sm-offset-5 col-sm-3" style="text-align: center; margin-top: 10px">
+              If version {{ additionalRule.match }} {{ additionalRule.version }}:
+              <strong>{{ additionalRule.value }}</strong>
+            </div>
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+
+  <div class="col-xs-12">
+    <div class="form-group text-right">
+      <a href="/config/onboard/" class="btn btn-link">Start over</a>
+      <button type="submit" class="btn btn-primary">Save Config</button>
+    </div>
+  </div>
+</form>

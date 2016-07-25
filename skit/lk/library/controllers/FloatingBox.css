@@ -1,0 +1,135 @@
+/* COLORS
+
+light blue: 4baed0;
+dark blue: 2a88a8;
+
+white
+separator/lines: dde8ed;
+light grey: f5f7f8;
+medium grey: 343f4b;
+dark grey: 222c38
+
+text on med/dark grey: a1b1ba;
+
+lightest text: 798796;
+lighter text on white: 4e5f70
+dark text on white: 343f4b;
+
+*/
+
+
+.floating-box {
+    max-width: 450px;
+    min-width: 280px;
+    margin: 0 auto;
+}
+.floating-box .content {
+  margin: 50px 0;
+  width: 100%;
+  padding: 40px;
+  border-radius: 5px;
+  background: white;
+}
+
+/* HEADER */
+
+.floating-box header .row {
+    background: #343f4b;
+    text-align: center;
+    font-family: "Raleway", "Open Sans", Arial, sans-serif;
+}
+.floating-box header img {
+    height: 30px;
+}
+.floating-box header a:hover {
+    text-decoration: none;
+}
+.floating-box header .row .launchkit-logo {
+    font-weight: bold;
+    line-height: 110px;
+    color: #fff;
+    font-size: 20px;
+    display: block;
+    text-align: center;
+}
+.floating-box header .row .launchkit-logo img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.floating-box #content-header h1 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.floating-box #content-header p {
+    margin-bottom: 30px;
+    margin-top: -20px;
+    text-align: center;
+    color: #4e5f70;
+}
+.floating-box #content-header img {
+    border-radius: 50%;
+    background-clip: padding-box;
+    display: block;
+    height: 100px;
+    margin: 0 auto;
+    width: 100px;
+}
+.floating-box #content-header img.app-icon {
+    border-radius: 20%;
+}
+
+.floating-box .integration {
+    margin-bottom: 20px;
+}
+.floating-box .integration h3 {
+    font-weight: 200;
+    margin-bottom: 10px;
+}
+.floating-box .integration img {
+    width: 100%;
+    border-radius: 20%;
+}
+.floating-box .integration .glyphicon {
+    color: #999;
+}
+
+.floating-box .alert {
+    font-size: inherit;
+}
+
+/* FORMS */
+
+.floating-box label.control-label {
+    text-align: center;
+    display: block;
+    font-weight: 500;
+    color: #999;
+    font-size: .8em;
+}
+.floating-box .input-group {
+    width: 100%;
+}
+.floating-box .input-group-addon {
+    width: 50px;
+    height: 44px;
+}
+.floating-box .input-group-addon i {
+    color: #B5B9BC;
+}
+.floating-box .form-control {
+    min-height: 44px;
+}
+
+@media (max-width: 480px) {
+    body {
+        background: white;
+    }
+    .floating-box {
+        max-width: 100%;
+    }
+    .floating-box .content {
+        margin: 0;
+    }
+}

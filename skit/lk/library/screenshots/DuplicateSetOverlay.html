@@ -1,0 +1,37 @@
+<div>
+
+  <p class="header-subtext" style="margin-bottom: 30px;">
+    Cloning a set creates a new set with all the same settings and images.
+  </p>
+
+  <form class="form-horizontal">
+    <div class="form-group">
+      <div class="col-sm-4">
+        <label for="version" class="col-sm-3 control-label">Platform</label>
+        <label class="radio-inline">
+          <input type="radio" name="platform" {{#ifEqual platform 'iOS'}}checked{{/ifEqual}} value="iOS"> <i class="fa fa-apple"></i> iOS
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="platform" {{#ifEqual platform 'Android'}}checked{{/ifEqual}} value="Android"> <i class="fa fa-android"></i> Android
+        </label>
+      </div>
+
+      <div class="col-sm-6">
+        <label for="appname" class="col-sm-3 control-label">Name</label>
+        <input type="text" class="form-control" name="name" value="{{ name }}">
+      </div>
+      <div class="col-sm-2">
+        <label for="version" class="col-sm-3 control-label">Version</label>
+        <input type="text" class="form-control" name="version" placeholder="1.0, 2.3, etc..." value="{{ version }}">
+      </div>
+    </div>
+
+    <div class="form-group text-right">
+      <div class="col-xs-12">
+        <a class="btn btn-sm btn-link close-overlay" style="margin-right: 15px;">Cancel</a>
+        <button type="submit" class="btn btn-sm btn-primary">Clone!</button>
+      </div>
+    </div>
+  </form>
+
+</div>

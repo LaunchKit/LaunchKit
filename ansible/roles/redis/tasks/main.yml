@@ -1,0 +1,13 @@
+---
+- name: install redis
+  apt: name=redis-server state=present
+
+- name: install redis config
+  copy:
+    src=../files/redis.conf
+    dest=/etc/redis/redis.conf
+    owner=root
+    group=root
+  # Notify the 'reload redis' handler to run later if this changed
+  notify: restart redis
+

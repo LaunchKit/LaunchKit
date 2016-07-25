@@ -1,0 +1,29 @@
+#sdk-configured-check {
+  padding: 50px;
+  text-align: center;
+
+  background-color: #fcf8e3;
+  border: 1px solid #faebcc;
+  border-radius: 4px;
+}
+#sdk-configured-check.configured {
+  background-color: #E8FCE3;
+  border-color: #CCFAD2;
+}
+#sdk-configured-check.configured .fa-check {
+  color: #0EE029;
+}
+
+#sdk-configured-check .not-configured {
+  font-weight: bold;
+}
+
+#sdk-configured-check .configured {
+  display: none;
+}
+#sdk-configured-check.configured .configured {
+  display: block;
+}
+#sdk-configured-check.configured .not-configured {
+  display: none;
+}

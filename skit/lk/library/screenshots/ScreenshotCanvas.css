@@ -1,0 +1,20 @@
+
+.phone-canvas-container {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 0;
+}
+.phone-canvas-container canvas {
+  box-shadow: 0 0 5px #ccc;
+  z-index: 1;
+}
+.phone-canvas-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -webkit-image-rendering: optimizeQuality;
+  -moz-image-rendering: auto;
+  z-index: 2;
+}

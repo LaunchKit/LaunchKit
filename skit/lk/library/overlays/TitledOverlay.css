@@ -1,0 +1,59 @@
+
+/* TITLED OVERLAY */
+
+.titled-overlay {
+    width: 640px;
+}
+
+@media screen and (max-width: 640px) {
+    .titled-overlay {
+        width: 320px;
+    }
+}
+
+
+.titled-overlay .titled-overlay-content.loading {
+    min-height: 200px;
+    background: transparent url(/__static__/images/loading.gif) center no-repeat;
+}
+
+
+.titled-overlay .titlebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 0;
+
+    color: #9da2a6;
+    font-size: 18px;
+    text-align: center;
+
+    border-bottom: 1px solid #e0e2e3;
+}
+.titled-overlay .titlebar .title {
+    padding-top: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.titled-overlay .titlebar .left-option {
+    float: left;
+    margin-left: 15px;
+}
+.titled-overlay .titlebar a.left-option {
+    color: #666;
+    font-size: 16px;
+}
+
+.titled-overlay .titled-overlay-content {
+    padding: 30px;
+    position: absolute;
+    /* top: is set by reading the height of the titlebar in JS */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    background-color: #F5F7F8;
+}
+

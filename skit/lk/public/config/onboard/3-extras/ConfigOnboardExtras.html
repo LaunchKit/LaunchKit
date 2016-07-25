@@ -1,0 +1,80 @@
+
+<div id="content-header" class="row narrow-header">
+  <div class="col-md-12">
+    <h1>Cloud Config: Extras</h1>
+    <p>Some more ideas to get you started.</p>
+  </div>
+</div>
+
+
+{{#each examples }}
+  <div class="row">
+    <div class="col-md-12">
+      <form class="config-form" method=POST>
+        <div class="white-container">
+          <h3>{{{ title }}}</h3>
+          <p>{{ subtext }}</p>
+          <ul class="list-unstyled inspector-list">
+            <li class="row inspector-col-labels">
+              <div class="col-sm-3">
+                <label class="above-field">Key</label>
+              </div>
+              <div class="col-sm-2">
+                <label class="above-field">Type</label>
+              </div>
+              <div class="col-sm-3">
+                <label class="above-field">Default Value</label>
+              </div>
+              <div class="col-sm-4">
+                <label class="above-field">Description</label>
+              </div>
+            </li>
+            {{#each rules }}
+              <li class="row">
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" value="{{ key }}" disabled>
+                </div>
+                <div class="col-sm-2">
+                  <select class="form-control" disabled>
+                    <option selected>{{ kind }}</option>
+                  </select>
+                  <input type="hidden" name="{{ key }}-kind" value="{{ kind }}">
+                </div>
+                <div class="col-sm-3">
+                  {{#if selectValues }}
+                    <select class="form-control" name="{{ key }}">
+                      {{#each selectValues}}
+                        <option value="{{ value }}">{{ label }}</option>
+                      {{/each}}
+                    </select>
+                  {{else}}
+                    <input type="text" class="form-control" name="{{ key }}" value="{{ value }}"
+                           placeholder="What is the default value?">
+                  {{/if}}
+                </div>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" name="{{ key }}-description" value="{{ description }}"
+                         placeholder="What's this variable do?">
+                </div>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+        <div class="text-right" style="margin-bottom: 40px;">
+          <a data-action="cancel-rules" class="btn btn-link btn-sm">I don&rsquo;t need these</a>
+          <button class="btn btn-primary btn-sm" type="submit">Add Variables</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{{/each}}
+
+<div class="row">
+  <div class="col-md-12 text-right">
+    <hr>
+    <p>You can always add more config rules later in the dashboard.</p>
+    <div class="form-group">
+      <a class="btn btn-primary" href="{{ nextUrl }}">Next</a>
+    </div>
+  </div>
+</div>

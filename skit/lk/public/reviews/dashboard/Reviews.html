@@ -1,0 +1,35 @@
+<div id="content-header" class="row">
+  <div class="col-md-12">
+    <a class="btn btn-sm btn-primary" href="/reviews/onboard/"><i class="fa fa-plus"></i> <span>Add New App</span></a>
+    <h1>Recent Reviews</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-8">
+    {{> __module__.filters.html }}
+
+    {{#if loading }}
+      <div class="empty-state">
+        <img src="/__static__/images/loading.gif" alt="Spinner">
+        Loading&hellip;
+      </div>
+    {{else}}
+      {{#if reviews }}
+        <ul class="list-unstyled list-wide-row list-wide-row-sm">
+          {{#each reviews }}
+            {{> __module__.review.html }}
+          {{/each}}
+        </ul>
+      {{else}}
+        <div class="empty-state">
+          We have not found any reviews yet! As soon as we find new reviews
+          that are posted to the App Store, they will appear here.
+        </div>
+      {{/if}}
+    {{/if}}
+  </div>
+  <div class="col-sm-4">
+    {{> __module__.sidebar.html }}
+  </div>
+</div>

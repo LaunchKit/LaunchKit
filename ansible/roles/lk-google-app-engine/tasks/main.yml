@@ -1,0 +1,12 @@
+---
+- include: install_gae.yml
+
+- name: tell gae that we agree to terms and conditions
+  copy:
+    src=../files/home.appcfg_nag
+    dest=/home/vagrant/.appcfg_nag
+    owner=vagrant
+    group=vagrant
+
+- include: install_pillow.yml
+- include: init-gae-dev_appserver.yml

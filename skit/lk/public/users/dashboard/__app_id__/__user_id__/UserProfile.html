@@ -1,0 +1,92 @@
+<div id="content-header" class="row">
+  <div class="col-sm-12">
+    <a href="/users/dashboard/{{app.id}}/" class="extended-back-link">
+      <i class="fa fa-chevron-left"></i>
+      Back to {{app.names.short}}
+    </a>
+  </div>
+  <div class="col-sm-12">
+    {{#with sdkUser }}
+      {{#if email}}
+        <a href="mailto:{{email}}" class="btn btn-default btn-sm"><i class="fa fa-envelope-o"></i> Email</a>
+      {{/if}}
+      <h1>
+        <span class="status-icon">{{userScore this}}</span> {{sdkUserName this }}
+      </h1>
+    {{/with}}
+  </div>
+</div>
+
+<div id="content-editor" class="row content-editor-lg-workspace">
+  <div class="editor-workspace">
+
+    <div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="usage-grid white-container">
+            {{#each floatingDaysActive}}
+              <span class="day {{className}}" {{#if title }} title="{{title}}"{{/if}}>{{#if body }}{{ body }}{{/if}}</span>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+
+      <div class="row user-table-container">
+        <div class="col-sm-12">
+          <table class="table table-wide-row table-wide-row-sm text-center">
+            <tr class="user-row visit-row user-row-header">
+              <td>Date</td>
+              <td>Session Duration</td>
+              <td>Taps</td>
+              <td>Screens</td>
+              <td>Device</td>
+              <td>App Version</td>
+            </tr>
+
+            {{#each visits }}
+              {{> __module__.visit.html }}
+            {{else}}
+              <tr>
+                <td>
+                  No visits yet for this user! Shucks.
+                </td>
+              </tr>
+            {{/each}}
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="editor-preview">
+
+    <div class="row" class="user-summary">
+      <div class="col-sm-12">
+        {{#with sdkUser }}
+          <dl class="dl-horizontal" style="margin-bottom: 40px;">
+            <dt><i class="fa fa-envelope"></i> Email</dt>
+            <dd>{{#if email}}{{ email }}{{else}}(None provided){{/if}}</dd>
+            <dt><i class="fa fa-gear"></i> ID</dt>
+            <dd>{{#if uniqueId }}{{ uniqueId }}{{else}}(None provided){{/if}}</dd>
+            <dt><i class="fa fa-bar-chart"></i> Days Active</dt>
+            <dd>{{stats.days}} of last 30 days</dd>
+            <dt><i class="fa fa-bar-chart"></i> Sessions This Month</dt>
+            <dd>{{formatNumber stats.visits}}</dd>
+            <dt><i class="fa fa-calendar-o"></i> Last Seen</dt>
+            <dd>{{timeFromNow latestVisit}}</dd>
+            <dt><i class="fa fa-calendar-o"></i> First Seen</dt>
+            <dd>{{timeFromNow firstVisit}}</dd>
+          </dl>
+        {{/with}}
+      </div>
+    </div>
+
+
+    <p>You'll receive this every time you tell the SDK the user has logged in:</p>
+    <pre>{{json sdkClientUser true }}</pre>
+  </div>
+</div>
+
+{{#if nextUrl }}
+  <a class="btn btn-default" href="{{nextUrl}}">Next page</a>
+{{/if}}

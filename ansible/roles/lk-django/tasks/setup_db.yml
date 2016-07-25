@@ -1,0 +1,17 @@
+---
+- name: create cluster db
+  sudo: yes
+  sudo_user: postgres
+  postgresql_db: name=lk
+- name: add hstore db extension
+  sudo: yes
+  sudo_user: postgres
+  postgresql_ext: name=hstore db=lk
+- name: add {{ db_user }} user to cluster db as superuser
+  sudo: yes
+  sudo_user: postgres
+  postgresql_user: name={{ db_user }} role_attr_flags=SUPERUSER db=lk
+- name: add {{ db_user }} user to postgres as superuser
+  sudo: yes
+  sudo_user: postgres
+  postgresql_user: name={{ db_user }} role_attr_flags=SUPERUSER

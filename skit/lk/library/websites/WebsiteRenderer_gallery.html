@@ -1,0 +1,16 @@
+{{#if website.images.screenshots.iPhone}}
+  <section class="gallery">
+    <div class="container">
+      <div class="row">
+        <p class="section-header">Screenshots of <strong>{{website.appName}}</strong></p>
+        <div class="gallery-screenshots">
+          {{#each website.images.screenshots.iPhone}}
+            <div class="gallery-scroll-screenshot">
+              <img src="{{url}}">
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </section>
+{{/if}}

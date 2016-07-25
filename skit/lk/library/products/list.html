@@ -1,0 +1,12 @@
+{{#each publicProducts}}
+
+  <li class="{{#ifPathStartsWith path }} active{{else}}{{#if ../isOnboarding }} hidden{{/if}}{{/ifPathStartsWith}}">
+
+    <a href="{{path}}/{{#ifPathContains "/dashboard"}}dashboard/{{/ifPathContains}}">
+      {{#unless uses}}<span class="label label-primary hidden"><i class="fa fa-long-arrow-left"></i> Try!</span>{{/unless}}
+      <img src="{{iconPath}}" class="product-icon">
+      <p>{{name}}</p>
+    </a>
+  </li>
+
+{{/each}}

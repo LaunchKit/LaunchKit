@@ -1,0 +1,36 @@
+
+<div id="content-header" class="row narrow-header">
+  <div class="col-md-12">
+    <h1>Welcome!</h1>
+    <p>Which product would you like to use?</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="list-unstyled dashboard-panels">
+      <div class="row">
+        {{#each publicProducts}}
+          <li class="col-sm-4">
+            <div class="white-container">
+              <div class="dashboard-panel-product-info">
+                <img src="{{iconPath}}">
+                <h3>{{name}}</h3>
+                <p><strong>{{tagline}}</strong></p>
+                <p>{{description}}</p>
+              </div>
+                <div class="button-footer">
+                {{#if uses}}
+                  <a href="{{path}}/dashboard/" class="btn btn-sm btn-block btn-primary">Launch {{name}}</a>
+                {{else}}
+                  <a href="{{path}}/onboard/" class="btn btn-sm btn-primary">Get Started</a>
+                  <a href="{{path}}" class="btn btn-sm btn-link">Learn More</a>
+                {{/if}}
+              </div>
+            </div>
+          </li>
+        {{/each}}
+      </div>
+    </ul>
+  </div>
+</div>

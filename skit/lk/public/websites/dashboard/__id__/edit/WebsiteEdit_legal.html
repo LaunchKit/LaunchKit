@@ -1,0 +1,40 @@
+<div role="tabpanel" class="tab-pane" id="legal">
+  <div class="col-sm-6">
+
+    <h3>Terms of Use</h3>
+
+    <div class="form-group">
+      <label class="above-field">Hosted Here <a class="pull-right markdown-preview" data-action="preview-page" data-page="terms_page">Preview</a></label>
+      <textarea id="terms_page" name="terms" class="form-control" rows="25"
+        placeholder="{{> __module__.example_terms.html }}">{{ website.terms }}</textarea>
+      <div class="help-block"><a href="https://help.github.com/articles/markdown-basics/" target="_blank">Markdown</a> supported. Learn how to <a href="https://launchkit.zendesk.com/hc/en-us/articles/214188558" target="blank">display this content in your app</a>.</div>
+    </div>
+
+    <div class="form-group">
+      <label class="above-field">External Link</label>
+      <input type="text" name="terms_link" class="form-control"
+        placeholder="http://yourdomain.com/terms/"
+        value="{{ website.termsLink }}">
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <h3>Privacy Policy</h3>
+    <div class="form-group">
+      <label class="above-field">Hosted Here <a class="pull-right markdown-preview" data-action="preview-page" data-page="privacy_page">Preview</a></label>
+      <textarea id="privacy_page" name="privacy" class="form-control" rows="25"
+        placeholder="Your Company, Inc. (“Company” “we”) knows that you care about how your personal information is used and shared, and we take your privacy seriously. Please read the following to learn more about our privacy practices (“Privacy Policy”). By using the Company services, or visiting the Company website at http://yourdomain.com...">{{ website.privacy }}</textarea>
+      <div class="help-block"><a href="https://help.github.com/articles/markdown-basics/" target="_blank">Markdown</a> supported. Learn how to <a href="https://launchkit.zendesk.com/hc/en-us/articles/214188558" target="blank">display this content in your app</a>.</div>
+    </div>
+    <div class="form-group">
+      <label class="above-field">External Link</label>
+      <input type="text" name="privacy_link" class="form-control"
+        placeholder="http://yourdomain.com/privacy/"
+        value="{{ website.privacyLink }}">
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="help-block">If you need a place to post your legal docs, we recommend setting up a private post on <a href="http://medium.com" target="_blank">Medium</a> or <a href="http://tumblr.com" target="_blank">Tumblr</a>.</div>
+  </div>
+
+</div>

@@ -1,0 +1,85 @@
+.dashboard .segments {
+  font-family: 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
+  font-weight: 100;
+  font-size: 25px;
+  padding: 0 15px 30px;
+  line-height: 1;
+}
+.dashboard .segments > div {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.dashboard .segment {
+  background-color: #efefef;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.dashboard .segment-lg {
+  padding: 46px 46px 45px;
+}
+.dashboard .segment-sm {
+  color: #666;
+  padding: 15px;
+  font-weight: 300;
+  font-size: .9em;
+}
+.dashboard .segment.super-user { border-radius: 8px 0 0 8px; }
+.dashboard .segment.almost-super-user { border-radius: 0 8px 0 0; }
+.dashboard .segment.inactive-user { border-radius: 0 0 8px 0; }
+
+.dashboard .segment .count {
+  display: block;
+  font-size: 2em;
+  font-weight: 200;
+}
+.dashboard .segment.segment-lg .count {
+  font-size: 4em;
+}
+
+.dashboard .inactive-user { background-color: white; color: #999;}
+.dashboard .active-user { background-color: #E5F4FD; color: #333;}
+.dashboard .almost-super-user { background-color: #45B1FF; }
+.dashboard .super-user { background-color: #1995EF; }
+.dashboard .super-user-fringe { background-color: #1376BD; }
+
+.dashboard .label-user-segment {
+  font-weight: 300;
+  font-size: 100%;
+}
+.dashboard .segment img {
+  float: left;
+  max-height: 3em;
+}
+.dashboard .segment img.big {
+  max-height: 150px;
+}
+@media (max-width: 480px) {
+  .dashboard .segments {
+    font-size: 12px;
+  }
+  .dashboard .segment {
+    padding: 15px;
+  }
+}
+
+.dashboard .score-A { background-color: orange; }
+.dashboard .score-B { background-color: green; }
+.dashboard .score-C { background-color: lightblue; }
+.dashboard .score-D { background-color: lightgrey; }
+
+
+.session-summary li > span {
+  display: block;
+}
+.session-summary li {
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+.session-summary .device-info {
+  color: #999;
+  font-size: .9em;
+  margin-left: 5px;
+}

@@ -1,0 +1,54 @@
+<div class="container">
+
+
+  <div class="header row">
+    <div class="col-md-12">
+      <div class="header-subtext">{{set.appStore}} Screenshots</div>
+      <h1>{{ set.name }} {{ set.version }}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div role="tabpanel">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-pills" role="tablist">
+          {{#each configsByPhone }}
+            <li role="presentation"{{#if @first}} class="active"{{/if}}><a href="#{{ phone.name }}" aria-controls="{{ phone.name }}" role="tab" data-toggle="tab">{{ phone.properName }}</a></li>
+          {{/each}}
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          {{#each configsByPhone }}
+            <div role="tabpanel" class="tab-pane fade{{#if @first}} in active{{/if}}" id="{{ phone.name }}">
+              <div id="screenshot-set" class="col-xs-12">
+                <ul class="row list-unstyled">
+                  {{#each configs }}
+                    <li class="col-xs-6 col-sm-15">
+                      <div class="preview">
+                        {{> library.screenshots.ScreenshotCanvas phone=phone dimensions=dimensions }}
+                      </div>
+                    </li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="launchkit-footer row">
+    <div class="col-md-12">
+      <img src="/__static__/images/icon.png">
+      <p>Created using <strong><a href="/screenshots/">Screenshot Builder</a></strong>, a tool that makes it easy to create gorgeous, custom images for {{set.appStore}}.</p>
+    </div>
+  </div>
+
+
+</div>

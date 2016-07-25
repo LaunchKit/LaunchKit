@@ -1,0 +1,55 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-md-12">
+    <h1>Ready to Track?</h1>
+    <p>Confirm that you’d like to track reviews</p>
+  </div>
+</div>
+
+<div class="row">
+  <ul class="app-found-confirm col-sm-4 col-sm-offset-4">
+    <li>
+      <img src="{{ app.icon.large }}" class="app-icon img-rounded">
+      <p><strong>{{app.name}}</strong></p>
+    </li>
+  </ul>
+</div>
+
+<form method="GET" action="/reviews/onboard/{{ app.iTunesId }}/signup">
+  <input value="{{ country }}" name="country" type="hidden">
+
+  {{#if related }}
+    <div class="row">
+      <p class="col-sm-4 col-sm-offset-4 text-center">
+        Other apps by {{ app.developer.name }}
+      </p>
+    </div>
+    <div class="row">
+      <ul id="related-apps" class="app-found-confirm col-sm-4 col-sm-offset-4">
+        {{#each related }}
+          <li>
+            <img src="{{ icon.small }}" class="app-icon img-rounded">
+            <p><strong>{{name}}</strong></p>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="row">
+      <p class="col-sm-4 col-sm-offset-4 text-center">
+        <input type="checkbox" checked name="include_related" value="1">
+        Track all {{ app.developer.name }} apps
+      </p>
+    </div>
+  {{/if}}
+
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block">Start Tracking</button>
+      </div>
+      <div class="form-group text-center">
+        <small><a href="/reviews/onboard/">Start over</a></small>
+      </div>
+    </div>
+  </div>
+
+</form>

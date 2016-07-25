@@ -1,0 +1,74 @@
+<div id="content-header" class="row">
+  <div class="col-md-12">
+    <h1>Account</h1>
+  </div>
+</div>
+
+{{#spaceless}}
+<ul class="list-unstyled list-wide-row row">
+
+  <li>
+    <div class="col-sm-3">
+      <strong><i class="fa fa-user"></i> Profile Information</strong>
+      <p class="help-block">
+        Your email address is used to log in to your account, as well as for all communications.
+      </p>
+    </div>
+    <div class="col-sm-5 col-sm-offset-1">
+      <ul class="account-list">
+        <li class="separator">Name (Click to edit)</li>
+        <li>
+          <div class="name">
+            <span class="inline-editable">{{ user.names.full }} </span>
+          </div>
+        </li>
+        <li class="separator">Email Addresses</li>
+        {{#each emails }}
+          <li class="tappable-row {{#if primary }}primary{{/if}}">
+            <a class="account-action"
+               data-action="edit-email"
+               data-email="{{ email }}"
+               {{#if primary }} data-primary="true"{{/if}}
+               {{#unless verified }} data-unverified="true"{{/unless}}>
+              <span class="email">{{ email }}</span>
+              {{#if primary }}
+                <span class="label label-primary">Primary</span>
+              {{/if}}
+              {{#unless verified }}
+                <span class="label label-default">Unverified</span>
+              {{/unless }}
+            </a>
+          </li>
+        {{/each}}
+        <li><a class="account-action btn btn-xs btn-default" data-action="add-email">Change email address</a></li>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="col-sm-3">
+      <strong><i class="fa fa-lock"></i> Password</strong>
+      <p class="help-block">
+        We will send you an email where you can change your password to something new.
+      </p>
+    </div>
+    <div class="col-sm-5 col-sm-offset-1">
+      <a class="btn btn-sm btn-default" href="/account/reset/">Reset My Password</a>
+    </div>
+  </li>
+
+  <li>
+    <div class="col-sm-3">
+      <strong><i class="fa fa-trash"></i> Close Account</strong>
+      <p class="help-block">
+        Warning: Closing your account is irreversible.
+      </p>
+    </div>
+    <div class="col-sm-5 col-sm-offset-1">
+      <a class="btn btn-sm btn-default btn-default-warning" href="/account/delete/">Delete My Account</a>
+    </div>
+  </li>
+
+</ul>
+
+{{/spaceless}}

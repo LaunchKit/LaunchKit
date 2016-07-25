@@ -1,0 +1,21 @@
+<div id="content-header" class="row">
+  <div class="col-md-12">
+    <h1>Disconnect iTunes</h1>
+
+    {{#if appleId }}
+      <p>
+        Sales Reporter is currently configured to import sales reports from:<br>
+        <strong>{{ appleId }}</strong>
+      </p>
+
+      <a class="btn btn-danger btn-block" data-action="disconnect-itunes">Disconnect iTunes</a>
+
+    {{else}}
+      <p>iTunes is not currently connected.</p>
+
+      <a class="btn btn-primary btn-block" href="/sales/dashboard/">Back to Sales Reporter</a>
+
+    {{/if}}
+
+  </div>
+</div>

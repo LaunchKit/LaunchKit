@@ -1,0 +1,13 @@
+<div class="screenshot-canvas-container" data-name="{{name}}" data-layout="{{layout}}" data-phone-color="{{phoneColor}}">
+  <div class="proper-name">
+    {{#if phone.requiresPremium}}<span class="label label-primary">Pro</span>{{/if}}
+  </div>
+  <div class="phone-container">
+    <canvas class="phone shadowed-box" width="{{dimensions.width}}" height="{{dimensions.height}}"
+              style="width: 100%; height: auto;"></canvas>
+    <img src="/__static__/images/pixel.gif" class="phone-overlay" style="position: absolute;">
+  </div>
+  {{#unless hideres}}
+    <div class="resolution">Resolution: {{dimensions.naturalWidth}} &times; {{dimensions.naturalHeight}}</div>
+  {{/unless}}
+</div>

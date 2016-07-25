@@ -1,0 +1,7 @@
+---
+- name: setup skit webserver-hosted service
+  copy:
+    src=../files/init.skit-webserver-hosted.conf
+    dest=/etc/init/skit-webserver-hosted.conf
+    owner=root
+    group=root

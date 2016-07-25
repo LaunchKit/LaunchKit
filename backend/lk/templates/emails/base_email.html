@@ -1,0 +1,232 @@
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="viewport" content="initial-scale=1.0,user-scalable=0">
+
+  <style>
+    body {
+      margin:0;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      background-color: #ffffff;
+    }
+
+    a {
+      font-weight: bold;
+      font-weight: 500;
+      text-decoration: none;
+      color: #0092f2;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    strong a {
+      font-weight: inherit;
+    }
+    h2 {
+      font-weight: normal;
+      font-weight: 200;
+    }
+    h3 {
+      font-size: 1.3em;
+      margin: 0 0 5px;
+    }
+    span.app-icon {
+      display: inline-block;
+      border-radius: 8px;
+      border: 1px #efefef solid;
+      overflow: hidden;
+    }
+    span.app-icon img {
+      height: 85px;
+    }
+
+    .btn {
+      background: #fff;
+      color: #333;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: 300;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 3px;
+      display: inline-block;
+    }
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+    .btn:hover,
+    .btn:active {
+      background: #f7f7f7;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: #0092F2;
+      color: white;
+    }
+    .btn-primary:hover,
+    .btn-primary:active {
+      background: #0083D9;
+    }
+    .btn-twitter {
+      background: #55ACEE;
+      color: white;
+    }
+    .btn-twitter:hover {
+      background: #2D7EBD;
+      color: white;
+    }
+    #wrapper {
+      width: 100%;
+      width: 660px;
+      background: #fff;
+    }
+    #wrapper td {
+      font-family: "Open Sans", Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+    }
+    #wrapper td.base {
+      padding: 0 30px;
+    }
+    #wrapper table {
+      width: 100%;
+    }
+
+    .preview-text {
+      background: white;
+      color: white;
+      font-size: 2px
+    }
+    #header {
+      padding-bottom: 30px;
+    }
+    #header td {
+      text-align: left;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      color: #999;
+      padding: 30px 0 25px;
+      border-bottom: 1px solid #efefef;
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+    #header img {
+      height: 25px;
+      vertical-align: middle;
+    }
+
+    #top-icon td {
+      text-align: center;
+      padding-bottom: 0 !important;
+    }
+    #top-message td {
+      text-align: left;
+    }
+    #top-message p {
+      margin: 0 0 20px 0;
+    }
+
+    #email-title td {
+      font-weight: 500;
+      font-size: 18px;
+      text-transform: uppercase;
+      padding: 30px 0 20px;
+      text-align: center;
+    }
+
+    #footer {
+      width: 520px;
+    }
+    #footer td a {
+      font-weight: inherit;
+    }
+    #footer td {
+      border-top: 1px solid #efefef;
+      padding: 20px 10px;
+      font-size: 13px;
+      color: #999;
+      text-align: center;
+    }
+  </style>
+
+  <style media="only screen and (max-width: 480px)">
+    #wrapper {
+      width: 100% !important;
+    }
+    #wrapper td.base {
+      padding: 0 20px !important;
+    }
+    #header {
+      padding-bottom: 15px !important;
+      opacity: .6 !important;
+    }
+    p {
+      font-size: 14px !important;
+    }
+    h2 {
+      font-size: 18px !important;
+    }
+    h3 {
+      font-size: 14px !important;
+    }
+    #header td {
+      font-size: 14px !important;
+      padding: 15px 0 !important;
+    }
+    #header img {
+      height: 15px !important;
+      margin-top: -0px !important;
+    }
+    .overall td p {
+      font-size: 10px !important;
+    }
+    .cross-promote td img {
+      height: 60px !important;
+    }
+    #footer td {
+      font-size: 11px !important;
+    }
+    .btn {
+      padding: 8px 12px !important;
+    }
+
+  </style>
+
+  {% block css %}{% endblock %}
+</head>
+<body>
+  <table id="wrapper" width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+    <tr>
+      <td class="base">
+        {% block header %}{% endblock header %}
+      </td>
+    </tr>
+
+    <tr>
+      <td class="base">
+        {% block content %}{% endblock %}
+      </td>
+    </tr>
+    <tr>
+      <td class="base">
+        <table id="footer" align="center" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td>
+              {% block unsubscribe %}
+                {% if unsubscribe_url %}
+                  <p><a href="{{ unsubscribe_url }}">Unsubscribe from these emails</a></p>
+                {% endif %}
+              {% endblock %}
+
+              {% block notification_reason %}{% endblock %}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

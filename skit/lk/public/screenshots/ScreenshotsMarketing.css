@@ -1,0 +1,26 @@
+.fake-screenshot {
+  float: left;
+  width: 47%;
+  background: white;
+  padding: 20px 5px;
+  max-height: 310px;
+  overflow: hidden;
+  margin-right: 10px;
+  margin-bottom: 40px;
+
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04), 0 0px 1px rgba(28,39,72,.15), 0 6px 34px rgba(0,0,0,.09);
+  -moz-box-shadow: 0 1px 4px rgba(0,0,0,.04), 0 0px 1px rgba(28,39,72,.15), 0 6px 34px rgba(0,0,0,.09);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04), 0 0px 1px rgba(28,39,72,.15), 0 6px 34px rgba(0,0,0,.09);
+}
+
+.real-screenshot {
+  float: left;
+  width: 47%;
+  max-height: 310px !important;
+  margin-right: 10px;
+  margin-bottom: 40px;
+
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04), 0 0px 1px rgba(28,39,72,.15), 0 6px 34px rgba(0,0,0,.09);
+  -moz-box-shadow: 0 1px 4px rgba(0,0,0,.04), 0 0px 1px rgba(28,39,72,.15), 0 6px 34px rgba(0,0,0,.09);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04), 0 0px 1px rgba(28,39,72,.15), 0 6px 34px rgba(0,0,0,.09);
+}

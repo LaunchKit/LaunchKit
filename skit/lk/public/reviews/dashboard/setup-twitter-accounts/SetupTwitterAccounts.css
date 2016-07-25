@@ -1,0 +1,47 @@
+
+.twitter-connection {
+  text-align: left;
+}
+
+.highlight-app {
+  background-color: #dde8ed;
+}
+
+.twitter-connection img {
+  float: left;
+  margin-right: 10px;
+  height: 40px;
+  margin-bottom: 0 !important;
+}
+.twitter-connection li .app-name {
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.twitter-connection .fa {
+  color: #ccc;
+}
+.twitter-connection .btn {
+  margin-bottom: 0 !important;
+}
+
+.twitter-connection li,
+.twitter-connection .fa,
+.twitter-connection .close {
+  line-height: 40px;
+}
+
+.twitter-handle.add a span {
+  vertical-align: middle;
+}
+
+.twitter-connection .dropdown-menu {
+  max-height: 200px;
+}
+
+.twitter-connection label {
+  font-weight: normal;
+  cursor: pointer;
+  line-height: normal;
+}

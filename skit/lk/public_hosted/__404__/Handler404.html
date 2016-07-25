@@ -1,0 +1,26 @@
+<div class="error-page">
+  <div class="error-page-content">
+    <h1>Not Found</h1>
+
+    {{#if showDomainConfigurationHelp }}
+      <p>
+        There&rsquo;s no App Website configured at this address!
+      </p>
+      <p>
+        If you have a website you expect to find here,
+        make sure you have entered the current domain
+        in the <strong>domain</strong> box.
+      </p>
+      <p>
+        This domain is: <code>{{ domain }}</code>
+      </p>
+      <p>
+        <a href="http://blog.launchkit.io/post/121139102739/custom-domain" class="btn btn-default" target="_blank">Read Setup Instructions</a>
+      </p>
+    {{else}}
+      <p>
+        Sorry, the page you&rsquo;re looking for cannot be found. Please check the URL and try again.
+      </p>
+    {{/if}}
+  </div>
+</div>

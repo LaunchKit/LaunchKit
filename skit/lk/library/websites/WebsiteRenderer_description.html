@@ -1,0 +1,17 @@
+<section class="description">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 col-xs-12 pull-right">
+        {{#if website.images.screenshots.iPhone}}
+          {{> __module__.carousel.html }}
+        {{else}}
+          <img src="{{frameByDevice '' website.frameScreenshots 'iphone'}}">
+        {{/if}}
+      </div>
+      <div class="col-sm-7 col-xs-12 description-text">
+        <p>{{brBodyText website.longDescription}}</p>
+        {{> __module__.download_badges_white.html }}
+      </div>
+    </div>
+  </div>
+</section>

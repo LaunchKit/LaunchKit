@@ -1,0 +1,36 @@
+{% extends "emails/screenshots_base.html" %}
+
+
+{% block title %}The screenshots for {{app_name}} v{{app_version}} are ready!{% endblock %}
+
+{% block content %}
+
+  <table id="content" align="center" cellpadding="0" cellspacing="0" border="0" >
+
+    <tr id="top-message">
+      <td>
+        <h2>{{app_name}}&rsquo;s screenshots are ready!</h2>
+        {% if user.first_name %}
+          <p>{{ user.first_name }},<p>
+        {% endif %}
+        <p>Click below to download your newly minted, gorgeous app store screenshots for <strong>{{app_name}} v{{app_version}}</strong>!</p>
+
+        <p>
+            <a href="{{ download_url }}" class="btn btn-primary">
+                Download Screenshots
+            </a>
+        </p>
+
+        <p>If you'd like to share your new screenshots, <a href="{{ public_url }}" target="_blank">here's a public URL</a>. You can easily <a href="{{ twitter_share_url }}" target="_blank">share them on Twitter by clicking here</a>.</p>
+
+        <p>Thanks!</p>
+      </td>
+    </tr>
+
+  </table>
+
+{% endblock %}
+
+
+{% block unsubscribe %}
+{% endblock %}

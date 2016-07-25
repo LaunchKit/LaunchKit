@@ -1,0 +1,25 @@
+---
+- include: python-libraries.yml
+
+- name: upgrade pip
+  pip: name=pip extra_args='--upgrade'
+
+- name: install python requirements
+  pip: requirements=/vagrant/requirements.txt
+
+- include: setup_db.yml
+- include: migrate_db.yml
+
+- name: setup celery upstart script
+  copy:
+    src=../files/init.celery.conf
+    dest=/etc/init/celery.conf
+    owner=root
+    group=root
+
+- name: setup django upstart script
+  copy:
+    src=../files/init.lk-django.conf
+    dest=/etc/init/lk-django.conf
+    owner=root
+    group=root

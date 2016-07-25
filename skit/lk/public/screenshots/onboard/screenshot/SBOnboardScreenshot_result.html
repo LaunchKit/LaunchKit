@@ -1,0 +1,15 @@
+<li class="result">
+  <div>
+    <a data-itunes-id="{{ iTunesId }}">
+      <img src="{{ icon.small }}" class="app-icon">
+      <span class="name">{{ name }}</span>
+      <span class="developer">{{ developer.name }}</span>
+      <span class="select"><i class="fa fa-chevron-down"></i></span>
+    </a>
+  </div>
+  <ul class="result-screenshots">
+    {{#each screenshotUrls }}
+      <li><img data-screenshot-url="{{ this }}" src="/__static__/images/pixel.gif"></li>
+    {{/each}}
+  </ul>
+</li>

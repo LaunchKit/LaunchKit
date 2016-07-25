@@ -1,0 +1,7 @@
+---
+- name: install review ingester
+  copy:
+    src=../files/init.lk-review-ingester.conf
+    dest=/etc/init/lk-review-ingester.conf
+    owner=root
+    group=root

@@ -1,0 +1,25 @@
+{% load ratingstars %}
+{% load humanize %}
+<tr id="overall-rating">
+  <td>
+    <h3>Overall Rating</h3>
+    <table class="overall" cellpadding="0" cellspacing="0" border="0" >
+      <tr>
+        <td colspan="2">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h3>Version {{app.version}}</h3>
+          {{app.current_version_rating|stars}}
+          <p>from {{ app.current_version_reviews_count|intcomma }} Ratings</p>
+        </td>
+        <td>
+          <h3>All Versions</h3>
+          {{app.rating|stars}}
+          <p>from {{ app.reviews_count|intcomma }} Ratings</p>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

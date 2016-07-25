@@ -1,0 +1,112 @@
+<div id="filters" class="row">
+
+  <div class="col-xs-12">
+
+    <ul id="app-list" class="nav nav-pills">
+      <li role="presentation" class="dropdown selected-app">
+        {{#if selectedApp }}
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <img src="{{selectedApp.icon.small}}" height="30" class="img-rounded">
+            <span id="selected-app-name">{{selectedApp.names.short}}</span>
+            <span class="caret"></span>
+          </a>
+        {{else}}
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <span id="selected-app-name"><i class="fa fa-square"></i> All Apps</span> <span class="caret"></span>
+          </a>
+        {{/if}}
+        <ul id="app-dropdown" class="dropdown-menu" role="menu">
+          <li>
+            <a data-action="filter" data-filter="app">
+              <span>All Apps</span>
+            </a>
+          </li>
+          <li class="separator">
+            <span>Individual Apps</span>
+          </li>
+          {{#each apps }}
+            <li class="app">
+              <a class="label" data-action="remove-app" data-id="{{id}}" data-country="{{country}}">Remove</a>
+              <a data-action="filter" data-filter="app" data-id="{{id}}" data-country="{{country}}" title="{{names.full}}">
+                <img src="{{icon.small}}" height="40" class="img-rounded">
+                <span>
+                  {{#if showCountry}}
+                    {{names.short}} <span class="country">({{country}})</span>
+                  {{else}}
+                    {{names.short}}
+                  {{/if}}
+                </span>
+              </a>
+            </li>
+          {{/each}}
+          <li class="app add">
+            <a data-action="apps-add">
+              <span class="glyphicon glyphicon-plus-sign"></span><span>Add new app</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+          {{#if selectedStars }}
+            <span class="stars">{{ selectedStars }}</span>
+          {{else}}
+            <span><i class="fa fa-star stars"></i> All Stars</span>
+          {{/if}}
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li data-action="filter" data-filter="stars">
+            <a>
+              All Stars
+            </a>
+          </li>
+          <li class="stars" data-action="filter" data-filter="stars" data-value="5">
+            <a>
+              ★★★★★
+            </a>
+          </li>
+          <li class="stars" data-action="filter" data-filter="stars" data-value="4">
+            <a>
+              ★★★★
+            </a>
+          </li>
+          <li class="stars" data-action="filter" data-filter="stars" data-value="3">
+            <a>
+              ★★★
+            </a>
+          </li>
+          <li class="stars" data-action="filter" data-filter="stars" data-value="2">
+            <a>
+              ★★
+            </a>
+          </li>
+          <li class="stars" data-action="filter" data-filter="stars" data-value="1">
+            <a>
+              ★
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      {{!--
+        <li role="presentation" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <span>United States</span> <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a data-action="filter" data-filter="country" data-value="us">
+                <span>United States</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      --}}
+    </ul>
+
+
+  </div>
+
+</div>

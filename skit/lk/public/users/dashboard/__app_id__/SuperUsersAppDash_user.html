@@ -1,0 +1,26 @@
+<tr class="user-row" data-client-user-id="{{ id }}">
+  <td class="text-left user-segment-icon" width="40">{{userScore this}}</td>
+  <td class="text-left">
+    <a href="/users/dashboard/{{ appId }}/{{ id }}/"
+      class="user-name"
+      title="{{#if email}}{{email}}{{/if}}{{#if uniqueId}} ID: {{uniqueId}}{{/if}}">
+      <span>{{sdkUserName this}}</span>
+    </a>
+    {{#ifOnline latestVisit}}
+      <span class="online-status active-now">Active Now</span>
+    {{else}}
+      <span class="online-status">{{timeFromNow latestVisit}}</span>
+    {{/ifOnline}}
+  </td>
+  {{#ifHasAnyData this}}
+    {{#with stats}}
+      <td class="lg-text"><span class="user-stat-count">{{formatNumber visits}}</span><span>sessions</span></td>
+      <td class="lg-text"><span class="user-stat-count">{{formatDuration seconds }}</span><span>in app</span></td>
+      <td class="lg-text"><span class="user-stat-count">{{formatNumber taps}}</span><span>taps</span></td>
+      <td class="lg-text"><span class="user-stat-count">{{formatNumber screens}}</span><span>screens</span></td>
+      <td class="lg-text"><span class="user-stat-count">{{days}}<span>days active</span></span></td>
+    {{/with}}
+  {{else}}
+    <td colspan="5"><em>No tracking data for this user yet</em></td>
+  {{/ifHasAnyData}}
+</tr>

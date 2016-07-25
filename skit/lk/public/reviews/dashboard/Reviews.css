@@ -1,0 +1,87 @@
+/* REVIEWS */
+
+.dashboard .review:first-child {
+  border-top: none;
+}
+
+.dashboard .review .app-icon {
+  max-width: 100%;
+  height: auto;
+}
+.dashboard .review .review-title {
+    font-weight: bold;
+    color: #343f4b;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.dashboard .review .stars {
+    font-size: 18px;
+}
+.dashboard .review p {
+    color: #4e5f70;
+
+    /* For very long unbreaking words. */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.dashboard .review .dropdown {
+    font-size: 12px;
+    color: #999;
+}
+.dashboard .review .alert {
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+.dashboard .reviews-loading {
+  list-style: none;
+  text-align: center;
+  line-height: 100px;
+}
+.dashboard .review .app-review-version {
+  color: #ccc;
+  display: block;
+  text-align: center;
+  overflow: hidden;
+}
+.alert {
+  overflow: hidden;
+}
+.alert > div {
+  padding-left: 0;
+}
+.alert h2 {
+  padding-top: 0 !important;
+  margin-left: 0 !important;
+}
+.dashboard .review .review-triage {
+  margin: 10px 0 20px;
+  font-size: 13px;
+}
+.dashboard .review .review-triage .color-bar {
+  display: table-cell;
+  background-color: #D55161;
+  width: 4px;
+  border-radius: 10px;
+}
+.dashboard .review .review-triage .options {
+  padding-left: 10px;
+  display: table-cell;
+}
+.dashboard .review .review-triage .fa.fa-warning {
+  color: #D55161;
+}
+
+.dashboard .review .review-triage.review-triage-3 .color-bar {
+  background-color: orange;
+}
+.dashboard .review .review-triage.review-triage-3 .fa.fa-warning {
+  color: orange;
+}
+
+@media (max-width: 480px) {
+  .dashboard .row .review {
+    padding: 30px 0;
+  }
+}

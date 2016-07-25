@@ -1,0 +1,20 @@
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="viewport" content="initial-scale=1.0,user-scalable=0">
+</head>
+<body>
+  {% block content %}{% endblock %}
+
+  <p>
+    ---
+  </p>
+
+  {% block unsubscribe %}
+    {% if unsubscribe_url %}
+      <p><a href="{{ unsubscribe_url }}">Click here</a> if you don't want to hear from us again.</p>
+    {% endif %}
+  {% endblock %}
+
+</body>
+</html>

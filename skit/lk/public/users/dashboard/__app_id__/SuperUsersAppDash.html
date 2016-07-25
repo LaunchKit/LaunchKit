@@ -1,0 +1,116 @@
+<div id="content-header" class="row">
+  <div class="col-sm-4">
+    <h1>
+      <div class="dropdown">
+        <span class="dropdown-toggle" type="button" id="app-selector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          {{ app.names.short }}
+          <span class="caret"></span>
+        </span>
+        <ul class="dropdown-menu app-selector" aria-labelledby="app-selector">
+          {{#each apps }}
+          <li class="{{#if selected}}selected{{/if}}"><a href="/users/dashboard/{{ id }}/">{{ names.short }}</a></li>
+          {{/each}}
+          <li><a href="/users/onboard/"><i class="fa fa-plus"></i>Create new</a></li>
+        </ul>
+      </div>
+    </h1>
+  </div>
+  <div class="col-sm-8">
+    <a class="btn btn-sm btn-default" href="/users/dashboard/{{ app.id }}/edit/">
+      <i class="fa fa-gear"></i> <span>Configure</span>
+    </a>
+    <a class="btn btn-sm btn-link" href="/sdk/super-users/">
+      <span>SDK Documentation</span>
+    </a>
+  </div>
+</div>
+
+<div class="row segments">
+  <div class="col-sm-6 col-xs-12">
+    <div class="segment segment-lg super-user shadowed-box">
+      <img src="/__static__/images/users/icon_super.png" class="big">
+      <span class="count">{{formatNumber counts.super}}</span>
+      <span class="count-description">Super Users</span>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xs-12">
+    <div class="segment almost-super-user shadowed-box">
+      <img src="/__static__/images/users/icon_almost.png">
+      <span class="count">{{formatNumber counts.almost}}</span>
+      <span class="count-description">Almost Super</span>
+    </div>
+    <div class="segment segment-sm active-user shadowed-box">
+      {{formatNumber counts.active}} Regular Users
+    </div>
+    <div class="segment segment-sm inactive-user shadowed-box">
+      {{formatNumber counts.inactive}} Inactive Users
+    </div>
+  </div>
+</div>
+
+
+{{#if users }}
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-8">
+      <form method=GET action="?" class="form">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input type="text" value="{{ query }}" name="query" class="form-control" placeholder="Search user's name, email address">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row user-table-container table-responsive">
+    <div class="col-sm-12">
+      <table class="table table-wide-row table-wide-row-sm text-center ">
+        <tr class="user-row user-row-header">
+          <td class="text-left" colspan="2"><i class="fa fa-user"></i> User</td>
+          <td><a href="{{sortUrl "monthly_visits" }}" class="{{ sortClass "monthly_visits" }}"><i class="fa fa-bar-chart"></i> Sessions</a></td>
+          <td><a href="{{sortUrl "monthly_seconds" }}" class="{{ sortClass "monthly_seconds" }}"><i class="fa fa-clock-o"></i> Time in App</a></td>
+          <td><a href="{{sortUrl "monthly_taps" }}" class="{{ sortClass "monthly_taps" }}"><i class="fa fa-hand-pointer-o"></i> Taps</a></td>
+          <td><a href="{{sortUrl "monthly_screens" }}" class="{{ sortClass "monthly_screens" }}"><i class="fa fa-clone"></i> Screens</a></td>
+          <td><a href="{{sortUrl "monthly_days_active" }}" class="{{ sortClass "monthly_days_active" }}"><i class="fa fa-calendar-o"></i> Days Active</a></td>
+        </tr>
+        {{#each users }}
+          {{> __module__.user.html }}
+        {{/each}}
+      </table>
+    </div>
+
+    {{#if nextUrl }}
+      <div class="col-sm-12 text-right">
+        <br/>
+        <a class="btn btn-default" href="{{nextUrl}}">Next page</a>
+      </div>
+    {{/if}}
+
+  </div>
+
+{{ else }}
+  <div id="user-score-empty-message" class="empty-state">
+    <p><strong>Waiting for data from the SDK&hellip;</strong></p>
+    <p>
+      Once {{ app.names.short }} runs, our SDK will
+      automatically send data that will<br> fill in this list
+      with information about who&rsquo;s using your app.
+    </p>
+    <p>
+      <a class="btn btn-primary" href="/sdk/install/">
+        Install the SDK
+      </a>
+    </p>
+
+    <hr>
+
+    <p>
+      <small>
+        Does your debug app use a different <strong>bundle ID</strong>?
+        <a href="{{ addDebugAppUrl }}">Add that app instead</a>
+      </small>
+    </p>
+  </div>
+
+{{/if}}
+

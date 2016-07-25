@@ -1,0 +1,70 @@
+<div class="marketing {{#if homepage}}home{{/if}}">
+  <div class="top">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-options" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                  <img src="/__static__/images/icon.png">
+                </a>
+              </div>
+
+              <div class="collapse navbar-collapse" id="nav-options">
+                {{#if user}}
+                  <ul class="nav navbar-nav navbar-right">
+                    <li>
+                      <a class="btn btn-sm btn-primary" href="{{product.path}}/dashboard/">Dashboard</a>
+                    </li>
+                  </ul>
+                {{else}}
+                  <ul class="nav navbar-nav navbar-right">
+                    <li>
+                      <a class="btn btn-sm btn-link" href="/signup/?redirect={{product.path}}">Sign Up</a>
+                    </li>
+                    <li>
+                      <a class="btn btn-sm btn-primary" href="/login/?redirect={{product.path}}/dashboard/">Log In</a>
+                    </li>
+                  </ul>
+                {{/if}}
+              </div>
+
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+   {{{ billboard }}}
+
+  </div>
+
+  {{{ body }}}
+
+  <footer class="footer">
+    <div class="row">
+      <div class="col-sm-3 col-xs-6">
+        <div class="footer-header">Products</div>
+        <ul class="list-unstyled products">
+          {{#each publicProducts}}
+            <li><p><a href="{{path}}/">{{name}}</a></p></li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="col-sm-3 col-xs-12 text-right">
+        <div class="footer-header">
+          <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; <a href="/sdk/terms/">SDK Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

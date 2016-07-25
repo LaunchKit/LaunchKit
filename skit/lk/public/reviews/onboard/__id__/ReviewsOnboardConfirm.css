@@ -1,0 +1,24 @@
+.app-found-confirm li {
+  list-style: none;
+  border: 1px solid #DADCDE;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background: white;
+  padding: 13px;
+  overflow: hidden;
+}
+.app-found-confirm img {
+  /* some app icons are bigger arbitrarily */
+  width: 57px;
+  height: 57px;
+  margin-right: 22px;
+  float: left;
+}
+.app-found-confirm p {
+  margin-top: 10px;
+}
+
+.app-found-confirm#related-apps {
+  max-height: 340px;
+  overflow-y: scroll;
+}

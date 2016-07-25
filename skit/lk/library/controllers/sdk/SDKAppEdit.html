@@ -1,0 +1,110 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-sm-12">
+    <h1>App Configuration</h1>
+    <p>Configuration settings for <strong>{{ app.names.short }}</strong></p>
+  </div>
+</div>
+
+<div class="narrow-content">
+  <div class="row">
+    <form id="app-info-edit-form" class="form">
+
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="control-label">App Display Name</label>
+          <div class="help-block">Overrides the default name for this app.</div>
+          <input type="text" name="name" class="form-control" value="{{ app.names.display }}" placeholder="Flappy Bird">
+        </div>
+      </div>
+
+      {{#if showSuperConfig }}
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label class="control-label">Super User Behavior Settings</label>
+            <div class="help-block">Set your preferences for how what kinds of users you consider Super Users</div>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label class="above-field">A Super User OPENS the App:</label>
+            <select name="freq" class="form-control">
+              {{#each freqOptions }}
+                <option value="{{ value }}" {{ selected }}>{{ label }}</option>
+              {{/each}}
+            </select>
+            <p class="help-block">Is it important that your users use your app every day?</p>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label class="above-field">A Super User USES the App:</label>
+            <select name="time" class="form-control">
+              {{#each timeOptions }}
+                <option value="{{ value }}" {{ selected }}>{{ label }}</option>
+              {{/each}}
+            </select>
+            <p class="help-block">Does it matter how much time the user spends in the app after opening it?</p>
+          </div>
+        </div>
+      {{/if}}
+
+      <div class="col-sm-12">
+        <div class="form-group buttons-container">
+          <a class="btn btn-sm btn-link" href="{{ backUrl }}">Cancel</a>
+          <button class="btn btn-sm btn-primary" type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  {{#if showConfigChildren }}
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="control-label">Bundle ID</label>
+          <div class="help-block">
+            If you use a different bundle ID for production vs. development,
+            you can add the other bundle ID here. When you publish changes to
+            <code>{{ app.bundleId }}</code>, they will automatically be copied to
+            any alternate bundle IDs at the same time.
+          </div>
+
+          <label class="above-field">Primary</label>
+          <input type="text" name="bundle_id" class="form-control" value="{{ app.bundleId }}" disabled>
+        </div>
+        <label class="above-field">Alternates</label>
+      </div>
+
+      <ul class="list-unstyled col-sm-12">
+        {{#each app.configChildren }}
+          <li data-id="{{ id }}" class="form-group row">
+            <div class="col-md-8">
+              <input type="text" name="bundle_id" class="form-control" value="{{ bundleId }}" disabled>
+            </div>
+            <div class="col-md-4">
+              <a class="grey-icon btn-size" data-action="remove-config-child"><i class="fa fa-trash"></i> Remove</a>
+            </div>
+          </li>
+        {{/each}}
+        <li class="form-group row">
+          <form method="POST" id="app-edit-add-child">
+            <div class="col-md-8">
+              <input type="text" name="bundle_id" class="form-control" placeholder="com.example.ExampleApp">
+            </div>
+            <div class="col-md-4">
+              <button type=submit class="btn btn-primary btn-sm btn-block">Add Alt. Bundle</button>
+            </div>
+          </form>
+        </li>
+      </ul>
+    </div>
+  {{/if}}
+
+  <hr>
+
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <a class="btn btn-sm btn-link" href="{{ backUrl }}">Back to Dashboard</a>
+    </div>
+  </div>
+</div>

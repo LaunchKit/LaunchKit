@@ -1,0 +1,70 @@
+{"products": [
+  {
+    "id" : "screenshots",
+    "path" : "/screenshots",
+    "name": "Screenshot Builder",
+    "literalName": "App Store Screenshot Builder",
+    "tagline": "Create gorgeous images for the App Store or Google Play.",
+    "description": "Screenshot Builder makes it easy to create beautiful, custom images for your app store page and export them in the resolutions Apple and Google require.",
+    "purpose": "Create screenshots for the App Store",
+    "keywords": "app screenshots,sketch to app store,app shots,launchkit,screenshots,google play screenshots,app store images,mobile screenshots,iOS screenshots,android screenshots",
+    "iconPath": "/__static__/images/screenshots/icon.png"
+  },
+
+  {
+    "id": "websites",
+    "path": "/websites",
+    "name": "App Website Builder",
+    "literalName": "Instant App Websites",
+    "tagline": "Design and launch a smart website for your app",
+    "description": "App Website Builder makes it easy and quick for any app developer to create and host a fully responsive website for their app.",
+    "keywords": "app website builder,mobile app website template,app website design,ios landing page,app website,app landing page",
+    "purpose": "Instantly create a smart website for your app",
+    "iconPath": "/__static__/images/websites/icon.png"
+  },
+
+  {
+    "id": "reviews",
+    "path" : "/reviews",
+    "name": "Review Monitor",
+    "literalName": "App Review Monitor",
+    "tagline": "App reviews delivered to your Slack and inbox",
+    "description": "Review Monitor is a free service that checks the App Store for new reviews and posts them to your Slack channel or sends them to your email.",
+    "purpose": "Track and share your app reviews",
+    "keywords": "app reviews,slack,email,review tracking,app reviews in slack,app store,launchkit,review,monitor,iOS reviews",
+    "iconPath": "/__static__/images/reviews/icon.png"
+  },
+
+  {
+    "id": "sales",
+    "path" : "/sales",
+    "name": "Sales Reporter",
+    "literalName": "App Store Sales Reporter",
+    "tagline": "Daily app sales reports in Slack and your inbox",
+    "description": "Sales Reporter tool posts your apps' daily download totals and sales summaries into your team's Slack channel and email inbox.",
+    "keywords": "mobile download reports,app sales reports,slack,email,download summary,ios app downloads,daily app download statistics",
+    "purpose": "Get download and revenue numbers delivered",
+    "iconPath": "/__static__/images/sales/icon.png"
+  },
+
+  {
+    "id": "super_users",
+    "path" : "/users",
+    "name": "Super User Dashboard",
+    "tagline": "An easy way to see who absolutely loves your app.",
+    "description": "Super Users Dashboard gives mobile teams immediate visibility into the users that open and use their app the most.",
+    "keywords": "mobile app retention, super user, frequent app user stats, user app usage,app power users,active app users",
+    "purpose": "See who's actually using your app the most",
+    "iconPath": "/__static__/images/users/icon.png"
+  },
+
+  {
+    "id": "config",
+    "path" : "/config",
+    "name": "Cloud Config",
+    "literalName": "App Cloud Config",
+    "tagline": "Effortlessly control your app code from the cloud.",
+    "description": "Cloud Config lets you adjust settings and features in your app, even after it's already installed on your users' devices.",
+    "iconPath": "/__static__/images/config/icon.png"
+  }
+]}

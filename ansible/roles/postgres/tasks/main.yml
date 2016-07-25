@@ -1,0 +1,46 @@
+---
+# Copy in postgres config that trusts localhost
+- name: install postgres
+  apt: name=postgresql state=present
+- name: install postgres contrib
+  apt: name=postgresql-contrib
+- name: install postgres dev libraries
+  apt: name=libpq-dev
+
+- name: install postgres python library for further ansible configuration
+  pip: name=psycopg2
+
+- name: install postgres config
+  copy:
+    src=../files/postgresql.conf
+    dest=/etc/postgresql/9.3/main/postgresql.conf
+    owner=postgres
+    group=postgres
+  # Notify the 'reload postgres' handler to run later if this changed
+  notify: restart postgres
+
+- name: install postgres security config
+  copy:
+    src=../files/pg_hba.conf
+    dest=/etc/postgresql/9.3/main/pg_hba.conf
+    owner=postgres
+    group=postgres
+  # Notify the 'reload postgres' handler to run later if this changed
+  notify: restart postgres
+
+# The above restart must happen before we continue.  flush_handlers forces any pending handlers to run now
+- meta: flush_handlers
+
+- name: install postgres upstart service translation
+  copy:
+    src=../files/init.postgres.conf
+    dest=/etc/init/postgres.conf
+    owner=root
+    group=root
+  notify: upstart start postgres
+
+# Way too permissive for a deploy, but handy for vagrant
+- name: add local user as postgres superuser
+  sudo: yes
+  sudo_user: postgres
+  postgresql_user: name={{ username_on_the_host }} role_attr_flags=SUPERUSER

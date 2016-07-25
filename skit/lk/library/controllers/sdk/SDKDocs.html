@@ -1,0 +1,52 @@
+<div id="sdk-docs">
+  <div id="content-header" class="row">
+    <div class="col-md-12">
+      {{#if backUrl }}
+        <a href="{{ backUrl }}" class="pull-right btn btn-primary">
+          Back To Dashboard
+        </a>
+      {{else}}
+        {{#if selectedItem.dashboardUrl }}
+          <a href="{{ selectedItem.dashboardUrl }}" class="pull-right btn btn-default">
+            Go To Dashboard
+          </a>
+        {{/if}}
+      {{/if}}
+      <h1>
+        SDK Documentation{{#if selectedItem.label }}: {{ selectedItem.label }}{{/if}}
+      </h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+      {{#each nav}}
+        <ul class="sdk-nav list-unstyled">
+          {{#each this}}
+            <li>
+              <a href="{{url}}" {{#if selected }}class="selected"{{/if}}>
+                {{#if icon}}<i class="fa {{icon}}"></i>{{/if}}
+                {{label}}
+              </a>
+            </li>
+          {{/each}}
+        </ul>
+      {{/each}}
+    </div>
+    <div class="col-sm-9">
+      {{#if tokenOwner }}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <p>
+            Looks like you were sent to this page by <strong>{{ tokenOwner.name }}</strong>.
+            We will use the token corresponding to their account in the example code below.
+            {{#if user }}<a href="/sdk/share/?unset=1">Use My Own Token</a>{{/if}}
+          </p>
+        </div>
+      {{/if}}
+
+      <div class="white-container">
+        {{{ contentHtml }}}
+      </div>
+    </div>
+  </div>
+</div>

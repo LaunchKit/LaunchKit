@@ -1,0 +1,51 @@
+<div id="content-header" class="row">
+  <div class="col-md-12">
+    <a href="/screenshots/dashboard/{{ set.id }}/" class="extended-back-link"><i class="fa fa-chevron-left"></i>Back to Edit Set</a>
+  </div>
+  <div class="col-md-12">
+    <a class="btn btn-sm btn-primary" data-action="export-screenshots" data-png="1">Download Set</a>
+    <h1>{{ set.name }} {{ set.version }}</h1>
+  </div>
+</div>
+
+<div id="screenshot-preview" class="row">
+  <div class="col-sm-12">
+    <div class="white-container">
+      {{#eachGroup configsByPhone 2 }}
+        <div class="row">
+          {{#each this}}
+            <div id="screenshot-set" class="col-sm-6 screenshot-set" data-upgradeclick="{{phone.properName}}" data-action="pro-set">
+              <h3>{{ phone.properName }} <small>({{ phone.naturalWidth }} &times; {{ phone.naturalHeight }})</small></h3>
+              <ul class="row list-unstyled">
+                {{#each configs }}
+                  <li class="col-xs-15" data-upgradeclick="{{phone.properName}}" data-action="fullscreen-preview">
+                    <div class="preview">
+                      {{> library.screenshots.ScreenshotCanvas phone=phone dimensions=dimensions }}
+                    </div>
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/each}}
+        </div>
+      {{/eachGroup}}
+
+      {{#each configsByTablet }}
+        <div class="row">
+          <div id="screenshot-set" class="col-sm-12 screenshot-set">
+            <h3>{{ phone.properName }} <small>({{ phone.naturalWidth }} &times; {{ phone.naturalHeight }})</small></h3>
+            <ul class="row list-unstyled">
+              {{#each configs }}
+                <li class="col-xs-15" data-action="fullscreen-preview">
+                  <div class="preview">
+                    {{> library.screenshots.ScreenshotCanvas phone dimensions=dimensions }}
+                  </div>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

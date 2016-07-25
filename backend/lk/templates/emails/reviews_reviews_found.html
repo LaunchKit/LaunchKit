@@ -1,0 +1,73 @@
+{% extends "emails/reviews_base.html" %}
+
+{% load ratingstars %}
+
+{% block title %}New review!{% endblock %}
+
+{% block content %}
+
+  <table id="content" align="center" cellpadding="0" cellspacing="0" border="0" >
+
+    <tr id="top-icon">
+      <td>
+        <span class="app-icon"><img src="{{ app.icon_100 }}"></span>
+          {% ifequal reviews_count 1 %}
+            <h2>{{ app.short_name }} has 1 new review!</h2>
+          {% else %}
+            <h2>{{ app.short_name }} has {{ reviews_count }} new reviews!</h2>
+          {% endifequal %}
+      </td>
+    </tr>
+
+    <tr id="reviews">
+      <td>
+        {% for review in reviews %}
+          <table class="review" cellpadding="0" cellspacing="0" border="0" >
+            <tr class="title">
+              <td>
+                {{review.title}}
+              </td>
+            </tr>
+            <tr class="rating">
+              <td>
+                {{review.rating|stars}}
+              </td>
+            </tr>
+            <tr class="body">
+              <td>
+                {{ review.body|truncatewords:100|linebreaks }}
+              </td>
+            </tr>
+            <tr class="buttons">
+              <td>
+                {% if review.tweet_url %}
+                 <a href="{{ review.tweet_url }}" target="_blank" class="btn btn-primary">Tweet</a>
+                 &nbsp;&nbsp;&nbsp;
+                {% endif %}
+                <a href="{{ review.public_url }}" target="_blank" class="btn">View on Web</a>
+              </td>
+            </tr>
+            <tr class="author">
+              <td>
+                by {{review.author_title}} for v{{review.app_version}} &middot;
+                {{ review.country_name }} &middot;
+                {{ review.create_time|date:"M j, Y" }}
+              </td>
+            </tr>
+          </table>
+        {% endfor %}
+      </td>
+    </tr>
+
+    {% include "emails/reviews_overall.html" %}
+
+  </table>
+{% endblock %}
+
+
+{% block unsubscribe %}
+  {% if created_user %}
+    This email was configured by {{ created_user.email }} &bull;&nbsp;
+  {% endif %}
+  <a href="{{ unsubscribe_url }}">Turn off email alerts</a>
+{% endblock %}

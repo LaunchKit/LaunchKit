@@ -1,0 +1,15 @@
+.define-superuser .header {
+  font-size: 1.3em;
+  color: #333;
+  margin: 0 0 10px;
+}
+.define-superuser i {
+  display: block;
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #0092f2;
+}
+.define-superuser p {
+  font-size: .9em;
+  color: #aaa;
+}

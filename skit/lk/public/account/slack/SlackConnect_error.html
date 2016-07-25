@@ -1,0 +1,45 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-md-12">
+    <h1>Slack Error</h1>
+
+    {{#ifEqual error 'access_denied'}}
+      <div class="info-block">
+        <p class="info-block-title">Don&rsquo;t want to grant access?</p>
+        <p>
+          Would you like to configure your own webhook?
+          It&rsquo;s a bit more complicated to set up, but you might be more comfortable with it.
+        </p>
+        <a class="btn btn-primary" href="{{service.url}}/setup-slack-webhook">Add Webhook</a>
+      </div>
+      <a class="btn btn-link" href="{{service.url}}">Skip</a>
+
+    {{else}}
+      {{#ifEqual error 'no_service' }}
+        <p>
+          Hmm, how&rsquo;d you get here?
+        </p>
+
+        <p>
+          Please visit the product above to connect Slack.
+        </p>
+
+      {{else}}
+        <p>
+          Sorry, there was an error connecting to Slack!
+          Please try again in a moment when we can give it another shot.
+        </p>
+        <a class="btn btn-sm btn-default" href="{{service.url}}">Back</a>
+        <p style="color: #999">
+          <small>(Error code: {{ error }})</small>
+        </p>
+
+      {{/ifEqual}}
+    {{/ifEqual}}
+  </div>
+</div>
+
+
+
+
+
+

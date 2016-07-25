@@ -1,0 +1,185 @@
+<div role="tabpanel" class="tab-pane" id="screenshots">
+
+  <div class="row">
+
+    <div class="col-sm-12">
+      <h3>Styles</h3>
+    </div>
+
+    <div class="col-sm-4">
+
+      <div class="form-group">
+        <label class="above-field">Primary Color</label>
+        <div class="input-group">
+          <span id="primary-color-label" class="input-group-addon" style="background-color: {{ website.primaryColor }}">&nbsp;</span>
+          <input id="primary-color-input" class="form-control" placeholder="#efefef" name="primary_color"
+                 type="text" maxlength="7" value="{{website.primaryColor}}">
+        </div>
+        <div class="help-block">This will be used for backgrounds and links.</div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="above-field">Font</label>
+        <select name="font" class="form-control">
+          {{#each fonts }}
+            <option value="{{ name }}"{{#ifEqual ../website.font name}} selected{{/ifEqual}}>{{ name }}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="above-field">Template</label>
+        <a class="btn btn-sm btn-default btn-block" href="/websites/dashboard/{{website.id}}/templates/"><span>Change Template</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="above-field">Custom CSS</label>
+        <div class="help-block">Simple CSS only; no external fonts, image URLs or @imports allowed.</div>
+        <textarea name="custom_css" class="form-control" rows="10"
+          placeholder="body { font-family: ...">{{ website.customCss }}</textarea>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="above-field">Custom HTML</label>
+        <div class="help-block">App websites doesn&rsquo;t currently support custom HTML.</div>
+        <textarea class="form-control" rows="10"
+          disabled placeholder="Not available."></textarea>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-sm-12">
+      <h3>Images</h3>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="above-field">Icon</label>
+        <div id="icon-display" class="uploaded-image-container {{#unless website.images.icon}}hidden{{/unless}}" data-id="{{#if website.images.icon}}{{website.images.icon.id}}{{/if}}">
+          <img src="{{website.images.icon.url}}" class="app-icon">
+          <a id="icon-remove" class="remove-uploaded-image">
+            <i class="fa fa-times"></i>
+          </a>
+        </div>
+        <div id="icon-upload" class="uploader {{#if website.images.icon}}hidden{{/if}}">
+          {{> library.uploads.DragOrChoose }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+
+      <div class="form-group">
+        <label class="above-field">Logo</label>
+        <div id="logo-display" class="uploaded-image-container {{#unless website.images.logo}}hidden{{/unless}}" data-id="{{#if website.images.logo}}{{website.images.logo.id}}{{/if}}">
+          <img src="{{website.images.logo.url}}" style="background: #efefef;">
+          <a id="logo-remove" class="remove-uploaded-image">
+            <i class="fa fa-times"></i>
+          </a>
+        </div>
+        <div id="logo-upload" class="uploader {{#if website.images.logo}}hidden{{/if}}">
+          {{> library.uploads.DragOrChoose }}
+        </div>
+        <div class="help-block">This will replace your app name in the header. Placed here on gray background for visibility</div>
+      </div>
+
+    </div>
+    <div class="col-sm-4">
+
+      <div class="form-group">
+        <label class="above-field">Background</label>
+
+          <div id="background-display" class="uploaded-image-container uploaded-image-container-full {{#unless website.images.background}}hidden{{/unless}} {{#if template.bgColor}}hidden{{/if}}" data-id="{{#if website.images.background}}{{website.images.background.id}}{{/if}}">
+            <img src="{{website.images.background.url}}">
+            <a id="background-remove" class="remove-uploaded-image">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+          <div id="background-upload" class="uploader {{#if website.images.background}}hidden{{/if}} {{#if template.bgColor}}hidden{{/if}}">
+            {{> library.uploads.DragOrChoose }}
+          </div>
+          <div class="help-block">This will be used as the page or header background.</div>
+          {{#if template.bgColor}}
+          <div class="help-block">The template your using doesn't support background images.</div>
+          {{/if}}
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Screenshots</h3>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-9">
+      <div role="tabpanel" class="tab-pane active" id="ss-iphone">
+        {{#each website.images.screenshots}}
+          <label class="above-field hidden">{{@key}} Screenshots</label>
+          <div class="screenshots">
+            <div id="screenshot-thumbs-{{@key}}">
+              {{#each this}}
+                {{> __module__.screenshot.html platform=@../key id=imageId url=url }}
+              {{/each}}
+              <div class="screenshot-upload col-sm-15 uploader" data-platform="{{@key}}">
+                {{> library.uploads.DragOrChoose }}
+              </div>
+            </div>
+            <div id="screenshot-upload-{{@key}}" data-platform="{{@key}}" class="screenshot-upload col-sm-15 uploader hidden">
+              {{> library.uploads.DragOrChoose }}
+            </div>
+          </div>
+          <div class="help-block col-xs-12">Upload, arrange, and swap out up to 5 screenshots here. These will be used in the gallery and slideshows on your website.</div>
+        {{/each}}
+      </div>
+      <div role="tabpanel" class="tab-pane active" id="ss-ipad">
+        {{#userIsNotPro}}
+          <a class="btn btn-sm btn-default" data-action="remove-override">Add iPad Screenshots</a>
+        {{else}}
+
+        {{/userIsNotPro}}
+      </div>
+      <div role="tabpanel" class="tab-pane" id="ss-tv">
+        {{#userIsNotPro}}
+          <a class="btn btn-sm btn-default" data-action="remove-override">Add TV Screenshots</a>
+        {{else}}
+
+        {{/userIsNotPro}}
+
+      </div>
+      <div role="tabpanel" class="tab-pane" id="ss-watch">
+        {{#userIsNotPro}}
+          <a class="btn btn-sm btn-default" data-action="remove-override">Add Watch Screenshots</a>
+        {{else}}
+
+        {{/userIsNotPro}}
+
+      </div>
+      <div role="tabpanel" class="tab-pane" id="ss-android">
+        {{#userIsNotPro}}
+          <a class="btn btn-sm btn-default" data-action="remove-override">Add Android Screenshots</a>
+        {{else}}
+
+        {{/userIsNotPro}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<table id="review-table">
+<tbody>
+<tr class="vertical-filler"><td colspan=3>&nbsp;</td></tr>
+<tr>
+  <td>&nbsp;</td>
+  <td id="review-container">
+
+    <div class="col-sm-3 app-icon">
+      <img src="{{ review.app.icon.medium }}" alt="App icon">
+    </div>
+    <div class="col-sm-8">
+
+      <div class="stars">
+        <span style="color: orange">{{review.stars}}</span><span style="color: #ddd">{{review.emptyStars}}</span>
+      </div>
+
+      {{#emojiHtml}}
+        <h1>{{ review.title }}</h1>
+        {{bodyText review.body }}
+      {{/emojiHtml}}
+      <small>by {{ review.author.title }} via the App Store</small>
+
+      <div class="download-link">
+        <h2>{{ review.app.names.full }}</h2>
+        <a href="https://itunes.apple.com/us/app/id{{ review.app.iTunesId }}">
+          <img src="/__static__/images/app-store-black-on-color@2x.png" alt="App Store">
+        </a>
+      </div>
+
+      <div class="tweet-button">
+        <a href="https://twitter.com/share" class="twitter-share-button"
+           data-text="{{ review.tweetText }}" data-hashtags="AppReview" data-dnt="true">Tweet</a>
+      </div>
+
+      <div class="powered-by-lk" style="margin-top: 20px;">
+        <img src="/__static__/images/icon.png" height="20">
+        Powered by <a href="/reviews/">Review Monitor</a>
+      </div>
+
+   </div>
+
+  </td>
+  <td>&nbsp;</td>
+</tr>
+<tr class="vertical-filler"><td colspan=3>&nbsp;</td></tr>
+</tbody>
+</table>

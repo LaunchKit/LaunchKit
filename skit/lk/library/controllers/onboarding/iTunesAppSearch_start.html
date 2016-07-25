@@ -1,0 +1,51 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-md-12">
+    <h1>{{ headlineText }}</h1>
+    {{#if subheadText }}
+      <p>{{ subheadText }}</p>
+    {{/if}}
+  </div>
+</div>
+
+<form id="itunes-search-form" class="form">
+
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="form-group">
+        <label class="form-label">App Store Region</label>
+        <select class="form-control" name="country" id="itunes-country-select">
+          {{#each countries }}
+            <option value="{{code}}">{{name}}</option>
+          {{/each}}
+        </select>
+        <div class="help-block">Pick the main country your iOS app is listed in</div>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="form-group">
+        <label class="form-label">iOS App Name</label>
+        <input class="form-control" name="url"
+                 placeholder="Flappy Bird"
+                 type="text" required>
+        {{#if skipUrl }}
+          <div class="help-block">
+            <a href="{{ skipUrl }}">My app isn&rsquo;t in the App Store</a>
+          </div>
+        {{else}}
+          <div class="help-block">Google Play is not currently supported.</div>
+       {{/if}}
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="form-group">
+        <label class="form-label">&nbsp;</label>
+        <button type="submit" class="btn btn-primary btn-sm btn-block">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <ul id="itunes-search-results"></ul>
+  </div>
+
+</form>

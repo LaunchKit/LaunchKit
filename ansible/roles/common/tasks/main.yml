@@ -1,0 +1,16 @@
+---
+- include: install-unzip.yml
+
+- name: install launchkit dummy service
+  copy:
+    src=../files/init.launchkit.conf
+    dest=/etc/init/launchkit.conf
+    owner=root
+    group=root
+
+- name: install vagrant start bug workaround
+  copy:
+    src=../files/workaround-vagrant-bug-6074.conf
+    dest=/etc/init/workaround-vagrant-bug-6074.conf
+    owner=root
+    group=root

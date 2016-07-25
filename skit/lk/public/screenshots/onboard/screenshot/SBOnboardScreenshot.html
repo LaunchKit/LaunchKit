@@ -1,0 +1,94 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-sm-12">
+    <h1>Add the First Screenshot</h1>
+    <p>Add a screenshot of your app. If you don’t have one, <a id="skip-step">you can skip this step.</a></p>
+  </div>
+</div>
+
+
+
+
+<div class="row text-center new-style-picker" id="add-first-screenshot-right">
+
+
+      <div class="col-sm-4">
+        <div class="white-container">
+          <div class="white-container-header">
+            <strong><i class="fa fa-upload"></i> Upload a screenshot</strong>
+          </div>
+          <div id="screenshot-chooser">
+            {{> library.uploads.DragOrChoose }}
+          </div>
+          <div class="white-container-footer">
+            {{#ifEqual platform 'Android'}}
+              <small>Nexus 6P size (1440 × 2560) recommended.</small>
+            {{else}}
+              <small>iPhone 6+ size (1242 × 2208) recommended.</small>
+            {{/ifEqual}}
+          </div>
+        </div>
+      </div>
+
+
+      {{#ifEqual platform 'Android'}}
+      {{else}}
+        <div id="add-first-screenshot-search" class="col-sm-4">
+          <div class="white-container">
+            <div class="white-container-header">
+              <strong><i class="fa fa-apple"></i> Get from App Store</strong>
+            </div>
+            <form class="form-horizontal">
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <div class="above-field">App Name</div>
+                  <input class="form-control" type=text placeholder="Instagram">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-sm btn-primary">Search</button>
+            </form>
+
+            <ul id="add-first-screenshot-results"></ul>
+
+          </div>
+        </div>
+      {{/ifEqual}}
+
+      <div id="add-first-screenshot-url" class="col-sm-4">
+        <div class="white-container">
+          <div class="white-container-header">
+            <strong><i class="fa fa-link"></i> Add an image URL</strong>
+          </div>
+          <form class="form-horizontal load-url">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <input class="form-control" type=url placeholder="https://foobar.com/image.png">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary" id="load-url">Load Image</button>
+          </form>
+
+          <div class="url-preview">
+            <div class="screenshot-url-preview">
+              <p><img src="/__static__/images/pixel.gif"></p>
+              <p><button class="btn btn-primary">Select</button></p>
+            </div>
+            <div class="alert alert-error" role="alert">
+              <p><i class="fa fa-warning"></i> This does not appear to be a working screenshot URL. :(</p>
+              <p>The URL should be a valid image with a standard iPhone screenshot aspect ratio.</p>
+              <p><small>(Also, this URL needs to be <a href="http://enable-cors.org/">CORS-enabled</a> so we can manipulate it in the browser.)</small></p>
+            </div>
+          </div>
+
+          <div class="white-container-footer">
+            {{#ifEqual platform 'Android'}}
+              <small>Nexus 6P size (1440 × 2560) recommended.</small>
+            {{else}}
+              <small>iPhone 6+ size (1242 × 2208) recommended.</small>
+            {{/ifEqual}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

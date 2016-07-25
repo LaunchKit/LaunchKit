@@ -1,0 +1,52 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{#if website.images.icon.url }}
+<link href="{{ website.images.icon.url }}" rel="shortcut icon" type="image/x-icon">
+{{/if}}
+
+<meta name="description" content="{{ website.shortDescription }}">
+<meta name="keywords" content="{{ website.keywords }}">
+
+<!-- Facebook -->
+<meta property="og:site_name" content="{{ website.appName }}">
+<meta property="og:title" content="{{ website.tagline }}">
+<meta property="og:description" content="{{ website.shortDescription }}">
+<meta property="og:url" content="http://{{ website.domain }}">
+{{#if website.images.icon.url }}
+<meta property="og:image" content="{{ website.images.icon.url }}">
+{{/if}}
+<meta property="og:type" content="website">
+
+<!-- Twitter -->
+{{!-- TODO: Also check for playStoreId --}}
+{{#if website.itunesId }}
+<meta name="twitter:card" content="app">
+{{else}}
+<meta name="twitter:card" content="summary_large_image">
+{{/if}}
+<meta name="twitter:title" content="{{ website.appName }} - {{ website.tagline }}">
+<meta name="twitter:description" content="{{ website.shortDescription }}">
+<meta name="twitter:image:src" content="{{ website.images.icon.url }}">
+<meta name="twitter:domain" content="http://{{ website.domain }}">
+<meta name="twitter:app:name:iphone" content="{{ website.appName }}">
+<meta name="twitter:app:id:iphone" content="{{ website.itunesId }}">
+<meta name="twitter:app:name:ipad" content="{{ website.appName }}">
+<meta name="twitter:app:id:ipad" content="{{ website.itunesId }}">
+{{#if website.playStoreId}}
+<meta name="twitter:app:name:googleplay" content="{{ website.appName }}">
+<meta name="twitter:app:id:googleplay" content="{{ website.playStoreId }}">
+{{/if}}
+
+{{#if website.itunesId }}
+<!-- Apple Smart App Banner -->
+<meta name="apple-itunes-app"
+  content="app-id={{website.itunesId}},
+  {{#if website.iosAffiliateId}}{{website.iosAffiliateId}}{{else}}affiliate-data=1001l5Yq{{/if}}">
+{{/if}}
+
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300italic,400italic,600italic,700italic,800italic,400,300,600,700,800|Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic|Raleway:400,100,200,300,500,600,700,800,900" rel="stylesheet" type="text/css">
+
+{{> __module__.meta_styles.html }}
+

@@ -1,0 +1,168 @@
+<ul class="list-unstyled integration-list">
+  <li class="separator">
+    <span>Integrations</span>
+  </li>
+  <li class="integration white-container" id="integration-slack">
+
+    <div class="integration-icon">
+      <img src="/__static__/images/icon_slack.png" class="icon">
+    </div>
+
+    <div class="integration-description">
+      {{#if slackSubscription }}
+        <p class="integration-status"><i class="fa fa-check-circle"></i> Slack is connected.</p>
+      {{else}}
+        <p>Keep your team on track with new reviews posted into Slack.</p>
+        <a href="/account/slack/?service=reviews" class="btn btn-sm btn-block btn-primary">Connect Slack</a>
+        {{!--
+          <p class="text-center" style="margin-top: 10px">
+            <small><a href="/reviews/dashboard/setup-slack-webhook/">Or configure webhook</a>
+          </p>
+        --}}
+      {{/if}}
+    </div>
+
+    {{#if slackSubscription }}
+      <div class="integration-settings">
+        <ul class="list-unstyled">
+          <li class="separator">
+            <i class="fa fa-slack"></i> Alerts going to...
+          </li>
+          <li>
+            <a class="pull-right"
+               data-action="remove-subscription"
+               data-subscription-id="{{ slackSubscription.id }}">Disconnect</a>
+            {{#if slackSubscription.slackUrl }}
+              <span title="{{ slackSubscription.slackUrl }}">
+               Slack webhook
+              </span>
+            {{else}}
+              #{{ slackSubscription.slackChannel.name }}
+            {{/if}}
+          </li>
+        </ul>
+
+        <ul class="list-unstyled">
+          <li class="separator">
+            <i class="fa fa-gear"></i> Settings
+          </li>
+          <li>
+            <label>
+              <input type="checkbox"
+                  {{#if slackSubscription.filter.good }}
+                    checked
+                  {{/if}}
+                  data-subscription-id="{{ slackSubscription.id }}"
+                  data-action="slack-review-filter-good">
+              Only post 4 or 5 star reviews.
+            </label>
+          </li>
+        </ul>
+      </div>
+    {{/if}}
+
+  </li>
+
+  <li class="integration white-container" id="integration-twitter">
+
+    <div class="integration-icon">
+      <img src="/__static__/images/icon_twitter.png" class="icon">
+    </div>
+
+    <div class="integration-description">
+      {{#if twitterConnections }}
+        <p class="integration-status"><i class="fa fa-check-circle"></i> Twitter is connected.</p>
+      {{else}}
+        <p>Have your best reviews posted to your Twitter account.</p>
+        <a href="/reviews/dashboard/setup-twitter-accounts/" class="btn btn-sm btn-block btn-primary">Connect Twitter</a>
+      {{/if}}
+    </div>
+
+    {{#if twitterConnections }}
+      <div class="integration-settings">
+        <ul class="list-unstyled">
+          <li class="separator">
+            <i class="fa fa-twitter"></i> Account Connections
+          </li>
+          {{#each twitterConnections }}
+            <li>
+              {{ app.names.short }} <i class="fa fa-arrow-right"></i> <a>@{{ twitterHandle }}</a>
+              <br>
+              <span>Auto tweet {{#if autoTweet}}on{{else}}off{{/if}}</span>
+            </li>
+          {{/each}}
+        </ul>
+
+        <a href="/reviews/dashboard/setup-twitter-accounts/" class="btn btn-sm btn-primary btn-block">Manage Twitter Connections</a>
+      </div>
+    {{/if}}
+
+  </li>
+
+
+  <li class="integration white-container" id="integration-email">
+
+    <div class="integration-icon">
+      <img src="/__static__/images/icon_email.png" class="icon">
+    </div>
+
+    <div class="integration-description">
+      {{#if hasEmailSubscription}}
+        <p class="integration-status"><i class="fa fa-check-circle"></i> Emails will be sent every time a new review is detected.</p>
+      {{else}}
+        <p>
+          Never miss a new review by having them delivered directly to your inbox.
+        </p>
+        <form id="email-add-form" class="form">
+          <button type="submit" class="btn btn-sm btn-block btn-primary">Email Me Reviews</button>
+        </form>
+      {{/if}}
+    </div>
+
+    {{#if hasEmailSubscription}}
+      <div class="integration-settings">
+        <ul class="list-unstyled">
+          <li class="separator">
+            <i class="fa fa-envelope"></i> Alerts going to...
+          </li>
+          {{#if myEmailSubscription }}
+            <li class="clearfix">
+              <button type="button" class="close"
+                  data-action="remove-subscription" data-subscription-id="{{ myEmailSubscription.id }}"
+                  aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+              <span class="email">
+                {{ user.email }}
+              </span>
+            </li>
+          {{/if}}
+          {{#each emailSubscriptions }}
+            <li class="clearfix">
+              <button type="button" class="close"
+                  data-action="remove-subscription" data-subscription-id="{{ id }}"
+                  aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+              <span class="email">
+                {{ email }}
+              </span>
+            </li>
+          {{/each}}
+        </ul>
+        <form id="email-add-form" class="form row">
+          <div class="form-group col-xs-9">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-plus"></i></span>
+              <input class="form-control" placeholder="Add new email..." type="email" required>
+            </div>
+          </div>
+          <div class="col-xs-3 new-email-submit">
+            <button type="submit" class="btn btn-sm btn-block btn-primary"><i class="fa fa-paper-plane" style="color: white;"></i></button>
+          </div>
+        </form>
+      </div>
+    {{/if}}
+
+  </li>
+
+</ul>
+
+
+

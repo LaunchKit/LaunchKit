@@ -1,0 +1,40 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-md-12">
+    <h1>Slack Connected!</h1>
+    <p>
+      We just posted a little confirmation note in your
+        {{#if channelName }}<strong>#{{ channelName }}</strong>{{/if}}
+      Slack channel.
+      Soon you&rsquo;ll see reviews like this start streaming in and your whole team will be smitten.
+    </p>
+    <a href="{{nextUrl}}" class="btn btn-primary">Next</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+
+    <div class="slack-alert-example">
+      <img src="/__static__/images/icon_app_store.png" class="alert-icon">
+      <div class="alert-title">Review Monitor <span>1:49 PM</span></div>
+      <div class="alert-pretext">{{appName}} has 1 new review in the App Store</div>
+      <div class="attachment">
+        <div class="alert-bar"></div>
+        <div class="alert">
+          <div class="app-name">
+            <img src="{{ appIcon }}">
+            ★★★★★
+          </div>
+          <div class="review-title"><a>{{appName}} is the greatest app of our time</a></div>
+          <div class="review-body">
+            When using this app, my life fundamentally changes. I hold the single best piece of software ever created in the palm of my hand. My life immediately improves. The clouds part, revealing a pristine blue sky.
+          </div>
+          <div class="details row">
+            <div class="col-xs-12"><em>by <a href="">iTunesUser423</a></em> &middot; <a href="">Permalink</a> &middot; <a href="">Tweet</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

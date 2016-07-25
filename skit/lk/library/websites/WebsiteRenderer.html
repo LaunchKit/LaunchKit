@@ -1,0 +1,23 @@
+<div id="public-landing-page"
+  class="
+    template-{{template.id}}
+    {{#if template.fullScreen}}full-screen{{/if}}
+    {{#if template.centered}}centered{{/if}}
+  ">
+
+  {{> __module__.header.html }}
+
+  {{#if template.sections.gallery}}
+    {{> __module__.gallery.html }}
+  {{/if}}
+
+  {{#if template.sections.description}}
+    {{> __module__.description.html }}
+  {{/if}}
+
+  {{> __module__.footer.html }}
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>

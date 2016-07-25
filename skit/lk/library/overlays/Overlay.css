@@ -1,0 +1,61 @@
+
+
+/* BASE OVERLAY */
+
+.overlay {
+    z-index: 100000;
+
+    -webkit-transition: 0.2s opacity ease;
+    -moz-transition: 0.2s opacity ease;
+    -ms-transition: 0.2s opacity ease;
+    opacity: 0;
+}
+.overlay.absolute {
+    position: absolute;
+}
+.overlay.fixed {
+    position: fixed;
+}
+
+.overlay.active {
+    opacity: 1;
+    margin-top: 0;
+}
+
+.overlay-container {
+    overflow: hidden;
+    border: 1px solid #e0e2e3;
+    background: #fdfefe;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin-top: 200px;
+
+    -webkit-transition: 0.2s margin-top ease;
+    -moz-transition: 0.2s margin-top ease;
+    -ms-transition: 0.2s margin-top ease;
+}
+.overlay-container.active {
+    margin-top: 0;
+}
+
+.overlay-background {
+    background: #000;
+    background: rgba(0,0,0,.7);
+    position: fixed;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 100000;
+    opacity: 0;
+    -webkit-transition: 0.2s opacity ease;
+    -moz-transition: 0.2s opacity ease;
+    -ms-transition: 0.2s opacity ease;
+}
+.overlay-background.clear {
+    background: none;
+}
+.overlay-background.active {
+    opacity: 1;
+}

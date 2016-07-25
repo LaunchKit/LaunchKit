@@ -1,0 +1,95 @@
+{% extends "emails/base_email.html" %}
+{% load staticfiles %}
+
+{% block css %}
+  <style>
+    #reviews .review {
+      padding: 70px 0px;
+      border-top: 1px #efefef solid;
+    }
+    #reviews td {
+      padding: 5px 0;
+      text-align: center;
+    }
+    #reviews .rating td {
+      padding-bottom: 15px;
+      font-size: 30px;
+    }
+    #reviews .title td {
+      font-weight: bold;
+    }
+    #reviews .body td {
+      text-align: left;
+      font-size: 18px;
+      font-weight: 100;
+      background-color: #f7f7f7;
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    #reviews .buttons td {
+      padding: 20px 0 15px;
+    }
+
+    #reviews .author td {
+      font-size: 12px;
+      color: #333;
+    }
+    #reviews .author td a {
+      color: inherit;
+      font-weight: 400;
+    }
+
+    #overall-rating {
+      padding: 0 15px;
+      border: 1px solid #efefef;
+    }
+    #overall-rating>td {
+      border: 1px solid #efefef;
+    }
+    #overall-rating td {
+      text-align: center;
+      padding: 30px 0;
+      border-radius: 5px;
+    }
+    #overall-rating img {
+      height: 20px;
+    }
+    #overall-rating td table td  {
+      padding:0;
+      font-size: 14px;
+    }
+
+    .app td {
+      padding: 30px 30px 0 30px;
+      text-align: center;
+    }
+    .app td .app-icon {
+      margin-bottom: -20px;
+    }
+  </style>
+
+  <style media="only screen and (max-width: 480px)">
+    #wrapper #reviews .review {
+      padding: 30px 0px !important;
+    }
+    #wrapper #reviews .body td {
+      font-size: 16px !important;
+    }
+    #overall-rating td table td  {
+      font-size: 10px !important;
+    }
+  </style>
+{% endblock css %}
+
+
+{% block header %}
+  <table id="header" align="center" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td class="product-name">
+        <img src="{% static "images/reviews/icon.png" %}">
+        Review Monitor
+      </td>
+    </tr>
+  </table>
+{% endblock header %}

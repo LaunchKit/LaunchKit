@@ -1,0 +1,42 @@
+<div id="public-landing-page"
+  class="template-2"
+  {{#if contentOnly}}style="padding:0;"{{/if}}>
+
+  {{#unless contentOnly}}
+    <section class="hero">
+      <div class="container">
+        {{> __module__.nav.html }}
+
+        <div class="row">
+          <div class="col-sm-5 col-xs-12 text-center">
+            <img src="{{website.images.icon.url}}" class="app-icon img-rounded">
+          </div>
+          <div class="col-sm-7 col-xs-12">
+            <h1>{{> __module__.app_logo.html }}</h1>
+            <h2>{{website.tagline}}</h2>
+            {{> __module__.download_badges.html }}
+          </div>
+        </div>
+      </div>
+    </section>
+  {{/unless}}
+
+  <section class="description" {{#if contentOnly}}style="padding:0; border: none"{{/if}}>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>{{page.title}}</h1>
+          <p id="content">{{{markdown page.body}}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{#unless contentOnly}}
+    {{> __module__.footer.html }}
+  {{/unless}}
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>

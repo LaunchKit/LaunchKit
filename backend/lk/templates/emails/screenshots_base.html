@@ -1,0 +1,13 @@
+{% extends "emails/base_email.html" %}
+{% load staticfiles %}
+
+{% block header %}
+  <table id="header" align="center" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td class="product-name">
+        <img src="{% static "images/screenshots/icon.png" %}">
+        Screenshot Builder
+      </td>
+    </tr>
+  </table>
+{% endblock header %}

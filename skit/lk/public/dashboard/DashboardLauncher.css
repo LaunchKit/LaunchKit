@@ -1,0 +1,15 @@
+.dashboard-panel-product-info {
+  min-height: 310px;
+  text-align: center;
+}
+.dashboard-panel-product-info img {
+  max-height: 100px;
+  margin: 0 auto 15px;
+}
+.dashboard-panel-product-info p {
+  text-align: left;
+}
+
+.dashboard-panels .button-footer {
+  text-align: center;
+}

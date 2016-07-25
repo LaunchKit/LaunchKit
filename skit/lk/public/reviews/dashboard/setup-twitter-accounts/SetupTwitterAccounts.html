@@ -1,0 +1,80 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-md-12">
+    <h1>Setup Twitter</h1>
+    <p>
+      Connecting Twitter will make reviews you tweet stand out much more in the timeline. You can also set Review Monitor to automatically tweet 5 star reviews!
+    </p>
+    {{#if needsReviewsOnboarding}}
+      <a href="{{nextUrl}}" class="btn btn-primary btn-sm">Continue Onboarding</a>
+    {{else}}
+      <a href="." class="btn btn-primary btn-sm">Save and Return</a>
+    {{/if}}
+  </div>
+</div>
+
+<div class="narrow-content">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="list-unstyled twitter-connection list-wide-row list-wide-row-sm">
+        <li class="row">
+          <div class="col-xs-6">
+            <span>App</span>
+          </div>
+          <div class="col-xs-6">
+            <span>Twitter Username</span>
+          </div>
+        </li>
+        {{#each unconnectedApps}}
+          <li class="app row {{#ifEqual ../highlightApp id}}highlight-app{{/ifEqual}}">
+            <div class="col-xs-6">
+              <img src="{{icon.small}}" class="img-rounded">
+              <span class="app-name">{{names.short}}</span>
+            </div>
+            <div class="col-xs-6">
+              <a class="dropdown-toggle btn btn-primary btn-sm" data-toggle="dropdown" role="button" aria-expanded="false">
+                <span>Connect Twitter Account</span> <span class="caret"></span>
+              </a>
+              <ul id="twitter-handle-dropdown" class="dropdown-menu dropdown-menu-right" role="menu" data-app-id="{{id}}">
+                {{#each ../twitterHandles}}
+                  <li class="twitter-handle" data-action="connect" data-twitter-handle="{{this}}">
+                    <a>
+                      <span>@{{this}}</span>
+                    </a>
+                  </li>
+                {{/each}}
+                <li class="twitter-handle add" data-action="add">
+                  <a>
+                    <span class="glyphicon glyphicon-plus-sign"></span><span>Add New Account</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        {{/each}}
+
+        {{#each connections}}
+          <li class="app row">
+            <div class="col-xs-6">
+              <img src="{{app.icon.small}}" class="img-rounded">
+              <span class="app-name">{{app.names.short}}</span>
+            </div>
+            <div class="col-xs-6">
+              <button type="button" class="close"
+                  data-connection-id="{{ id }}" data-subscription-id="{{ subscriptionId }}" data-action="remove"
+                  aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+              <span>@{{twitterHandle}}</span>
+              <div>
+                <label>
+                  <input data-connection-id="{{ id }}" data-subscription-id="{{ subscriptionId }}"
+                         data-action="autotweet" type="checkbox" {{#if autoTweet}}checked{{/if}}>
+                  Automatically tweet 5-star reviews
+                </label>
+              </div>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+
+</div>

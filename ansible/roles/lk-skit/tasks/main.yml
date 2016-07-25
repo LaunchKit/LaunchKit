@@ -1,0 +1,4 @@
+---
+- include: node-npm.yml
+- include: skit_server_hosted_startup.yml
+- include: skit_server_startup.yml

@@ -1,0 +1,74 @@
+<div class="webapp-wrapper webapp dashboard {{#if fullWidthContent}}full-width-content{{/if}}">
+
+  <nav>
+
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/{{#if user }}dashboard/{{/if}}">
+          <img src="/__static__/images/icon.png" alt="Logo">
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="dropdown product-list">
+            <a href="#" class="dropdown-toggle {{#if isOnboarding}}disabled{{/if}}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              {{#if currentProduct}}
+                <img src="{{currentProduct.iconPath}}">
+                {{currentProduct.name}}
+              {{else}}
+                Products
+              {{/if}}
+               {{#unless isOnboarding}}<span class="caret"></span>{{/unless}}
+            </a>
+            <ul class="dropdown-menu">
+              {{> library.products.list }}
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          {{#if user }}
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ user.names.first }} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li{{#ifPathStartsWith '/account' }} class="active" {{/ifPathStartsWith}}>
+                  <a href="/account/dashboard/">
+                    <i class="fa fa-user"></i>
+                    <span>
+                      Account Settings
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/logout/">
+                    <i class="fa fa-sign-out"></i> <span>Log out</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <main>
+    <div class="content container" id="dashboard-container">{{{ content }}}</div>
+
+    {{#if sidebar}}
+      <aside>
+        {{{ sidebar }}}
+      </aside>
+    {{/if}}
+
+  </main>
+
+</div>

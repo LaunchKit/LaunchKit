@@ -1,0 +1,5 @@
+---
+- name: perform django migration
+  django_manage:
+    command=migrate
+    app_path=/vagrant

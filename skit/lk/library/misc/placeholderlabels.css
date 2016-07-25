@@ -1,0 +1,42 @@
+
+.placeholder-label {
+    position: relative;
+    text-align: left;
+    font-size: 14px;
+    line-height: 18px;
+}
+.placeholder-label input {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    font-size: inherit;
+    line-height: inherit;
+}
+.placeholder-label label {
+    position: absolute;
+    font-size: inherit;
+    line-height: inherit;
+    color: #999;
+    top: 10px;
+    left: 10px;
+    right: 0;
+    z-index: 0;
+
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+.placeholder-label.has-content label {
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.placeholder-label.ready label {
+    -webkit-transition: opacity 0.2s ease;
+    -moz-transition: opacity 0.2s ease;
+    -ms-transition: opacity 0.2s ease;
+}
+.placeholder-label.ready.has-content label {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+}

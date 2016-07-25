@@ -1,0 +1,29 @@
+.tweet-preview {
+  border: 1px solid #dde8ed;
+  padding: 20px;
+  text-align: left;
+  font-size: 18px;
+  margin-bottom: 20px;
+  background: white;
+}
+.tweet-preview textarea.form-control {
+  font-size: inherit;
+  resize: none;
+}
+.tweet-preview .tweet-attachment {
+  min-width: 100%;
+  margin: 20px 0 0 !important;
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tweet-preview .tweet-attachment img {
+  width: 100%;
+  background: transparent url(/__static__/images/loading.gif) center no-repeat;
+}
+@media (max-width: 680px) {
+  .tweet-preview textarea.form-control {
+    font-size: 14px;
+  }
+}

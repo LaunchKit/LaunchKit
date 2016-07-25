@@ -1,0 +1,125 @@
+<div id="content-header" class="row">
+  <div class="col-sm-12">
+    <h1>Sales &amp; Downloads</h1>
+    <div class="header-subtext">Sales Reporter posts your apps&rsquo; daily download and sales summaries into your team&rsquo;s Slack channel and your email inbox.</div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-8">
+
+    <table class="download-email white-container">
+      <tr>
+        <td>
+
+          {{> __module__.nav.html }}
+
+          {{#if totalSalesMetrics}}
+          <table class="download-email-totals">
+            <tr class="download-email-total-downloads">
+              <td>
+                <table>
+                  <tr>
+                    <td colspan="2" class="download-email-primary-number">{{ totalSalesMetrics.downloads.day.requested }}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Total Downloads</td>
+                  </tr>
+                  <tr>
+                    <td class="download-email-number-change">
+                      {{formattedDelta totalSalesMetrics.downloads.day.delta}} day before
+                    </td>
+                    <td class="download-email-number-change">
+                      {{formattedDelta totalSalesMetrics.downloads.week.delta}} week before
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            {{#ifPositive totalSalesMetrics.revenue.day.requested }}
+              <tr class="download-email-total-revenue">
+                <td>
+                  <table>
+                    <tr>
+                      <td colspan="2" class="download-email-primary-number">{{formatCurrency totalSalesMetrics.revenue.day.requested }}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">Total Revenue</td>
+                    </tr>
+                    <tr>
+                      <td class="download-email-number-change">
+                        {{formattedDelta totalSalesMetrics.revenue.day.delta}} day before
+                      </td>
+                      <td class="download-email-number-change">
+                        {{formattedDelta totalSalesMetrics.revenue.week.delta}} week before
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            {{/ifPositive}}
+          </table>
+          {{/if}}
+
+          <table class="download-email-apps">
+            {{#each appSalesMetrics}}
+              <tr class="individual-app">
+                <td>
+                  <table>
+                    <tr class="download-email-app-downloads">
+                      <td class="download-email-app-icon"><span><img src="{{ app.icon.small }}"></span></td>
+                      <td class="download-email-app-count">
+                        {{ metrics.downloads.day.requested }}
+                      </td>
+                      <td class="download-email-app-change">
+                        <div class="download-email-number-change">
+                          {{formattedDelta metrics.downloads.day.delta}} day
+                        </div>
+                        <div class="download-email-number-change">
+                          {{formattedDelta metrics.downloads.week.delta}} week
+                        </div>
+                      </td>
+                    </tr>
+
+                    {{#ifPositive metrics.revenue.day.requested }}
+                      <tr class="download-email-app-revenue">
+                        <td></td>
+                        <td class="download-email-app-count">{{formatCurrency metrics.revenue.day.requested }}</td>
+                        <td class="download-email-app-change">
+                          <div class="download-email-number-change">
+                            {{formattedDelta metrics.revenue.day.delta}} day
+                          </div>
+                          <div class="download-email-number-change">
+                            {{formattedDelta metrics.revenue.week.delta}} week
+                          </div>
+                        </td>
+                      </tr>
+                    {{/ifPositive}}
+                  </table>
+                </td>
+              </tr>
+            {{/each}}
+          </table>
+
+          <table class="footer">
+            <tr>
+              <td>
+                <div class="alert alert-sm alert-info">
+                  <p><small>
+                    These daily metrics are based on your local time zone. If you notice a slight discrepancy between these numbers and iTunes Connect, toggle UTC to Local in <a href="https://reportingitc2.apple.com/" target="_blank">Sales and Trends</a>.
+                  </small></p>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-sm-4">
+    {{> __module__.sidebar.html }}
+  </div>
+</div>

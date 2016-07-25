@@ -1,0 +1,124 @@
+<div id="content-header" class="row">
+  <div class="col-sm-12">
+    <a class="btn btn-sm btn-primary" href="/screenshots/dashboard/{{ set.id }}/preview/"><i class="fa fa-download"></i> <span>Preview &amp; Export</span></a>
+    <a href="" class="btn btn-sm btn-default" data-action="maybe-duplicate-set" data-set-index="{{@index}}" target="_blank"><i class="fa fa-clone"></i> <span>Clone</span></a>
+    <a href="{{ set.twitterShareUrl }}" class="btn btn-sm btn-twitter"
+       target="_blank"><i class="fa fa-twitter"></i>
+    </a>
+    <a role="button" data-toggle="collapse" href="#collapse-global-font" aria-expanded="false" aria-controls="collapse-global-font" class="btn btn-sm btn-link"><i class="fa fa-gear"></i> Settings
+    </a>
+
+    <span id="saving-indicator" class="btn btn-sm">
+      <span class="saving">
+        <img src="/__static__/images/loading.gif" alt="Saving">
+        Saving&hellip;
+      </span>
+      <span class="saved">
+        <i class="fa fa-check"></i> Saved
+      </span>
+    </span>
+
+    <h1>
+      <span class="b-crumb">
+        <i class="fa fa-chevron-left"></i>
+        <a href="/screenshots/dashboard/" >Screenshot Sets</a>
+        &bullet;
+      </span>
+      <span class="platform">
+        {{#ifEqual set.platform 'Android'}}
+          <i class="fa fa-android" title="This is an Androids set. Click Clone to duplicate it for iOS."></i>
+        {{else}}
+          <i class="fa fa-apple" title="This is an iOS set. Click Clone to duplicate it for Android."></i>
+        {{/ifEqual}}
+      </span>
+      <span class="inline-editable name">{{ set.name }}</span>
+      <span class="inline-editable version">{{ set.version }}</span>
+      {{#ifEqual set.name "Untitled"}}
+        <span id="untitled-name-warning" class="inline-edit-arrow">
+          <i class="fa fa-arrow-left"></i> Click to edit
+        </span>
+      {{/ifEqual}}
+    </h1>
+  </div>
+</div>
+
+
+
+<form id="screenshot-set-font-form" class="row">
+
+  <div class="screenshot-font collapse col-sm-12" id="collapse-global-font">
+    <div class="row">
+
+
+      <div class="col-sm-15">
+        <div class="font-select-group form-group">
+          <label for="font" class="above-field">Font Family</label>
+          <select class="form-control" name="font">
+            {{#each fonts }}
+              <option value="{{ value }}" {{selected}}>{{ name }}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm-15 hidden-xs">
+        <div class="form-group">
+          <label for="font_manual_entry" class="above-field">
+            or, Type in name of your own font
+            <a href="https://launchkit.zendesk.com/hc/en-us/articles/219865667" target="_blank"><i class="fa fa-question-circle"></i></a>
+          </label>
+          <input type="text" class="form-control"
+            name="font_manual_entry"
+            value="{{ manualFontEntry }}"
+            placeholder="Enter font name as it appears in Font Book"
+          >
+        </div>
+      </div>
+
+      <div class="col-sm-15">
+        <div class="form-group">
+          <label for="font_size" class="above-field">Size</label>
+          <select class="form-control" name="font_size">
+            {{#each sizes }}
+              <option value="{{ value }}" {{selected}}>{{ name }}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm-15">
+        <div class="form-group">
+          <label for="font_weight" class="above-field">Weight</label>
+          <select class="form-control" name="font_weight">
+            {{#each weights }}
+              <option value="{{ value }}" {{selected}}>{{ name }}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm-15">
+        <div class="form-group">
+          <label class="above-field">&nbsp;</label>
+          <a class="btn btn-sm btn-grey btn-block"
+            data-action="maybe-delete-set"
+            data-upgradeclick="Delete Set">
+            <i class="fa fa-trash"></i> Delete Screenshot Set
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>
+
+<div id="screenshot-editor" class="row">
+  <ul id="screenshot-set"  class="list-unstyled">
+    {{#each configs }}
+      {{> __module__.column.html }}
+    {{/each}}
+    <li id="add-another-screenshot" class="col-sm-15">
+      {{> library.uploads.DragOrChoose }}
+    </li>
+  </ul>
+</div>

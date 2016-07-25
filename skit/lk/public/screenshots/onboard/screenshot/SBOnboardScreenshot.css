@@ -1,0 +1,172 @@
+
+#add-first-screenshot-right .hide-searching,
+#add-first-screenshot-right .hide-adding-url,
+#add-first-screenshot-right .hide-choosing-file {
+  max-height: 1500px;
+  overflow: hidden;
+
+  -webkit-transition: max-height 0.2s ease;
+  -moz-transition: max-height 0.2s ease;
+  -ms-transition: max-height 0.2s ease;
+}
+
+#add-first-screenshot-right.choosing-file .hide-choosing-file {
+  max-height: 0;
+  padding: 0;
+  border: 0;
+}
+
+#add-first-screenshot-right.adding-image-url .hide-adding-url {
+  max-height: 0;
+  padding: 0;
+  border: 0;
+}
+
+#add-first-screenshot-right.searching .hide-searching {
+  max-height: 0;
+  border: 0;
+  padding: 0;
+}
+
+
+#screenshot-chooser {
+  position: relative;
+  height: 100px;
+  text-align: center;
+}
+#screenshot-chooser .drop-target-container .drop-target-text {
+  padding: 20px 0;
+}
+
+
+/* ADD SCREENSHOT BY URL */
+
+#add-first-screenshot-url .url-preview {
+  display: none;
+  text-align: center;
+}
+#add-first-screenshot-url .url-preview.loading,
+#add-first-screenshot-url .url-preview.success,
+#add-first-screenshot-url .url-preview.error {
+  display: block;
+}
+
+#add-first-screenshot-url .url-preview.loading {
+  height: 200px;
+  background: url(/__static__/images/loading.gif) center no-repeat;
+}
+
+#add-first-screenshot-url .screenshot-url-preview {
+  display: none;
+}
+#add-first-screenshot-url .url-preview.success .screenshot-url-preview {
+  display: block;
+}
+
+
+#add-first-screenshot-url .screenshot-url-preview img {
+  height: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+#add-first-screenshot-url .alert {
+  display: none;
+}
+#add-first-screenshot-url .url-preview.error .alert {
+  display: block;
+}
+
+
+/* SEARCH APP STORE */
+
+
+#add-first-screenshot-results {
+  padding-left: 0;
+  text-align: left;
+  margin: 20px -30px;
+}
+
+#add-first-screenshot-results.loading {
+  min-height: 55px;
+  background: url(/__static__/images/loading.gif) center no-repeat;
+}
+
+#add-first-screenshot-results .result {
+  border-top: 1px solid #dde8ed;
+}
+#add-first-screenshot-results .result a {
+  text-decoration: none;
+  color: #666;
+  position: relative;
+  display: block;
+  padding: 10px 20px;
+  overflow: hidden;
+}
+#add-first-screenshot-results .result a:hover {
+  background: #dde8ed;
+}
+
+#add-first-screenshot-results .result .app-icon {
+  float: left;
+  width: 45px;
+  height: 45px;
+}
+
+#add-first-screenshot-results .result .name,
+#add-first-screenshot-results .result .developer {
+  display: block;
+  margin-left: 55px;
+  margin-right: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#add-first-screenshot-results .result .developer {
+  color: #999;
+  font-size: 80%;
+}
+
+#add-first-screenshot-results .result .select {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  margin-top: -.6em;
+  font-size: 1.2em;
+  font-weight: 100;
+  color: #ccc;
+}
+
+#add-first-screenshot-results .result-screenshots {
+  max-height: 0;
+  overflow: hidden;
+
+  -webkit-transition: max-height 0.2s ease;
+  -moz-transition: max-height 0.2s ease;
+  -ms-transition: max-height 0.2s ease;
+}
+
+#add-first-screenshot-results .expanded .result-screenshots {
+  max-height: 250px; /* any value larger than the screenshot height */
+  padding: 0 20px;
+}
+
+#add-first-screenshot-results .result-screenshots {
+  padding: 0;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+#add-first-screenshot-results .result-screenshots li {
+  display: inline-block;
+  margin: 0 0 10px 0;
+  padding: 5px;
+  line-height: 0;
+  border: 1px solid #ccc;
+}
+#add-first-screenshot-results .result-screenshots img {
+  height: 198px; /* width of 5 across */
+  width: 112px; /* squishes iPhone 4 screenshots, to fix? */
+  line-height: 0;
+  cursor: pointer;
+}

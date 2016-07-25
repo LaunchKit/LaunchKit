@@ -1,0 +1,25 @@
+{{#ifShowPlatform website 'ios'}}
+  <a href="{{storeLink website 'ios'}}" class="app-store-badge" target="_blank">
+    <span class="store-badge-white-text">
+      <img src="/__static__/images/websites/public/app-store-white-text@2x.png">
+    </span>
+  </a>
+{{/ifShowPlatform}}
+
+{{#ifShowPlatform website 'android'}}
+  <a href="{{storeLink website 'android'}}" class="google-play-badge" target="_blank">
+    <span class="store-badge-white-text" >
+      <img src="/__static__/images/websites/public/google-play-white-text@2x.png">
+    </span>
+  </a>
+{{/ifShowPlatform}}
+
+{{#ifShowWaitingList website}}
+  <a href="{{website.waitingListLink}}" class="btn btn-primary btn-primary-invert" target="_blank">
+    {{#if website.waitingListLabel}}
+      {{website.waitingListLabel}}
+    {{else}}
+      Join Waiting List
+    {{/if}}
+  </a>
+{{/ifShowWaitingList}}

@@ -1,0 +1,18 @@
+#choose-vendor-form li label {
+  list-style: none;
+  border: 1px solid #DADCDE;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background: white;
+  padding: 30px 30px 30px 50px;
+  overflow: hidden;
+  width: 100%;
+  display: block;
+  font-size: 18px;
+  font-weight: 300;
+}
+#choose-vendor-form li label small {
+  display: block;
+  opacity: .7;
+  font-size: .7em;
+}

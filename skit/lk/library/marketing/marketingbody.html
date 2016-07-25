@@ -1,0 +1,28 @@
+{{#if product.description}}
+  <div class="section description">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+        <img src="{{product.iconPath}}">
+        {{product.description}}
+      </div>
+    </div>
+  </div>
+{{/if}}
+
+{{#each product.features}}
+  <div class="section feature feature-{{@index}}{{#if noFlex}} section-noflex{{/if}}{{#if extraPadding}} feature-extra-padding{{/if}}">
+    <div class="row">
+      <div class="col-sm-{{#if imgColSize}}{{imgColSize}}{{else}}7{{/if}} col-xs-12{{#if imgRight}} pull-right{{/if}}{{#if bottomAlign}} bottom-align{{/if}} feature-image">
+        <img src="{{imagePath}}" {{#unless imgRight}}class="pull-right"{{/unless}} {{#if imgConstrained}}style="width: 100%;"{{/if}}>
+      </div>
+      <div class="col-sm-{{otherCol imgColSize}} col-xs-12">
+        {{#if preHeader}}<p class="pre-header">{{preHeader}}</p>{{/if}}
+        <h2>{{header}}</h2>
+        <h3>{{text}}</h3>
+        {{#if learnMoreUrl}}
+          <a href="{{learnMoreUrl}}" target="_blank" class="btn btn-xs btn-transparent">Learn More</a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+{{/each}}

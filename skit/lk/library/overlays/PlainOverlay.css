@@ -1,0 +1,30 @@
+
+/* plain OVERLAY */
+
+.plain-overlay {
+    width: 350px;
+    background: none;
+    border: none;
+}
+
+@media screen and (max-width: 640px) {
+    .plain-overlay {
+        width: 320px;
+    }
+}
+
+.plain-overlay .plain-overlay-content.loading {
+    min-height: 200px;
+    background: transparent url(/__static__/images/loading.gif) center no-repeat;
+}
+
+.plain-overlay .plain-overlay-content {
+    position: absolute;
+    /* top: is set by reading the height of the titlebar in JS */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+}
+

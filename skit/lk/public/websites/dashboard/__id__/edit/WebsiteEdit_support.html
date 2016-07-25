@@ -1,0 +1,20 @@
+<div role="tabpanel" class="tab-pane" id="support">
+  <div class="col-sm-12">
+    <h3>Support / FAQ</h3>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label class="above-field">Hosted Here <a class="pull-right markdown-preview" data-action="preview-page" data-page="support_page">Preview</a></label>
+      <textarea id="support_page" name="support" class="form-control" rows="25"
+        placeholder="{{> __module__.example_terms.html }}">{{ website.support }}</textarea>
+      <div class="help-block"><a href="https://help.github.com/articles/markdown-basics/" target="_blank">Markdown</a> supported. Learn how to <a href="https://launchkit.zendesk.com/hc/en-us/articles/214188558" target="blank">display this content in your app</a>.</div>
+    </div>
+    <div class="form-group">
+      <label class="above-field">External Link</label>
+      <input type="text" name="support_link" class="form-control"
+        placeholder="http://yourdomain.com/support/"
+        value="{{ website.supportLink }}">
+      <div class="help-block">This would lead to a page you already your support info / FAQ.</div>
+    </div>
+  </div>
+</div>

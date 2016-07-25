@@ -1,0 +1,165 @@
+#screenshot-editor {
+  margin-bottom: 50px;
+  overflow-x: scroll;
+}
+#screenshot-editor ul {
+  min-width: 1400px;
+}
+@media (max-width: 768px) {
+  #screenshot-editor ul {
+    min-width: inherit;
+  }
+}
+#screenshot-set h2 .btn {
+  margin-left: 10px;
+  float: right;
+}
+#screenshot-set .proper-name,
+#screenshot-set .resolution {
+  display: none;
+}
+#content-header h1 .platform {
+  color: #ccc;
+}
+#screenshot-set .screenshot-set-column .preview {
+  background: white;
+  margin: 0 -10px 20px;
+  padding: 20px;
+  box-shadow: none;
+}
+#screenshot-set .screenshot-set-column .preview,
+#screenshot-set #add-another-screenshot {
+  border: 1px solid transparent;
+  border-bottom-color: #DADCDE;
+}
+#screenshot-set li:first-child .preview,
+#screenshot-set li:first-child#add-another-screenshot {
+}
+#screenshot-set li:last-child .preview,
+#screenshot-set li:last-child#add-another-screenshot {
+  border-bottom-right-radius: 10px;
+  border-right-color: #DADCDE;
+}
+#screenshot-set .device-options {
+  margin: 0 -10px;
+  overflow: hidden;
+}
+#screenshot-set .form-control {
+  padding: 7px;
+}
+#screenshot-set select.form-control {
+  height: 34px;
+}
+#screenshot-set .form-group {
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+#screenshot-set .input-group-addon {
+  min-width: 30px;
+}
+#screenshot-set .form-separator {
+  color: #000;
+  margin: 0 0 5px;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+#screenshot-set .device-options .collapse-overrides {
+  padding: 0;
+  margin: 0 0 10px;
+}
+
+.screenshot-override .control {
+  margin: 0 -15px 10px;
+  padding: 0 !important;
+}
+
+.screenshot-override.tablet .control {
+  margin: 0 -15px;
+}
+.screenshot-override.tablet .col-sm-6 {
+  width: 100%;
+}
+.screenshot-override.tablet .remove-image {
+  margin-top: 5px;
+}
+
+#add-another-screenshot {
+  background: white;
+  padding: 20px;
+  text-align: center;
+}
+#add-another-screenshot .drop-target-text {
+  width: 100%;
+  padding: 0;
+  position: absolute;
+  top: 45%;
+}
+#add-another-screenshot .drop-target {
+  padding: 0;
+  width: 100%;
+  padding-top: 181.4%;
+  position: relative;
+}
+#screenshot-set .show-landscape .ipad {
+  display: none;
+}
+.toggle-ipad-upload-orientation {
+  clear: both;
+  padding: 5px 0 0 5px;
+}
+#screenshot-set .ipadlandscape {
+  display: none;
+}
+#screenshot-set .show-landscape .ipadlandscape{
+  display: block;
+}
+.screenshot-set-column.position-none .hide-if-only-screenshot,
+.screenshot-set-column.position-device .hide-if-only-device {
+  display: none;
+}
+#screenshot-set .screenshot-set-column.position-device .device-options .layout-style {
+  margin-bottom: 0;
+}
+
+#screenshot-set-font-form .collapse {
+  border-bottom: 1px solid #DADCDE;
+}
+#screenshot-set-font-form .form-group {
+  padding-top: 10px;
+}
+
+.webapp a.font-form-toggle {
+  color: #999;
+}
+/* Hide add more once there are 5 screenshots. */
+#add-another-screenshot:nth-child(6) {
+  display: none;
+}
+
+#saving-indicator {
+  opacity: 1;
+}
+#saving-indicator > * {
+  display: none;
+}
+#saving-indicator.saving > .saving {
+  display: inline-block;
+}
+#saving-indicator.saved > .saved {
+  display: inline-block;
+  color: green;
+}
+
+#saving-indicator.saved {
+  -webkit-transition: opacity 1s ease-in;
+  -moz-transition: opacity 1s ease-in;
+  -ms-transition: opacity 1s ease-in;
+  transition: opacity 1s ease-in;
+}
+#saving-indicator.saved {
+  opacity: 0;
+}
+
+.titled-overlay.full-resolution-preview-overlay {
+  width: 550px;
+}

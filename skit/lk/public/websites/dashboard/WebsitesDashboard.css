@@ -1,0 +1,42 @@
+.website-list {
+  overflow: hidden;
+}
+.website-list .white-container {
+  min-height: 290px;
+}
+.website-preview {
+  height: 225px;
+  margin: -30px;
+}
+.website-preview iframe {
+  background: white;
+  border: none;
+  width: 403%;
+  height: 900px;
+  -ms-zoom: 0.25;
+  -ms-transform-origin: 0 0;
+  -moz-transform: scale(0.25);
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(0.25);
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(0.25);
+  -webkit-transform-origin: 0 0;
+}
+@media screen and (max-width: 480px) {
+  .website-preview {
+    height: 200px;
+    margin-bottom: 5px;
+  }
+  .website-preview iframe {
+    width: 403%;
+    height: 1200px;
+    -ms-zoom: 0.25;
+    -ms-transform-origin: 0 0;
+    -moz-transform: scale(0.25);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.25);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.25);
+    -webkit-transform-origin: 0 0;
+  }
+}

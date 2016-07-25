@@ -1,0 +1,53 @@
+  <footer>
+    <div class="container">
+      <div class="footer-nav col-xs-12 col-sm-8 pull-right text-right">
+        {{#if website.support}}
+          <a href="{{subpathUrl website "support/"}}">Support</a>
+        {{else}}
+          {{#if website.supportLink}}
+            <a href="{{website.supportLink}}" target="_blank">Support</a>
+          {{/if}}
+        {{/if}}
+        {{#if website.blogLink}}
+          <a href="{{website.blogLink}}" target="_blank">Blog</a>
+        {{/if}}
+        {{#if website.pressLink}}
+          <a href="{{website.pressLink}}" target="_blank">Press</a>
+        {{/if}}
+
+        {{#if website.customLink}}
+          <a href="{{website.customLink}}" target="_blank">{{website.customLinkLabel}}</a>
+        {{/if}}
+
+        {{#if website.terms}}
+          <a href="{{subpathUrl website "terms/"}}">Terms</a>
+        {{else}}
+          {{#if website.termsLink}}
+            <a href="{{website.termsLink}}" target="_blank">Terms</a>
+          {{/if}}
+        {{/if}}
+
+        {{#if website.privacy}}
+          <a href="{{subpathUrl website "privacy/"}}">Privacy Policy</a>
+        {{else}}
+          {{#if website.privacyLink}}
+            <a href="{{website.privacyLink}}" target="_blank">Privacy Policy</a>
+          {{/if}}
+        {{/if}}
+
+        {{#if website.twitterLink}}
+          <a href="{{website.twitterLink}}" target="_blank"><i class="fa fa-twitter"></i></a>
+        {{/if}}
+        {{#if website.facebookLink}}
+          <a href="{{website.facebookLink}}" target="_blank"><i class="fa fa-facebook-square"></i></a>
+        {{/if}}
+        {{#if website.instagramLink}}
+          <a href="{{website.instagramLink}}" target="_blank"><i class="fa fa-instagram"></i></a>
+        {{/if}}
+        {{#if website.mixpanelBadge}}
+          <a href="https://mixpanel.com/f/partner" rel="nofollow"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
+        {{/if}}
+      </div>
+
+    </div>
+  </footer>

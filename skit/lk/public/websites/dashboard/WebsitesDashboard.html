@@ -1,0 +1,36 @@
+<div id="content-header" class="row">
+  <div class="col-sm-12">
+    <a class="btn btn-sm btn-primary" href="/websites/onboard/"><i class="fa fa-plus"></i> <span>Create New Website</span></a>
+    <h1>App Websites</h1>
+  </div>
+</div>
+
+
+<div class="website-list row">
+  {{#each websites}}
+    <div class="col-sm-4">
+      <div class="white-container">
+        <div class="website-preview">
+          <iframe data-website-id="{{id}}"></iframe>
+        </div>
+        <div class="button-footer">
+          <a class="btn btn-xs btn-link" href="/websites/dashboard/{{id}}/public/" target="_blank">
+            <i class="fa fa-desktop"></i>
+            Preview
+          </a>
+          <a class="btn btn-xs btn-primary" href="/websites/dashboard/{{id}}/edit/">
+            <i class="fa fa-edit"></i>
+            Edit
+          </a>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <div class="col-sm-12">
+      <div class="empty-state">
+        <p>You haven't created any websites yet! Click below to create your first.</p>
+        <p><a href="/websites/onboard/" class="btn btn-primary">Create Website</a></p>
+      </div>
+    </div>
+  {{/each}}
+</div>

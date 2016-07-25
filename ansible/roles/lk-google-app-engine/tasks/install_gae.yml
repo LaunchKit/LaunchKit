@@ -1,0 +1,17 @@
+---
+- name: download google app-engine
+  get_url:
+    url=https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.27.zip
+    dest=/home/vagrant/google_appengine_1.9.27.zip
+- name: install google app-engine
+  unarchive:
+    src=/home/vagrant/google_appengine_1.9.27.zip
+    dest=/usr/local
+    copy=no
+    creates=/usr/local/google_appengine/dev_appserver.py
+- name: set the google app-engine path
+  copy:
+    src=../files/google_app_engine.sh
+    dest=/etc/profile.d/google_app_engine.sh
+    owner=root
+    group=root

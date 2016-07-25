@@ -1,0 +1,252 @@
+<div role="tabpanel" class="tab-pane active" id="landing-page">
+
+  <div class="row">
+
+    <div class="col-sm-12">
+      <h3>App Info</h3>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="above-field">App Name</label>
+        <input type="text" name="app_name" class="form-control" value="{{ website.appName }}">
+      </div>
+
+      <div class="form-group">
+        <label class="above-field">Tagline</label>
+        <input type="text" name="tagline" class="form-control" value="{{ website.tagline }}">
+      </div>
+
+      <div class="form-group">
+        <label class="above-field">Short Description</label>
+        <textarea name="short_description" class="form-control" rows="3">{{ website.shortDescription }}</textarea>
+        <div class="help-block">This is used in your site's <code>&lt;META&gt;</code> description, as well as the description in Twitter and Facebook share tags.</div>
+      </div>
+
+      <div class="form-group">
+        <label class="above-field">Keywords</label>
+        <input type="text" name="keywords" class="form-control"
+          placeholder="Separated by commas"
+          value="{{ website.keywords }}">
+        <div class="help-block">These are the keywords search engines will see to index your website.</div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="above-field">Long Description</label>
+        <textarea name="long_description" class="form-control" rows="15">{{ website.longDescription }}</textarea>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="row">
+
+    <div class="col-sm-12">
+      <h3>App Stores</h3>
+    </div>
+
+    <div class="col-sm-6">
+
+      <div class="form-group">
+        <label class="above-field">App Store ID</label>
+        <input type="text" name="itunes_id" class="form-control" value="{{ website.itunesId }}" placeholder="596595...">
+      </div>
+
+      <div class="row">
+        <div class="col-sm-7">
+          <div class="form-group">
+            <label class="above-field">iTunes Campaign Token</label>
+            <input type="text" name="itunes_campaign_token"
+              class="form-control" value="{{ website.itunesCampaignToken }}"
+              placeholder="App Website">
+            <div class="help-block">About <a href="https://itunespartner.apple.com/en/apps/faq/App%20Analytics_Campaigns" target="_blank">iTunes Campaigns</a>.</div>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <div class="form-group">
+            <label class="above-field">Provider Token</label>
+            <input type="text" name="itunes_provider_token"
+              class="form-control" value="{{ website.itunesProviderToken }}"
+              placeholder="8668">
+            <div class="help-block">Find <a href="https://analytics.itunes.apple.com/#/campaigngenerator" target="_blank">Provider Token</a>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="above-field">Google Play ID</label>
+        <input type="text" name="play_store_id" class="form-control" value="{{ website.playStoreId }}" placeholder="com.cluster.android">
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Unreleased Apps</h3>
+      <p class="header-subtext">If your app is not available anywhere yet, you can display a waiting list button to collect interested user information. <em>This will only show up if you have not added any information in the App Stores section above.</em></p>
+    </div>
+    <div class="col-sm-7">
+      <div class="form-group">
+        <label class="above-field">Waiting List URL</label>
+        <input type="text" name="waiting_list_link" class="form-control" value="{{ website.waitingListLink }}" placeholder="https://docs.google.com/forms/d/...">
+        <div class="help-block">Add the URL here to a form where you can capture user info, such as <a href="http://www.google.com/forms/" target="_blank">Google Forms</a>.</div>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="form-group">
+        <label class="above-field">Waiting List Button Label</label>
+        <input type="text" name="waiting_list_label" class="form-control" value="{{ website.waitingListLabel }}" placeholder="Beta Signup"
+        <div class="help-block">"Join Waiting List" by default.</div>
+      </div>
+    </div>
+
+    </div>
+
+  <div class="row">
+
+    <div class="col-sm-12">
+      <h3>Website Settings</h3>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        {{#unless website.domain}}
+          <p class="header-subtext">In order for other people to see your website, you'll need to set up a custom domain name. <strong><a href="http://blog.launchkit.io/post/121139102739/custom-domain" target="_blank">Read instructions here</a></strong>. Once you set things up, please remember that it can take up to 24 hours for your domain to activate.</p>
+        {{/unless}}
+
+        <label class="above-field">Your Domain</label>
+        <input id="domain-input" type="text" name="domain" class="form-control" value="{{ website.domain }}" placeholder="www.domain.com">
+      </div>
+      <div class="form-group">
+        <a id="check-domain" class="btn btn-sm btn-default">Test Domain</a>
+        <a class="btn btn-sm btn-link" href="http://blog.launchkit.io/post/121139102739/custom-domain" target="_blank">
+            How do I set this up?
+        </a>
+      </div>
+      <div id="check-domain-good" class="hidden alert alert-sm alert-success">Great job! The CNAME is correctly set. If you're not seeing your page when you visit this domain, <strong>please give it at least 24 hours</strong> to work.</div>
+      <div id="check-domain-bad" class="hidden alert alert-sm alert-danger">
+        This domain's CNAME is not pointing to us. Please change the CNAME to: <strong>domains.launchkit.io</strong>.<br><br>
+        <small>More details: &ldquo;<span class="sub-message"></span>&rdquo;. Note that DNS is heavily cached and may take some time to update.</small>
+      </div>
+    </div>
+    <div class="col-sm-3">
+
+      <div class="form-group">
+        <label class="above-field">Google Analytics ID</label>
+          <input type="text" name="google_analytics_id"
+          class="form-control" value="{{ website.googleAnalyticsId }}" placeholder="UA-########-#">
+        <div class="help-block"><a href="https://support.google.com/analytics/answer/1032385?hl=en" target="_blank">Where do I find this?</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-12">
+      <h3>Links</h3>
+      <p class="header-subtext">Links can be added to <em>external</em> websites for information that isn't included on your website.</p>
+    </div>
+
+    <div class="col-sm-6">
+
+      <div class="form-group">
+        <label class="above-field">Blog</label>
+        <input type="text" name="blog_link" class="form-control"
+          placeholder="http://blog.yourdomain.com/"
+          value="{{ website.blogLink }}">
+      </div>
+
+      <div class="form-group">
+        <label class="above-field">Login</label>
+        <input type="text" name="login_link" class="form-control"
+          placeholder="http://yourdomain.com/login/"
+          value="{{ website.loginLink }}">
+        <div class="help-block">If there's a place for users to log into your website, add the link here.</div>
+      </div>
+
+      <div class="form-group">
+        <label class="above-field">Press</label>
+        <input type="text" name="press_link" class="form-control"
+          placeholder="http://yourdomain.com/press/"
+          value="{{ website.pressLink }}">
+        <div class="help-block">If you have a press kit, or list of previous press, add it here.</div>
+      </div>
+
+    </div>
+    <div class="col-sm-6">
+
+      <div class="form-group">
+        <label class="above-field">Social</label>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-twitter"></i></span>
+          <input type="text" name="twitter_link" class="form-control"
+            placeholder="http://twitter.com/yourapp/"
+            value="{{ website.twitterLink }}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
+          <input type="text" name="facebook_link" class="form-control"
+            placeholder="http://facebook.com/yourapp/"
+            value="{{ website.facebookLink }}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-instagram"></i></span>
+          <input type="text" name="instagram_link" class="form-control"
+            placeholder="http://instagram.com/yourapp/"
+            value="{{ website.instagramLink }}">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label class="above-field">Custom Link Label</label>
+            <input type="text" name="custom_link_label" class="form-control"
+              placeholder="Jobs"
+              value="{{ website.customLinkLabel }}">
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="form-group">
+            <label class="above-field">Custom Link</label>
+            <input type="text" name="custom_link" class="form-control"
+              placeholder="http://jobsite.com/company"
+              value="{{ website.customLink }}">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-12">
+      <h3>Widgets</h3>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label class="above-field">Mixpanel Badge</label>
+        <select name="mixpanel_badge"  class="form-control">
+          <option value="false"
+            {{#unless website.mixpanelBadge }} selected{{/unless}}>None</option>
+          <option value="true"
+              {{#if website.mixpanelBadge }} selected{{/if}}>Show Mixpanel Badge</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

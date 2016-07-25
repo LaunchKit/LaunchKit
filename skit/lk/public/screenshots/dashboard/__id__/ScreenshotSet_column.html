@@ -1,0 +1,159 @@
+<li class="col-md-15 screenshot-set-column {{#if shot.tabletIsLandscape}}show-landscape{{/if}}">
+  <form class="form-horizontal">
+
+    <div class="preview {{#if shot.isLandscape}}landscape{{/if}}">
+      {{> library.screenshots.ScreenshotCanvas phone=phone dimensions=dimensions }}
+    </div>
+
+    <div class="device-options">
+
+
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="control-label">Layout &amp; Style</label>
+          <select class="form-control" name="label_position">
+            {{#each positions }}
+              <option value="{{value}}">
+                {{name}}
+              </option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="form-group hide-if-only-screenshot">
+          <label class="above-field">Caption</label>
+          <textarea name="label" class="form-control" rows="2" placeholder="Add a great feature of your app here"></textarea>
+          <a class="help-block" role="button" data-toggle="collapse" href="#collapse-{{shot.id}}" aria-expanded="false" aria-controls="collapse-{{shot.id}}">
+            <i class="fa fa-cog"></i> Change Colors &amp; Background <span class="caret"></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="collapse" id="collapse-{{shot.id}}">
+        {{#ifEqual platform 'iOS'}}
+        <div class="form-group hide-if-only-screenshot">
+          <div class="col-sm-12">
+            <label class="above-field">Device Color</label>
+            <select class="form-control" name="phone_color">
+              <option value="white">White Device</option>
+              <option value="black">Black Device</option>
+              <option value="gold">Gold Device</option>
+              <option value="rose">Rose Gold Device</option>
+            </select>
+          </div>
+        </div>
+        {{/ifEqual}}
+
+        <div class="form-group">
+          <div class="col-sm-6">
+            <label class="above-field">Text</label>
+            <div class="input-group color-pickme">
+              <span class="input-group-addon" style="background-color: {{ shot.fontColor }}">&nbsp;</span>
+              <input type="text" class="form-control" name="font_color" placeholder="#FFF">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <label class="above-field">Background</label>
+            <div class="input-group color-pickme">
+              <span class="input-group-addon" style="background-color: {{ shot.backgroundColor }}">&nbsp;</span>
+              <input type="text" class="form-control" name="background_color" placeholder="#000">
+            </div>
+          </div>
+        </div>
+
+        {{> __module__.background_manager.html shot }}
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <label class="control-label">Screenshots</label>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="above-field">
+            <i class="fa fa-mobile"></i> {{#ifEqual platform 'Android'}}Phone{{else}}iPhone{{/ifEqual}}
+          </label>
+          <div class="change-screenshot-panel">
+            <div class="choose-image form-control uploaded">
+              <div class="file-picker-container"><a></a></div>
+            </div>
+          </div>
+        </div>
+
+        {{#ifEqual platform 'Android'}}
+          <div class="col-sm-6">
+          {{#each deviceOverrides.tablets }}
+              <label class="above-field">
+                <i class="fa fa-tablet"></i> {{#ifEqual deviceName 'nexus7'}}7" Tablet{{else}}10" Tablet{{/ifEqual}}
+              </label>
+              <div class="screenshot-override tablet {{deviceName}}" data-device-type="{{deviceType}}" data-device-name="{{deviceName}}">
+                <div class="control">
+                  {{> __module__.override.html shot=../shot }}
+                </div>
+              </div>
+          {{/each}}
+          </div>
+
+        {{else}}
+
+          {{#with deviceOverrides.tablets.[0] }}
+            <div class="col-sm-6">
+              <label class="above-field">
+                <i class="fa fa-tablet"></i> iPad
+              </label>
+              <div class="screenshot-override tablet {{deviceName}}" data-device-type="{{deviceType}}" data-device-name="{{deviceName}}">
+                <div class="control">
+                  {{> __module__.override.html shot=../shot }}
+                </div>
+              </div>
+            </div>
+          {{/with}}
+
+        {{/ifEqual}}
+
+        <div class="col-sm-12">
+          {{#ifEqual platform 'Android'}}
+            <div class="help-block">We currently support Nexus 5x, 6, 7 and 9 screenshots.</div>
+          {{else}}
+            <div class="help-block">We will scale this image to all phone screen sizes.</div>
+          {{/ifEqual}}
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <div class="form-separator">
+            Device Specific Overrides
+          </div>
+          <div class="help-block">Upload images to override the global screenshot in the set.</div>
+          <a class="btn btn-xs btn-link collapse-overrides" role="button" data-toggle="collapse" href="#collapse-overrides-{{shot.id}}" aria-expanded="false" aria-controls="collapse-overrides-{{shot.id}}">
+            See Device Sizes <span class="caret"></span>
+          </a>
+          <div class="collapse" id="collapse-overrides-{{shot.id}}">
+            {{#each deviceOverrides.phones}}
+              <div class="screenshot-override {{deviceType}}" data-device-type="{{deviceType}}" data-device-name="{{deviceName}}">
+                <div class="form-separator">
+                  <label>{{properName}}</label>
+                </div>
+                <div class="control form-group">
+                {{> __module__.override.html shot=../shot button_title='Upload Override'}}
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <a class="grey-icon" data-action="remove-shot" data-id="{{shot.id}}"><i class="fa fa-trash"></i> Delete Screenshot</a>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</li>
+
+
+

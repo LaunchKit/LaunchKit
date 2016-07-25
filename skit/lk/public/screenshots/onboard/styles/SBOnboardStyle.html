@@ -1,0 +1,198 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-sm-12">
+    <h1>Customize Screenshot</h1>
+    <p>Set your own custom colors, background, fonts, device color, and more!</p>
+  </div>
+</div>
+
+<div id="screenshot-editor" class="row position-{{ selectedPosition }} width-constrained">
+  <div class="col-sm-5 phone-container">
+    <div class="white-container">
+      {{> library.screenshots.ScreenshotCanvas topPhone dimensions=dimensions }}
+    </div>
+    <div class="full-resolution-preview">
+      <a data-action="full-resolution-preview" class="btn btn-xs btn-default">
+        Full Resolution Preview
+      </a>
+    </div>
+  </div>
+
+  <div class="col-sm-7">
+    <form class="form" id="screenshot-form">
+      <input type="hidden" name="is_landscape" value="{{is_landscape}}">
+      <div class="col-sm-12">
+        <label class="control-label">Layout</label>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <select class="form-control" name="label_position">
+            {{#each positions }}
+              <option value="{{value}}" {{selected}}>
+                {{name}}
+              </option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+      {{#ifEqual platform 'iOS'}}
+      <div class="col-sm-6">
+        <div class="form-group">
+          <fieldset class="position-none-hides">
+            <select class="form-control" name="phone_color">
+              <option value="white" {{#ifEqual config.phone_color "white" }}selected="selected"{{/ifEqual}}>White Device</option>
+              <option value="black" {{#ifEqual config.phone_color "black" }}selected="selected"{{/ifEqual}}>Black Device</option>
+              <option value="gold" {{#ifEqual config.phone_color "gold" }}selected="selected"{{/ifEqual}}>Gold Device</option>
+              <option value="rose" {{#ifEqual config.phone_color "rose" }}selected="selected"{{/ifEqual}}>Rose Gold Device</option>
+            </select>
+          </fieldset>
+        </div>
+      </div>
+      {{/ifEqual}}
+
+      <fieldset class="position-none-hides">
+        <div class="col-sm-12">
+          <label class="control-label">Caption</label>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <textarea class="form-control" name="label">{{ config.label }}</textarea>
+          </div>
+        </div>
+      </fieldset>
+
+
+      <fieldset class="position-none-hides">
+        <div class="col-sm-12">
+          <label class="control-label">Font</label>
+        </div>
+        <div class="col-sm-6 screenshot-font">
+          <div class="form-group font-select-group">
+            <label for="font" class="above-field">Font Family</label>
+            <select class="form-control" name="font">
+              {{#each fonts }}
+                <option value="{{ value }}" {{selected}}>{{ name }}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-6 hidden-xs">
+          <div class="form-group">
+            <label for="font_manual_entry" class="above-field">
+              Or, type in name of your own font
+              <a href="https://launchkit.zendesk.com/hc/en-us/articles/219865667" target="_blank"><i class="fa fa-question-circle"></i></a>
+            </label>
+            <input type="text" class="form-control" name="font_manual_entry" value="{{ config.font_manual_entry }}" placeholder="Enter font name as it appears in Font Book">
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label for="font_size" class="above-field">Size</label>
+            <select class="form-control" name="font_size">
+              {{#each sizes }}
+                <option value="{{ value }}" {{selected}}>{{ name }}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label for="font_weight" class="above-field">Weight</label>
+            <select class="form-control" name="font_weight">
+              {{#each weights }}
+                <option value="{{ value }}" {{selected}}>{{ name }}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label for="font_color" class="above-field">Color</label>
+            <div class="input-group color-pickme">
+              <span class="input-group-addon" style="background-color: {{ config.font_color }}">&nbsp;</span>
+              <input class="form-control" type="text" value="{{ config.font_color }}" name="font_color">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <div class="col-sm-12">
+          <label class="control-label">Background</label>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="background_color" class="above-field">Color</label>
+            <div class="input-group color-pickme">
+              <span class="input-group-addon" style="background-color: {{ config.background_color }}">&nbsp;</span>
+              <input class="form-control" type=text value="{{ config.background_color }}" name="background_color">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="above-field">Or, upload a custom image</label>
+            <div class="checkbox choose-image form-control">
+              <div style="overflow: hidden;" class="file-picker-container">
+                <a></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="position-none-shows">
+        <div class="col-sm-12">
+          <em>The background will only be visible if your source screenshot is short or contains transparency.</em>
+        </div>
+      </fieldset>
+
+      <div class="buttons-container">
+        <a class="btn btn-sm btn-default" href="/screenshots/onboard/">
+          Start Over
+        </a>
+        <button class="btn btn-sm btn-primary" type="submit">Next</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row" id="phone-list">
+  <div class="col-xs-12">
+    <hr>
+    <h3>Export in every size with Screenshot Builder <span class="label label-primary">Pro</span></h3>
+    <strong>Phone Set</strong>
+    {{#ifEqual platform 'iOS'}}
+      <p>An entire set of images exactly as Apple requires, and in the relevant device frame can be exported instantly, created using a scaled version of the global screenshot. You can override all of these with device specific screenshots in the next step.</p>
+    {{else}}
+      <p>Screenshot Builder can export sets on different phones created using a scaled version of the global screenshot. You can override all of these with device specific screenshots in the next step.</p>
+    {{/ifEqual}}
+    <div class="white-container row">
+      {{#each phones }}
+        {{#unless phone.isIPad}}
+          <div class="col-sm-3 col-xs-6">
+            {{phone.properName}}
+            {{> library.screenshots.ScreenshotCanvas phone dimensions=dimensions properName=properName}}
+          </div>
+        {{/unless}}
+      {{/each}}
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <strong>Tablet Set</strong>
+    <p>We know this might look odd because it's an phone screenshot scaled up. But this is just to show you you can make a companion set of screenshots for tablet in the following steps.</p>
+    <div class="white-container row">
+      {{#each phones }}
+        {{#if phone.isIPad}}
+          <div class="col-sm-4 col-xs-6">
+            {{phone.properName}}
+            {{> library.screenshots.ScreenshotCanvas phone dimensions=dimensions}}
+          </div>
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>
+</div>

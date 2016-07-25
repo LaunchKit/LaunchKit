@@ -1,0 +1,33 @@
+{% extends "emails/reviews_base.html" %}
+
+{% load englishjoin %}
+
+
+{% block title %}Reviews on the way!{% endblock %}
+
+
+{% block content %}
+  <table id="content" align="center" cellpadding="0" cellspacing="0" border="0" >
+    <tr id="top-message">
+      <td>
+        <p>{{ created_user.full_name }} just subscribed you to receive email alerts when new reviews are posted for <strong>{{ app_names|englishjoin }}</strong> in the App Store.</p>
+        <p>If you'd rather not receive alerts, you can <a href="{{ unsubscribe_url }}">turn them off here</a>, although you'll probably hurt {{ created_user.short_name }}'s feelings.</p>
+      </td>
+    </tr>
+
+    {% for app in apps %}
+      <tr class="app">
+        <td>
+          <span class="app-icon"><img src="{{ app.icon_100 }}" alt="{{ app.name }}"></span>
+        </td>
+      </tr>
+      {% include "emails/reviews_overall.html" %}
+    {% endfor %}
+  </table>
+{% endblock %}
+
+
+{% block unsubscribe %}
+  Alerts set up by {{ created_user.email }} &bull;
+  <a href="{{ unsubscribe_url }}">Turn off</a>
+{% endblock %}

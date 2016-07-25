@@ -1,0 +1,43 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-sm-12">
+    <h1>Slack Connected!</h1>
+    <p>
+      When the initial import is complete, yesterday's stats will be posted into the
+        {{#if channelName }}<strong>#{{ channelName }}</strong>{{/if}}
+      Slack channel. Daily updates will be posted in the mornings.
+    </p>
+    <a href="{{nextUrl}}" class="btn btn-primary">Next</a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="slack-alert-example">
+      <img src="/__static__/images/icon_app_store.png" class="alert-icon">
+      <div class="alert-title">Sales Reporter</div>
+      <div class="alert-pretext">Demo Daily App Store Analytics</div>
+      <div class="attachment">
+        <div class="alert-bar"></div>
+        <div class="alert">
+          <div class="app-name">
+            <img src="{{ appIcon }}">
+            {{ appName }}
+          </div>
+          <div class="review-body">
+            <div class="field">
+              <strong>Downloads</strong><br>
+              ###,###<br>
+              <em>↑ ##.#% day / ↑ ##.#% week</em>
+            </div>
+            <div class="field">
+              <strong>Revenue</strong><br>
+              $##,###<br>
+              <em>↑ #.#% day / ↑ #.#% week</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

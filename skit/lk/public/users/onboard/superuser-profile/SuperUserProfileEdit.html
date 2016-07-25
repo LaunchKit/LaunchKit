@@ -1,0 +1,50 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-sm-12">
+    <h1>Define a Super User</h1>
+    <p>
+      In order to identify your best users, we need to know what you consider to be great usage.
+    </p>
+  </div>
+</div>
+
+<div class="narrow-content text-center define-superuser">
+  <form id="super-user-config-form" class="form" method="POST">
+    <div class="white-container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="header"><i class="fa fa-bar-chart"></i> App Opens</div>
+          <p>Is it important that your users use your app every day? Several times a day? Or just several times a week?</p>
+          <div class="form-group">
+            <select name="freq" class="form-control">
+            {{#each freqOptions }}
+              <option value="{{value}}" {{selected}}>{{ label }}</option>
+            {{/each}}
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="header"><i class="fa fa-clock-o"></i> Time Used</div>
+          <p>Does it matter how much time the user spends in the app? Do you want users there for minutes or hours?</p>
+          <div class="form-group">
+            <select name="time" class="form-control">
+            {{#each timeOptions }}
+              <option value="{{value}}" {{selected}}>{{ label }}</option>
+            {{/each}}
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <p>Note: You can change these values later.</p>
+        </div>
+      </div>
+    </div>
+      <div class="row">
+      <div class="col-xs-12 text-right">
+        <button class="btn btn-sm btn-primary" type="submit">Continue</button>
+      </div>
+    </div>
+  </form>
+</div>
+

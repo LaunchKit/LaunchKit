@@ -1,0 +1,47 @@
+
+.inline-editable {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  padding: 5px 0;
+  margin-top: -5px;
+  cursor: text;
+  line-height: 1em;
+  height: 1em;
+
+  border: 1px dotted transparent;
+  border-bottom-color: #999;
+}
+
+.inline-editable:hover {
+  background-color: #efefef;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.inline-editable.editing {
+  border-color: #efefef;
+  padding: 10px;
+  margin-top: 0;
+  background: #fafafa;
+  border-radius: 3px;
+}
+
+.inline-editable input {
+  background: inherit;
+
+  position: absolute;
+
+  /* Same as parent padding. */
+  left: 10px;
+  top: 8px;
+
+  border: 0;
+  margin: 0;
+  padding: 0;
+
+  line-height: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-align: inherit;
+}

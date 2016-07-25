@@ -1,0 +1,21 @@
+{{#eachGroup products 4}}
+  <div class="row">
+  {{#each this}}
+    <div class="col-sm-3 col-xs-12 {{#if isHidden}}hidden{{/if}}">
+      <div class="product">
+        <img src="{{iconPath}}">
+        <div class="product-name">{{name}}</div>
+        <p>{{tagline}}</p>
+        <div>
+          {{#if uses}}
+            <a href="{{path}}/dashboard/" class="btn btn-sm btn-default"><strong>Visit Dashboard</strong></a>
+          {{else}}
+            <a href="{{path}}/onboard/" class="btn btn-sm btn-primary"><strong>Get Started</strong></a>
+            <a href="{{path}}/" class="btn btn-sm btn-link">Learn More</a>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  {{/each}}
+  </div>
+{{/eachGroup}}

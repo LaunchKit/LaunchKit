@@ -1,0 +1,40 @@
+<div id="content-header" class="row">
+  <div class="col-sm-12">
+    <h1>Setup Slack Webhook</h1>
+    <p>Follow the instructions below to set up you Slack Webhook.</p>
+  </div>
+</div>
+
+<div class="narrow-content">
+
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="steps list-unstyled">
+        <li>
+          <label>Go to Slack</label>
+          <a href="https://www.slack.com/services/new/incoming-webhook"
+            class="btn btn-default btn-sm" target="_blank">Click here to go to to Slack</a>
+        </li>
+        <li>
+          <label>Choose Channel</label>
+          Pick the channel you want us to post to and click &ldquo;Add Incoming Webhooks Integration&rdquo; and get your Webhook URL.
+        </li>
+        <li>
+          <label>Copy URL</label>
+          Copy the URL next to &ldquo;Webhook URL&rdquo; &amp; paste it below.
+        </li>
+        <li>
+          <label>Paste URL</label>
+          <form id="add-webhook-form" class="form">
+            <div class="form-group">
+              <input class="form-control input-lg" type="text" placeholder="https://hooks.slack.com/services..." name="url">
+            </div>
+            <button type="submit" class="btn btn-primary">Save Webhook</button>
+            <a href="{{nextUrl}}" class="btn btn-link">Cancel</a>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>

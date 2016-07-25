@@ -1,0 +1,222 @@
+{% extends "emails/base_email.html" %}
+{% load staticfiles %}
+{% load salesmetricformat %}
+
+{% block css %}
+  <style>
+    body,
+    #wrapper td {
+      font-family: Helvetica, Arial, sans-serif !important;
+      color: #333;
+    }
+    #wrapper td.base {
+      padding: 0px !important;
+    }
+    table {
+      border-spacing: 0;
+    }
+    table#header {
+      padding-bottom: 0 !important;
+    }
+    table#header .product-name {
+      padding-left: 15px !important;
+    }
+    table#header img {
+      vertical-align: bottom;
+    }
+    #sales-email {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      background: #fff;
+    }
+    #sales-email table {
+      width: 100%;
+    }
+    #sales-email td {
+      text-align: center;
+      padding: 0;
+    }
+    #sales-email table.sales-email-totals,
+    #sales-email table.sales-email-apps tr.individual-app > td {
+      border-top: 1px solid #efefef;
+    }
+    #sales-email table.sales-email-nav td,
+    #sales-email table.sales-email-totals td.sales-email-number-change,
+    #sales-email table.sales-email-apps tr.individual-app table td {
+      padding: 20px 10px;
+    }
+    #sales-email table.sales-email-apps tr.individual-app table td:first-child { padding-right: 0 !important; }
+    #sales-email table.sales-email-apps tr.individual-app table td:last-child { padding-left: 0 !important; }
+    #sales-email table.sales-email-nav td:first-child { text-align: left; }
+    #sales-email table.sales-email-nav td:last-child { text-align: right; }
+    #sales-email table.sales-email-nav td.data-nav-header {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 1.1em;
+    }
+    #sales-email table.sales-email-totals td.sales-email-primary-number {
+      font-weight: 100 !important;
+      font-size: 80px !important;
+      line-height: 110px;
+    }
+    #sales-email table.sales-email-apps td {
+      text-align: left;
+    }
+    #sales-email tr.sales-email-app-revenue td {
+      border-top: 1px solid #f1f1f1;
+    }
+    #sales-email tr.sales-email-app-revenue td:first-child {
+      border-top: none;
+    }
+
+    #sales-email td.sales-email-app-icon {
+      width: 50px;
+    }
+    #sales-email td.sales-email-app-icon span {
+      display: block;
+      width: 50px;
+      height: 50px;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid #EFEFEF;
+    }
+    #sales-email td.sales-email-app-icon img {
+      width: 50px;
+      height: 50px;
+    }
+    #sales-email td.sales-email-app-count {
+      font-size: 40px;
+      font-weight: 100;
+      line-height: 50px;
+    }
+    #sales-email td.sales-email-app-change .sales-email-number-change {
+      text-align: right !important;
+    }
+    #sales-email .sales-email-number-change {
+      font-weight: normal;
+      font-size: 12px;
+      color: #979797;
+    }
+    #sales-email .sales-email-number-change .negative { color: #DB2023;}
+    #sales-email .sales-email-number-change .positive { color: #417505;}
+  </style>
+{% endblock css %}
+
+
+{% block header %}
+  <div class="preview-text">
+    Yesterday:
+    {% if total_metrics.revenue.day.requested %}
+      ${{ total_metrics.revenue.day.requested|floatformat:"-2" }} from
+    {% endif %}
+    {{ total_metrics.downloads.day.requested }} total downloads.
+  </div>
+  <table id="header" align="center" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td class="product-name">
+        <img src="{% static "images/sales/icon.png" %}">
+        Sales Reporter
+      </td>
+    </tr>
+  </table>
+{% endblock header %}
+
+{% block content %}
+  <table id="sales-email">
+    <tr>
+      <td>
+        <table class="sales-email-nav">
+          <tr>
+            <td class="data-nav-link">
+              {# <a href="?vendor_id={{ vendor.id }}&amp;report_date={{ previous_date }}">&#8592; Day</a> #}
+            </td>
+            <td class="data-nav-header">{{ formatted_date }}</td>
+            <td class="data-nav-link"></td>
+          </tr>
+        </table>
+
+        {% if total_metrics %}
+        <table class="sales-email-totals">
+          <tr class="sales-email-total-downloads">
+            <td>
+              <table>
+                <tr>
+                  <td colspan="2" class="sales-email-primary-number">{{ total_metrics.downloads.day.requested }}</td>
+                </tr>
+                <tr>
+                  <td colspan="2">Total Downloads</td>
+                </tr>
+                <tr>
+                  <td class="sales-email-number-change">{{ total_metrics.downloads.day.delta|formatted_delta }} day before</td>
+                  <td class="sales-email-number-change">{{ total_metrics.downloads.week.delta|formatted_delta }} week before</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          {% if total_metrics.revenue.day.requested %}
+            <tr class="sales-email-total-revenue">
+              <td>
+                <table>
+                  <tr>
+                    <td colspan="2" class="sales-email-primary-number">${{ total_metrics.revenue.day.requested|floatformat:"-2" }}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Total Revenue</td>
+                  </tr>
+                  <tr>
+                    <td class="sales-email-number-change">{{ total_metrics.revenue.day.delta|formatted_delta }} day before</td>
+                    <td class="sales-email-number-change">{{ total_metrics.revenue.week.delta|formatted_delta }} week before</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          {% endif %}
+        </table>
+        {% endif %}
+
+        <table class="sales-email-apps">
+          {% for app_metrics in app_metrics %}
+          {% with app=app_metrics.app metrics=app_metrics.metrics %}
+            <tr class="individual-app">
+              <td>
+                <table>
+                  <tr class="sales-email-app-downloads">
+                    <td class="sales-email-app-icon"><span><img src="{{ app.public_small_icon }}"></span></td>
+                    <td class="sales-email-app-count">{{ metrics.downloads.day.requested }}</td>
+                    <td class="sales-email-app-change">
+                      <div class="sales-email-number-change">{{ metrics.downloads.day.delta|formatted_delta }} day</div>
+                      <div class="sales-email-number-change">{{ metrics.downloads.week.delta|formatted_delta }} week</div>
+                    </td>
+                  </tr>
+
+                  {% if metrics.revenue.day.requested %}
+                    <tr class="sales-email-app-revenue">
+                      <td></td>
+                      <td class="sales-email-app-count">${{ metrics.revenue.day.requested|floatformat:"-2" }}</td>
+                      <td class="sales-email-app-change">
+                        <div class="sales-email-number-change">{{ metrics.revenue.day.delta|formatted_delta }} day</div>
+                        <div class="sales-email-number-change">{{ metrics.revenue.week.delta|formatted_delta }} week</div>
+                      </td>
+                    </tr>
+                  {% endif %}
+
+                </table>
+              </td>
+            </tr>
+          {% endwith %}
+          {% endfor %}
+        </table>
+      </td>
+    </tr>
+  </table>
+{% endblock content %}
+
+
+{% block unsubscribe %}
+  {% if created_user %}
+    This email was configured by {{ created_user.email }} &bull;&nbsp;
+  {% endif %}
+  <a href="{{ unsubscribe_url }}">Turn off email alerts</a>
+{% endblock %}

@@ -1,0 +1,15 @@
+<table class="download-email-nav">
+  <tr>
+    <td class="data-nav-link" style="width: 30%">
+      {{#if previousUrl }}
+        <a href="{{ previousUrl }}">&#8592; Previous Day</a>
+      {{/if}}
+    </td>
+    <td class="data-nav-header" style="width: 40%">{{shortISODate date}}</td>
+    <td class="data-nav-link" style="width: 30%">
+      {{#if nextUrl }}
+        <a href="{{ nextUrl }}">Next Day &#8594;</a>
+      {{/if}}
+    </td>
+  </tr>
+</table>

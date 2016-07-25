@@ -1,0 +1,7 @@
+---
+- name: install python dev library
+  apt: name=python-dev
+- name: install pip
+  apt: name=python-pip
+- name: install python virtualenv
+  pip: name=virtualenv

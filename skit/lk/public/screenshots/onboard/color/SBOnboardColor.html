@@ -1,0 +1,17 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-sm-12">
+    <h1>Choose a Device Color</h1>
+    <p>How would you like your screenshots to be formatted?</p>
+  </div>
+</div>
+
+<div class="row choose-screenshot-layout text-center">
+  {{#each colors}}
+    <div class="col-xs-6 col-sm-3">
+      <div class="white-container">
+        {{> library.screenshots.ScreenshotCanvas ../phone dimensions=../dimensions properName=properName layout=layout phoneColor=value hideres='true'}}
+      </div>
+      <a data-action="{{value}}" class="btn btn-primary">{{name}}</a>
+    </div>
+  {{/each}}
+</div>

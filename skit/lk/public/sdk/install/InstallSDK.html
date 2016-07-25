@@ -1,0 +1,115 @@
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <p>
+    <strong>IMPORTANT:</strong> By installing the SDK, you have
+    read and agree to our <a href="/sdk/terms/">SDK Terms of Service</a>
+    and <a href="/privacy/">Privacy Policy</a>.
+  </p>
+</div>
+
+<ul class="steps list-unstyled">
+  <li>
+    <h4>Step 1: Get the Code</h4>
+
+    <ul class="nav nav-pills nav-justified" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#install-cocoapods" aria-controls="install-cocoapods" role="tab" data-toggle="tab">CocoaPods</a>
+      </li>
+      <li role="presentation">
+        <a href="#install-carthage" aria-controls="install-carthage" role="tab" data-toggle="tab">Carthage</a>
+      </li>
+      <li role="presentation">
+        <a href="#install-manual" aria-controls="install-manual" role="tab" data-toggle="tab">Manual</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" id="install-cocoapods" class="tab-pane active">
+        <p>Our SDK is available through <a href="http://cocoapods.org/" target="_blank">CocoaPods</a>. To install it, simply add the following line to your Podfile:</p>
+        <pre><span class="sdk-add">pod "LaunchKit"</span></pre>
+      </div>
+      <div role="tabpanel" id="install-carthage" class="tab-pane">
+        <p>
+          LaunchKit is also available through
+          <a href="https://github.com/Carthage/Carthage" target="_blank">Carthage</a>.
+          Add the following line to your Cartfile:
+        </p>
+        <pre><span class="sdk-add">github "LaunchKit/launchkit-ios"</span></pre>
+      </div>
+      <div role="tabpanel" id="install-manual" class="tab-pane">
+        <p>
+          You can install the LaunchKit SDK manually by downloading the latest release
+          (.zip), and copy the files from <code>LaunchKit/Classes</code> into your project.
+        </p>
+        <p class="text-center">
+          <a href="https://github.com/LaunchKit/launchkit-ios/releases" target=_blank class="btn btn-primary">
+            Download the Latest Release
+          </a>
+        </p>
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <h4>Step 2: Add to your App Delegate</h4>
+
+    <p>
+      Somewhere near the top <code>applicationDidFinishLaunching:</code>, you should
+      initialize the SDK with your SDK token.
+    </p>
+    {{#if token }}
+      <p>We have generated an API token for you: <code>{{ token }}</code>.</p>
+    {{/if}}
+
+    <ul class="nav nav-pills nav-justified" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#init-objc" aria-controls="init-objc" role="tab" data-toggle="tab">Objective-C</a>
+      </li>
+      <li role="presentation">
+        <a href="#init-swift" aria-controls="init-swift" role="tab" data-toggle="tab">Swift</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" id="init-objc" class="tab-pane active">
+        <pre>#import &lt;LaunchKit/LaunchKit.h&gt;
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{<span class="sdk-add">
+  // Initialize LaunchKit
+  [LaunchKit launchWithToken:@"<span class="sdk-token">{{#if token }}{{ token }}{{ else }}YOUR_TOKEN_HERE{{/if}}</span>"];
+</span>
+  ...
+}</pre>
+  </div>
+  <div role="tabpanel" id="init-swift" class="tab-pane">
+    <pre>import LaunchKit
+
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {<span class="sdk-add">
+  // Initialize LaunchKit
+  LaunchKit.launchWithToken("<span class="sdk-token">{{#if token }}{{ token }}{{ else }}YOUR_TOKEN_HERE{{/if}}</span>")
+</span>
+  ...
+}</pre>
+      </div>
+    </div>
+  </li>
+
+  {{#if token }}
+    <li>
+      <h4>Step 3: Run the app</h4>
+
+      <p>
+        Once everything is installed, run the app, and we&rsquo;ll let you know
+        when it&rsquo;s configured.
+      </p>
+
+      <div id="sdk-configured-check">
+        <p class="not-configured">
+          <img src="/__static__/images/loading.gif"> Waiting for SDK events&hellip;
+        </p>
+        <p class="configured">
+          <i class="fa fa-check"></i>
+          Nice job! We have received an event from your app.
+        </p>
+      </div>
+    </li>
+  {{/if}}
+</ul>

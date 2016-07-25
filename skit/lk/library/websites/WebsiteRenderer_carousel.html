@@ -1,0 +1,20 @@
+{{#ifGreater website.images.screenshots.iPhone.length 1}}
+  <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+    {{!--
+    <ol class="carousel-indicators">
+      {{#each website.images.screenshots.iPhone}}
+        <li data-target="#carousel" data-slide-to="{{@index}}"{{#ifEqual @index 0}} class="active"{{/ifEqual}}></li>
+      {{/each}}
+    </ol>
+    --}}
+    <div class="carousel-inner" role="listbox">
+      {{#each website.images.screenshots.iPhone}}
+        <div class="item{{#ifEqual @index 0}} active{{/ifEqual}}">
+          <img src="{{frameByDevice url ../website.frameScreenshots}}" class="screenshot" alt="Screenshot of {{../website.appName}}">
+        </div>
+      {{/each}}
+    </div>
+  </div>
+{{else}}
+  <img src="{{frameByDevice website.images.screenshots.iPhone.[0].url website.frameScreenshots}}" class="screenshot" alt="Screenshot of {{website.appName}}">
+{{/ifGreater}}

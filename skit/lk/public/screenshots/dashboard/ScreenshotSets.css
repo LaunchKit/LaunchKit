@@ -1,0 +1,64 @@
+
+#screenshot-sets li .white-container {
+  padding: 20px;
+  position: relative;
+}
+
+#screenshot-sets li .new-container {
+  border: 2px dashed #D8D8D8;
+  border-radius: 5px;
+}
+#screenshot-sets li .new-container .trigger {
+  display: block;
+  padding: 79px 0;
+  text-align: center;
+  color: #91969B;
+  font-weight: bold;
+  font-size: 14px;
+}
+#screenshot-sets li .new-container .trigger:after {
+  content: none;
+}
+#screenshot-sets li .new-container .trigger span {
+  display: block;
+}
+#screenshot-sets li .new-container .trigger i {
+  font-size: 50px;
+  color: #D8D8D8;
+  margin-bottom: 10px;
+}
+
+#screenshot-sets li .set-raw-screenshots {
+  min-height: 200px;
+}
+#screenshot-sets li .set-raw-screenshots img {
+  width: 110px;
+  height: auto;
+  background: #efefef;
+  margin-left: 10px;
+  border: 1px solid #F5F7F8;
+}
+
+
+#screenshot-sets li .set-info {
+  display: block;
+  font-size: 16px;
+}
+#screenshot-sets li .set-name {
+  font-size: 28px;
+  font-weight: 600px;
+}
+#screenshot-sets li .set-platform {
+  margin-top: 10px;
+}
+
+#screenshot-sets li .set-buttons {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+
+#screenshot-sets li .set-buttons .btn {
+  margin-right: 10px;
+}

@@ -1,0 +1,123 @@
+<ul class="list-unstyled integration-list">
+  <li class="integration white-container" id="integration-itunes">
+
+    <div class="integration-icon">
+      <img src="/__static__/images/icon_itunes_connect.png" class="icon">
+    </div>
+
+    <div class="integration-description">
+      <p>We will check iTunes for <strong>all {{ vendor.name }} apps</strong> every day:</p>
+      <p><i class="fa fa-check green"></i> Paid App Prices</p>
+      <p><i class="fa fa-times text-warning"></i> In-app Purchases</p>
+      <p><i class="fa fa-times text-success"></i> Bundle Prices</p>
+      <p><i>We don't support in-app purchases or bundles.</p>
+      <a class="btn btn-xs btn-block btn-default-warning" href="/sales/dashboard/disconnect/">Disconnect iTunes</a>
+    </div>
+
+  </li>
+
+
+  <li class="integration white-container" id="integration-slack">
+
+    <div class="integration-icon">
+      <img src="/__static__/images/icon_slack.png" class="icon">
+    </div>
+
+    <div class="integration-description">
+      {{#if slackSubscription }}
+        <p class="integration-status"><i class="fa fa-check-circle"></i> Slack is connected.</p>
+      {{else}}
+        <p>Keep your team on track with download metrics posted into Slack.</p>
+        <a href="/account/slack/?service=sales" class="btn btn-sm btn-block btn-primary">Connect Slack</a>
+      {{/if}}
+    </div>
+
+    {{#if slackSubscription }}
+      <div class="integration-settings">
+        <ul class="list-unstyled">
+          <li class="separator">
+            <i class="fa fa-slack"></i> Alerts going to...
+          </li>
+          <li>
+            <a
+              class="pull-right"
+              data-action="remove-subscription"
+              data-subscription-id="{{ slackSubscription.id }}">Disconnect</a>
+            {{#if slackSubscription.slackChannel.name }}
+              #{{ slackSubscription.slackChannel.name }}
+            {{ else }}
+              <span title="{{ slackSubscription.slackUrl }}">Webhook</span>
+            {{/if}}
+          </li>
+        </ul>
+      </div>
+    {{/if}}
+
+  </li>
+
+  <li class="integration white-container" id="integration-email">
+
+    <div class="integration-icon">
+      <img src="/__static__/images/icon_email.png" class="icon">
+    </div>
+
+    <div class="integration-description">
+      {{#if hasEmailSubscription}}
+        <p class="integration-status"><i class="fa fa-check-circle"></i> Emails will be sent every morning by 7am (California time).</p>
+      {{else}}
+        <p>
+          Stay informed by having download metrics directly to your inbox.
+        </p>
+        <form id="email-add-form" class="form">
+          <button type="submit" class="btn btn-sm btn-block btn-primary">Email Me Download Metrics</button>
+        </form>
+      {{/if}}
+    </div>
+
+    {{#if hasEmailSubscription}}
+      <div class="integration-settings">
+        <ul class="list-unstyled">
+          <li class="separator">
+            <i class="fa fa-envelope"></i> Alerts going to...
+          </li>
+          {{#if myEmailSubscription }}
+            <li class="clearfix">
+              <button type="button" class="close"
+                  data-action="remove-subscription" data-subscription-id="{{ myEmailSubscription.id }}"
+                  aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+              <span class="email">
+                {{ user.email }}
+              </span>
+            </li>
+          {{/if}}
+          {{#each emailSubscriptions }}
+            <li class="clearfix">
+              <button type="button" class="close"
+                  data-action="remove-subscription" data-subscription-id="{{ id }}"
+                  aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+              <span class="email">
+                {{ email }}
+              </span>
+            </li>
+          {{/each}}
+        </ul>
+        <form id="email-add-form" class="form row">
+          <div class="form-group col-xs-9">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-plus"></i></span>
+              <input class="form-control" placeholder="Add new email..." type="email" required>
+            </div>
+          </div>
+          <div class="col-xs-3 new-email-submit">
+            <button type="submit" class="btn btn-sm btn-block btn-primary"><i class="fa fa-paper-plane" style="color: white;"></i></button>
+          </div>
+        </form>
+      </div>
+    {{/if}}
+
+  </li>
+
+</ul>
+
+
+

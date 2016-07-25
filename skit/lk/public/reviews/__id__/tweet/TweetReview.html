@@ -1,0 +1,27 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-md-12">
+    <h1>Tweet this Review</h1>
+  </div>
+</div>
+
+<div class="narrow-content text-center">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tweet-preview rounded">
+        <textarea rows="3" class="form-control" id="tweet-text">{{ review.tweetText }}</textarea>
+        <div class="tweet-attachment">
+          <img class="tweet-attachment" src="{{review.imageUrl}}">
+        </div>
+      </div>
+      {{#if twitterHandle}}
+        <a data-action="tweet" data-twitter-handle="{{twitterHandle}}" data-review-id="{{review.id}}" class="btn btn-primary">Tweet as @{{twitterHandle}}</a>
+      {{else}}
+        <a href="/reviews/dashboard/setup-twitter-accounts/?callbackApp={{review.appId}}&amp;callbackReview={{review.id}}" class="btn btn-primary">Connect Twitter</a>
+      {{/if}}
+      <br>
+      <a href="{{ review.twitterShareUrl }}" class="btn btn-sm btn-link">or, just Tweet Text</a>
+    </div>
+  </div>
+</div>
+
+

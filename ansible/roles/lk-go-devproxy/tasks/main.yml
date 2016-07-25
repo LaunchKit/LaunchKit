@@ -1,0 +1,9 @@
+---
+- name: install go
+  apt: name=golang
+- name: install go devproxy as service
+  copy:
+    src=../files/init.go-devproxy.conf
+    dest=/etc/init/go-devproxy.conf
+    owner=root
+    group=root

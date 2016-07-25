@@ -1,0 +1,52 @@
+<div id="content-header" class="row">
+  <div class="col-md-12">
+    <a class="btn btn-sm btn-primary" data-action="maybe-create-set" href="/screenshots/onboard/"><i class="fa fa-plus"></i> <span>Create New Set</span></a>
+    <h1>Screenshot Sets</h1>
+  </div>
+</div>
+
+
+<ul id="screenshot-sets" class="list-unstyled row">
+
+{{#each sets }}
+  <li class="col-sm-6">
+    <div class="white-container">
+        <div class="set-raw-screenshots pull-right text-right">
+          {{#each previewImages }}
+            <img src="{{ imageUrls.medium }}">
+          {{/each}}
+        </div>
+        <div class="set-info">
+          <div class="set-name overflow-ellipsis">{{ name }} {{ version }}</div>
+          <div class="set-updated">
+            {{timeFromNow updateTime }}
+          </div>
+          <div class="set-platform">
+            {{#ifEqual platform 'Android'}}
+              <i class="fa fa-android"></i> {{platform}}
+            {{else}}
+              <i class="fa fa-apple"></i> {{platform}}
+            {{/ifEqual}}
+          </div>
+
+        <div class="set-buttons">
+          <a class="btn btn-sm btn-default" href="/screenshots/dashboard/{{ id }}/">Edit</a>
+          <a class="btn btn-sm btn-default" href="/screenshots/dashboard/{{ id }}/preview/">Download</a>
+        </div>
+
+      </div>
+    </div>
+  </li>
+{{/each}}
+
+<li class="col-sm-6">
+  <div class="new-container">
+    <a class="trigger" data-upgradeclick="create new set large" data-action="maybe-create-set" href="/screenshots/onboard/">
+      <span><i class="fa fa-plus-circle"></i></span>
+      Create new set
+    </a>
+  </div>
+</li>
+
+</ul>
+

@@ -1,0 +1,56 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-md-12">
+    <h1>Connect iTunes</h1>
+    <p>Enter your iTunes credentials below. We recommend using a <strong><a href="https://medium.com/@mulligan/760f258dd1c5" target="_blank">read only</a></strong> user account.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4">
+    <form class="form">
+      <div class="form-group">
+        <label class="control-label">iTunes Connect Login ID</label>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-user"></i></span>
+          <input id="itunes-apple-id" name="itunes-apple-id" class="form-control" type="email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">iTunes Connect Password</label>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+          <input id="itunes-password" name="itunes-password" class="form-control" type="password">
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block" data-action="connect">Connect</button>
+      </div>
+      <div class="form-group text-center">
+        <small>
+          Your iTunes credentials will be stored using a per-user encryption key on a background worker machine.
+        </small>
+      </div>
+    </form>
+
+      <div class="alert alert-warning" style="margin-bottom:0;">
+        <div id="accordion" role="tablist" aria-multiselectable="true">
+          <div>
+            <div role="tab" id="headingOne">
+              <h4 class="panel-title text-center">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <strong><i class="fa fa-lock"></i>A note about security</strong>
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                Your iTunes credentials will be stored using a per-user encryption key on a background worker machine. This system is very secure, but since we must supply Apple with a raw account password, it is possible for a sophisticated attacker to gain access to the password you supply. As such, we highly recommend creating a read-only iTunes Connect account and supplying that login information here, rather than using your personal iTunes account credentials. <a href="https://medium.com/@mulligan/760f258dd1c5" target="_blank">Here&rsquo;s a quick guide on how to do that</a>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</div>

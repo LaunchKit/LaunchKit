@@ -1,0 +1,6 @@
+---
+- name: install libjpeg
+  apt: name=libjpeg-dev
+
+- name: install Pillow
+  pip: name=Pillow

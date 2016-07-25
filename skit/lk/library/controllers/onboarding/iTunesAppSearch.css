@@ -1,0 +1,57 @@
+
+#itunes-search-form {
+  width: 750px;
+  margin: 0 auto;
+}
+
+#itunes-search-results {
+  padding-left: 0;
+}
+
+#itunes-search-results.loading {
+  min-height: 55px;
+  background: url(/__static__/images/loading.gif) center no-repeat;
+}
+
+#itunes-search-results .result a {
+  text-decoration: none;
+  color: #666;
+  position: relative;
+  display: block;
+  padding: 10px;
+  overflow: hidden;
+  border-bottom: 1px solid #dde8ed;
+}
+#itunes-search-results .result a:hover {
+  background: #dde8ed;
+}
+
+#itunes-search-results .result .app-icon {
+  float: left;
+  width: 45px;
+  height: 45px;
+}
+
+#itunes-search-results .result .name,
+#itunes-search-results .result .developer {
+  display: block;
+  margin-left: 55px;
+  margin-right: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#itunes-search-results .result .developer {
+  color: #999;
+  font-size: 80%;
+}
+
+#itunes-search-results .result .select {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -.6em;
+  font-size: 1.2em;
+  font-weight: 100;
+  color: #ccc;
+}

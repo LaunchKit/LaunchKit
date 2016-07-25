@@ -1,0 +1,15 @@
+
+.titled-overlay.full-resolution-preview-overlay {
+  width: 750px;
+  text-align: center;
+}
+
+.titled-overlay.full-resolution-preview-overlay .screenshot {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 750px) {
+    .titled-overlay.full-resolution-preview-overlay {
+        width: 100%;
+    }
+}

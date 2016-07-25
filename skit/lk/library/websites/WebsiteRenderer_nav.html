@@ -1,0 +1,65 @@
+<nav class="navbar navbar-default
+  {{#if template.bgLight}} invert-navbar{{/if}}
+  {{#if template.bgColor}} invert-buttons{{/if}}
+  ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      {{#hasMenuItems website}}
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      {{/hasMenuItems}}
+      {{#if website.images.icon.url}}
+        <a class="navbar-brand visible-xs" href="{{website.homeUrl}}">
+          <img alt="{{website.appName}}" src="{{website.images.icon.url}}" class="app-icon">
+        </a>
+      {{/if}}
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="visible-xs"><a href="{{website.homeUrl}}">Home Page</a></li>
+        {{#ifShowPlatform website 'ios'}}
+          <li class="visible-xs"><a href="{{storeLink website 'ios'}}" target="_blank">Download from App Store</a></li>
+        {{/ifShowPlatform}}
+        {{#ifShowPlatform website 'android'}}
+          <li class="visible-xs"><a href="{{storeLink website 'android'}}" target="_blank">Download from Google Play</a></li>
+        {{/ifShowPlatform}}
+        {{#ifShowWaitingList website}}
+          <li class="visible-xs"><a href="{{website.waitingListLink}}" target="_blank">
+            {{#if website.waitingListLabel}}
+              {{website.waitingListLabel}}
+            {{else}}
+              Join Waiting List
+            {{/if}}
+          </a></li>
+        {{/ifShowWaitingList}}
+        {{#ifEqual website.id 'example'}}
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#" class="btn btn-primary">Login</a></li>
+        {{else}}
+          {{#if website.blogLink}}
+            <li><a href="{{website.blogLink}}" target="_blank">Blog</a></li>
+          {{/if}}
+          {{#if website.support}}
+            <li><a href="support">Support</a></li>
+          {{else}}
+            {{#if website.supportLink}}
+              <li><a href="{{website.supportLink}}" target="_blank">Support</a></li>
+            {{/if}}
+          {{/if}}
+          {{#if website.customLink}}
+            <li><a href="{{website.customLink}}" target="_blank">{{website.customLinkLabel}}</a></li>
+          {{/if}}
+          {{#if website.loginLink}}
+            <li><a href="{{website.loginLink}}" class="btn btn-primary" target="_blank">Login</a></li>
+          {{/if}}
+        {{/ifEqual}}
+      </ul>
+    </div>
+  </div>
+</nav>

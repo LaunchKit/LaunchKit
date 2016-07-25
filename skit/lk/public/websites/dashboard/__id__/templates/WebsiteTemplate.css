@@ -1,0 +1,41 @@
+#palette-holder {
+  display: flex;
+  align-items: center;
+  padding: 20px 55px;
+}
+#palette-holder span {
+  margin-right: 5px;
+}
+#palette-holder img {
+  display: none;
+}
+
+#palette-holder .palette-choice {
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border: 2px solid #fff;
+}
+#palette-holder .palette-choice:hover {
+  border-color: #ccc;
+}
+#palette-holder .palette-selected,
+#palette-holder .palette-selected:hover {
+  border-color: #333;
+}
+
+#palette-holder .palette-selected:after {
+  border: 2px solid white;
+  height: 46px;
+  width: 46px;
+  content: '';
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  display: inline-block;
+}

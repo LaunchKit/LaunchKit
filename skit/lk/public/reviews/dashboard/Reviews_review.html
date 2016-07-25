@@ -1,0 +1,65 @@
+<li class="review {{className}} row">
+  <div class="col-xs-2 col-sm-3 col-lg-1 no-right-pad">
+    <img src="{{app.icon.small}}" class="img-rounded app-icon">
+    <small class="app-review-version visible-xs">v{{appVersion}}</small>
+  </div>
+  <div class="col-xs-10 col-sm-9 col-lg-11">
+    <span class="review-title"><a href="/reviews/{{ id }}/" target="_blank">{{#emojiHtml}}{{title}}{{/emojiHtml}}</a></span>
+    <span class="stars" style="color: orange">{{stars}}</span><span class="stars" style="color: #ddd">{{emptyStars}}</span>
+
+
+    <div class="review-body">
+      {{#emojiHtml}}
+        {{bodyText body}}
+      {{/emojiHtml}}
+    </div>
+
+    {{#if needsTriage}}
+      <div class="review-triage review-triage-{{rating}} rounded">
+        <div class="color-bar"></div>
+        <div class="options">
+          <p><strong><i class="fa fa-warning"></i> Bad Review Triage:</strong></p>
+
+          <a target=_blank href="{{supportEmailUrl this}}"
+             class="btn btn-xs btn-default">
+            <i class="fa fa-envelope"></i> Email Support
+          </a>
+          <a href="{{ author.searchUrl }}" target=_blank class="btn btn-xs btn-default">
+            <i class="fa fa-search"></i> Search Author
+          </a>
+        </div>
+      </div>
+    {{/if}}
+
+    <div class="review-options dropdown hidden-xs">
+      by <a class="dropdown-toggle" type="button" id="authorMenu"
+            data-toggle="dropdown" aria-expanded="true">
+        {{author.title}} <span class="caret"></span></a>
+      for Version {{appVersion}} |
+      {{itunesCountryName country}} |
+      <a href="/reviews/{{ id }}/" target="_blank">Permalink</a> |
+      <a href="{{ tweetUrl }}" class="btn btn-xs btn-twitter"
+         target="_blank"><i class="fa fa-twitter"></i>
+        Tweet
+      </a>
+
+      {{> __module__.author_options.html }}
+    </div>
+
+    <div class="mobile-review-options dropdown visible-xs">
+      <a class="dropdown-toggle btn btn-sm btn-default" type="button" id="authorMenu" data-toggle="dropdown" aria-expanded="true">
+        <i class="fa fa-user"></i> <span class="caret"></span>
+      </a>
+      <a href="/reviews/{{ id }}/" class="btn btn-sm btn-default" target="_blank">
+        <i class="fa fa-link"></i>
+      </a>
+      <a href="{{ tweetUrl }}" class="btn btn-sm btn-twitter" target="_blank">
+         <i class="fa fa-twitter"></i>
+      </a>
+
+      {{> __module__.author_options.html }}
+    </div>
+
+
+  </div>
+</li>

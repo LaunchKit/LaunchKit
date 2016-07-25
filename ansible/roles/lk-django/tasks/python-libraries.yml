@@ -1,0 +1,9 @@
+---
+- name: install python lxml library
+  apt: name=python-lxml
+- name: install jpeg library for pillow
+  apt: name=libjpeg62
+- name: install jpeg-dev library for pillow
+  apt: name=libjpeg62-dev
+- name: install db adapter
+  apt: name=python-psycopg2

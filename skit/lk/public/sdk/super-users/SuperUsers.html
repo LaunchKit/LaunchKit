@@ -1,0 +1,138 @@
+<ul class="steps list-unstyled">
+  <li>
+    <h4>Why Send User Data?</h4>
+
+    <p>
+      Sending user data to us will annotate your users&rsquo; sessions, giving
+      you more insight into who is using your app (Super Users) and who is seeing which
+      in-app UI flows (Release Notes, Onboarding, etc.).
+    </p>
+
+    <p>
+      You can add as little or as much information as you’d like. We recommend you at
+      least provide a <code>userId</code> (something that you, or your server provides you,
+      that identifies your user). For your convenience, you may add the user’s name and/or
+      email address, if that makes it easier for you to visualize the data.
+    </p>
+
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <p>
+        <strong>IMPORTANT:</strong> Make sure providing the user information to a trusted
+        3rd party like us is covered in your Privacy Policy.
+      </p>
+    </div>
+  </li>
+
+  <li>
+    <h4>When A User Logs In</h4>
+    <p>
+      Add this code when the user logs in, or when a logged-in user starts the app.
+      This will associate your user&rsqou;s information with their session here.
+    </p>
+
+    <ul class="nav nav-pills nav-justified" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#login-objc" aria-controls="login-objc" role="tab" data-toggle="tab">Objective-C</a>
+      </li>
+      <li role="presentation">
+        <a href="#login-swift" aria-controls="login-swift" role="tab" data-toggle="tab">Swift</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" id="login-objc" class="tab-pane active"><pre>#import &lt;LaunchKit/LaunchKit.h&gt;
+
+...
+
+// When the user finishes logging in, or is already logged in on start<span class="sdk-add">
+[[LaunchKit sharedInstance] setUserIdentifier:@"qxb49bd"
+                                        email:@"bob@loblaw.org"
+                                         name:@"Bob Loblaw"];</span>
+...
+</pre>
+      </div>
+      <div role="tabpanel" id="login-swift" class="tab-pane">
+        <pre>import LaunchKit
+
+...
+
+// When the user finishes logging in, or is already logged in on start<span class="sdk-add">
+LaunchKit.sharedInstance().setUserIdentifier("qxb49bd",
+                                             email: "bob@loblaw.org",
+                                             name: "Bob Loblaw")</span>
+
+...
+</pre>
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <h4>When A User Logs Out</h4>
+    <p>
+      In order to clear the LaunchKit session of the user&rsquo;s information,
+      add this code when the user logs out.
+    </p>
+
+    <ul class="nav nav-pills nav-justified" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#logout-objc" aria-controls="logout-objc" role="tab" data-toggle="tab">Objective-C</a>
+      </li>
+      <li role="presentation">
+        <a href="#logout-swift" aria-controls="logout-swift" role="tab" data-toggle="tab">Swift</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" id="logout-objc" class="tab-pane active">
+        <pre>#import &lt;LaunchKit/LaunchKit.h&gt;
+
+...
+
+<span class="sdk-add">[[LaunchKit sharedInstance] setUserIdentifier:nil email:nil name:nil];</span>
+</pre>
+      </div>
+      <div role="tabpanel" id="logout-swift" class="tab-pane">
+        <pre>import LaunchKit
+
+...
+
+<span class="sdk-add">LaunchKit.sharedInstance().setUserIdentifier(nil, email: nil, name: nil)</span>
+</pre>
+    </div>
+
+  </li>
+
+  <li>
+    <h4>Accessing Super Status</h4>
+    <p>
+      Once you have configured Super Users in your Dashboard, you can check
+      inside the app whether the current user qualifies as <strong>super</strong>
+      or not.
+    </p>
+
+
+    <ul class="nav nav-pills nav-justified" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#check-objc" aria-controls="check-objc" role="tab" data-toggle="tab">Objective-C</a>
+      </li>
+      <li role="presentation">
+        <a href="#check-swift" aria-controls="check-swift" role="tab" data-toggle="tab">Swift</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" id="check-objc" class="tab-pane active">
+        <pre>
+if (<span class="sdk-add">LKAppUserIsSuper()</span>) {
+   // User is a Super User, so you can perform different tasks for that user.
+   [self enableAwesomeFeature];
+}</pre>
+      </div>
+      <div role="tabpanel" id="check-swift" class="tab-pane">
+        <pre>
+if (<span class="sdk-add">LKAppUserIsSuper()</span>) {
+   // User is a Super User, so you can perform different tasks for that user.
+   enableAwesomeFeature();
+}</pre>
+      </div>
+    </div>
+  </li>
+</ul>

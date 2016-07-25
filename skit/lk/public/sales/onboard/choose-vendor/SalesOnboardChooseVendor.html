@@ -1,0 +1,30 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-md-12">
+    <h1>Choose Vendor</h1>
+    <p>
+        We have detected multiple vendors in your iTunes Connect account.
+        Please choose the vendor you would like to add.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4">
+    <form id="choose-vendor-form" class="form">
+      <ul class="list-unstyled">
+        {{#each vendors}}
+          <li class="radio">
+            <label>
+              <input type="radio" name="vendor-id" value="{{id}}" {{#if @first}}checked{{/if}}>
+              {{name}}
+              <small>{{iTunesId}}</small>
+            </label>
+          </li>
+        {{/each}}
+      </ul>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block" data-action="choose">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-md-12">
+    <h1>Select Slack Channel</h1>
+    <p>Please choose the channel where {{service.name}} should be posted.</p>
+  </div>
+</div>
+
+<div class="row narrow-content slack-connect">
+  <div class="col-md-12">
+    <div class="form-group">
+      <ul class="nav nav-pills">
+        <li role="presentation" class="dropdown">
+          <a class="dropdown-toggle form-control channel-picker-label" data-toggle="dropdown" role="button" aria-expanded="false">
+            <span id="selected-app-name">Select a #channel</span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="separator">Channels</li>
+            {{#each channels }}
+              <li>
+                <a data-select-channel="true" data-channel-name="{{name}}">
+                  <span><strong>#{{name}}</strong></span>
+                </a>
+              </li>
+            {{/each}}
+            <li>
+              <a data-reauthorize=1><i class="fa fa-plus"></i> Choose another channel</a>
+            </li>
+            <li class="separator">Other options</li>
+            <li>
+              <a href="{{disconnectUrl}}"><i class="fa fa-times-circle"></i> Disconnect this Slack team</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-12 text-center">
+    <p id="slack-go-back">
+      <a href="{{service.url}}" class="btn btn-sm btn-primary">Go Back</a>
+    </p>
+  </div>
+
+</div>
+
+
+
+

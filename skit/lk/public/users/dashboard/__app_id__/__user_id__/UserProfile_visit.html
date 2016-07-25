@@ -1,0 +1,12 @@
+<tr class="user-row visit-row">
+  <td>{{shortDate startTime}}</td>
+  <td>{{formatDuration seconds }}</td>
+  <td>{{taps}}</td>
+  <td>{{screens}}</td>
+  <td>
+    {{#if device.hardware}}{{device.hardware}}{{else}}?{{/if}}
+    {{#if device.os}}({{device.os}}){{/if}}
+  </td>
+  <td>{{#if app.version }}{{app.version}}{{else}}?{{/if}}</td>
+</tr>
+

@@ -1,0 +1,51 @@
+<div id="content-header" class="row">
+  {{#if isExample}}
+    <div class="col-sm-12">
+      <h1>Choose Website Template</h1>
+      <p><strong>This is a preview.</strong> If something doesn't look right, dont worry, you'll adjust styles and content in the next step.</p>
+    </div>
+  {{else}}
+    <div class="col-md-12">
+      <a href="/websites/dashboard/{{website.id}}/edit/" class="extended-back-link"><i class="fa fa-chevron-left"></i>Back to {{website.appName}} Settings</a>
+    </div>
+    <div class="col-sm-12">
+      <h1>Change Website Template</h1>
+      <p class="header-subtext">You can change the template at any time. Changes will be instantly visible to website visitors.</p>
+    </div>
+  {{/if}}
+</div>
+
+{{#if isExample}}
+  <div class="row">
+    <div class="col-sm-12">
+      <div id="palette-holder" class="white-container">
+        <span>Choose a Primary Color:</span>
+      </div>
+    </div>
+  </div>
+{{/if}}
+
+<div class="website-list row">
+  {{#each templates}}
+    <div class="col-sm-4">
+      <div class="white-container">
+        <div class="website-preview">
+          <iframe scrolling="no" data-template-id="{{id}}"></iframe>
+        </div>
+        <div class="button-footer">
+          <a href="{{previewLink ../website.id id}}" class="btn btn-sm btn-link" target="_blank">
+            <i class="fa fa-desktop"></i> Preview
+          </a>
+          {{#ifEqual ../website.template id }}
+            <a class="btn btn-sm btn-success" disabled="disabled">
+              <i class="fa fa-check"></i> Active
+            </a>
+          {{else}}
+            <a class="btn btn-sm btn-primary" data-action="choose" data-template="{{id}}">Choose{{#ifEqual ../../website.id 'example'}} and Customize{{/ifEqual}}</a>
+          {{/ifEqual}}
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
+

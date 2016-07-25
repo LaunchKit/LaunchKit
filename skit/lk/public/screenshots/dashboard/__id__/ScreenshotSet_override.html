@@ -1,0 +1,20 @@
+{{#isSet deviceType shot.overrides}}
+  <div>
+    <div class="col-sm-6">
+      <div class="choose-image form-control preview-image">
+        <a href="#" data-action="view-override" data-id="{{shot.id}}" data-device-type="{{deviceType}}" data-device-name="{{deviceName}}"></a>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="choose-image form-control remove-image">
+        <a href="#" data-id="{{shot.id}}" data-action="remove-override" data-device-type="{{deviceType}}"></a>
+      </div>
+    </div>
+  </div>
+{{else}}
+  <div class="col-sm-12">
+    <div class="choose-image form-control" data-upgradeclick="iPad Override">
+      <div class="file-picker-container"><a></a></div>
+    </div>
+  </div>
+{{/isSet}}

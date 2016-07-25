@@ -1,0 +1,9 @@
+---
+- name: install node-js
+  apt: name=nodejs
+- name: install nodejs-legacy (for expected node command)
+  apt: name=nodejs-legacy
+- name: install npm
+  apt: name=npm
+- name: update npm
+  npm: path=/vagrant/skit

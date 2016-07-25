@@ -1,0 +1,36 @@
+<div id="content-header" class="row">
+  <div class="col-md-12">
+    <h1>Slack Connection</h1>
+    <p>We post to Slack using the same shared authorization.</p>
+
+    {{#if connected }}
+      <hr>
+
+      <ul id="slack-account-list">
+        {{#each channelsByProduct.reviews }}
+          <li class="connection">
+            Review Monitor posts to #{{this}}
+          </li>
+        {{/each}}
+        {{#each channelsByProduct.sales }}
+          <li class="connection">
+            Sales Reporter posts to #{{this}}
+          </li>
+        {{/each}}
+      </ul>
+
+      <p class="alert alert-danger">
+        If you disconnect Slack, you will be disconnecting it for <strong>all the Launchkit products</strong>.
+      </p>
+
+      <a class="btn btn-danger btn-block" data-action="disconnect-slack">Disconnect Slack</a>
+
+    {{else}}
+      <p>Slack is not currently connected.</p>
+
+      <a class="btn btn-primary btn-block" href="{{backUrl}}">Go Back</a>
+
+    {{/if}}
+
+  </div>
+</div>

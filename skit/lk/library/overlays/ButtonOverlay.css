@@ -1,0 +1,45 @@
+
+/* BUTTON OVERLAY */
+
+.button-overlay {
+    max-width: 350px;
+    min-width: 280px;
+    padding: 20px;
+    overflow: hidden;
+
+    text-align: center;
+    background: #FFF;
+
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,.4);
+       -moz-box-shadow: 0 0 3px rgba(0,0,0,.4);
+            box-shadow: 0 0 3px rgba(0,0,0,.4);
+    -webkit-transition: opacity 0.2s ease;
+       -moz-transition: opacity 0.2s ease;
+        -ms-transition: opacity 0.2s ease;
+    opacity: 0;
+}
+.button-overlay.active {
+    opacity: 1;
+}
+
+.button-overlay h3 {
+    margin: -20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #efefef;
+}
+.button-overlay button,
+.button-overlay .button {
+    margin-top: 10px;
+}
+.button-overlay button:focus,
+.button-overlay .button:focus {
+  outline: none;
+}
+
+.button-overlay-background.overlay-background {
+    background: rgba(0, 0, 0, 0.5);
+}

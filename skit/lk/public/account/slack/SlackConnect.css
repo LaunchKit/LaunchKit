@@ -1,0 +1,14 @@
+.rounded.slack-connect {
+  overflow: visible;
+  text-align: center;
+}
+.slack-connect .nav-pills ul,
+.slack-connect .nav-pills li {
+  width: 100%;
+}
+.slack-connect.loading {
+  background: url(/__static__/images/loading.gif) center no-repeat;
+}
+.slack-connect.loading > * {
+  opacity: 0.2;
+}

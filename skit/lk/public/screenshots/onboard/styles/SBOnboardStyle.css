@@ -1,0 +1,73 @@
+.new-style-picker {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+#screenshot-editor.width-constrained {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#screenshot-editor .phone-container .proper-name,
+#screenshot-editor .phone-container .resolution {
+  display: none;
+}
+#screenshot-editor .full-resolution-preview {
+  text-align: center;
+}
+
+#screenshot-editor.position-none .position-none-hides,
+.position-none-shows {
+  display: none;
+}
+#screenshot-editor.position-none .position-none-shows {
+  display: block;
+}
+
+.dashboard #content-main-body .new-style-picker .new-style-picker-instructions h2 {
+  margin-left: 0;
+}
+.new-style-picker .new-style-picker-instructions img {
+  width: 100%;
+  border: 1px solid #efefef;
+}
+.new-style-picker .screenshot-style {
+  box-shadow: 0 0 5px #ccc;
+  background: white;
+  /* This makes the squares show up in the correct size while the images are still loading. */
+  padding-top: 177.77%;
+  position: relative;
+}
+.new-style-picker .screenshot-style img {
+  width: 100%;
+  /* see contianer style ^ */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.new-style-picker a.btn {
+  margin-top: 20px;
+}
+
+
+#screenshot-form .form-group-header {
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+#screenshot-form fieldset {
+  clear: both;
+}
+
+
+
+#phone-list .proper-name {
+  font-size: 1.1em;
+  font-weight: 200;
+  margin-bottom: 10px;
+}
+#phone-list .resolution {
+  font-size: .8em;
+  color: #999;
+  text-align: center;
+  padding: .5em;
+  margin-bottom: 20px;
+}

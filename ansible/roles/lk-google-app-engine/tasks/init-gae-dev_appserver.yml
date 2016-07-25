@@ -1,0 +1,7 @@
+---
+- name: set up the google app-engine dev_appserver as a service
+  copy:
+    src=../files/init.lk-gae-dev_appserver.conf
+    dest=/etc/init/lk-gae-dev_appserver.conf
+    owner=root
+    group=root

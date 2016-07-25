@@ -1,0 +1,133 @@
+.home {
+  font-family: "Raleway", "Open Sans", Arial, sans-serif;
+  text-align: left;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.home h1,
+.home h2,
+.home h3,
+.home h4 {
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.home h2 {
+  font-size: 36px;
+  font-weight: 200;
+}
+
+.home .top {
+  background: white;
+}
+
+
+.home .billboard {
+  padding: 130px 0 150px;
+}
+.home .billboard h1 {
+  font-size: 48px;
+}
+.home .billboard h3 {
+  font-size: 24px;
+  max-width: 700px;
+  margin: 20px auto 0;
+}
+
+.home .section .row div>img.tool-icon {
+  height: 40px;
+  margin: 40px 15px 60px;
+}
+@media (max-width: 640px) {
+  .home .section .row div>img.tool-icon {
+    height: 40px;
+    margin: 20px 5px 40px;
+  }
+
+}
+
+
+
+.home .quotes {
+  text-align: center;
+  background: #ffffff;
+  padding: 100px 0 0 0;
+}
+.home .quotes .item {
+  min-height: 130px;
+}
+.home .quotes span {
+  font-size: 36px;
+  display: block;
+  font-weight: 200;
+}
+.home .quotes .item img {
+  height: 24px;
+  display: inline-block;
+}
+.home .quotes .carousel-indicators {
+  bottom: -50px;
+}
+.home .quotes .carousel-indicators li {
+  background: #ccc;
+  border: none;
+}
+.home .quotes .carousel-indicators li.active {
+  background: #666;
+  border: none;
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+}
+@media (max-width: 768px) {
+  .home .quotes span {
+    font-size: 22px;
+  }
+}
+
+
+
+
+.home .companies {
+  text-align: center;
+  padding: 100px 0 420px;
+  background: url('/__static__/images/home/company-logo-bg.png') no-repeat center 160px;
+}
+.home .companies img {
+  margin-top: 40px;
+}
+
+
+.home .stats {
+  background: #4E5F70 url('/__static__/images/home/product-icon-bg.png') center center no-repeat;
+  text-align: left;
+  color: #A1B1BA;
+}
+.home .stats span {
+  display: block;
+  font-size: 24px;
+  font-weight: 200;
+}
+.home .stats span.apps {
+  font-size: 36px;
+  text-align: right;
+}
+.home .stats span.apps strong {
+  line-height: 1em;
+}
+.home .stats span strong {
+  font-weight: 400;
+  font-size: 2em;
+  color: white;
+}
+@media (max-width: 768px) {
+  .home .stats span strong {
+    font-size: 1em;
+  }
+  .home .stats span.apps {
+    font-size: 24px;
+  }
+}
+
+

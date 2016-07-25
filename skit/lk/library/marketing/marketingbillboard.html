@@ -1,0 +1,20 @@
+<div class="section billboard">
+  <div class="row">
+    <div class="col-sm-12 col-xs-12">
+      <h1>{{product.name}}</h1>
+      <h3>{{product.tagline}}</h3>
+      {{#if product.uses}}
+        <a href="{{product.path}}/dashboard/" class="btn btn-primary">Dashboard</a>
+      {{else}}
+        {{#if product.previewPath}}
+          <a href="{{product.path}}{{product.previewPath}}" class="btn btn-primary">Preview</a>
+        {{else}}
+          <a href="{{product.path}}/onboard/" class="btn btn-primary">Get Started</a>
+        {{/if}}
+      {{/if}}
+    </div>
+    <div class="col-sm-12 col-xs-12">
+      <img src="{{product.imagePath}}">
+    </div>
+  </div>
+</div>

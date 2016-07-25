@@ -1,0 +1,27 @@
+<div class="form-group background-form-group hide-if-only-screenshot">
+  <div class="col-sm-12">
+    <div class="form-separator">Background Image</div>
+    {{#if background}}
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="choose-image form-control uploaded">
+            <div class="file-picker-container"><a></a></div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="choose-image form-control remove-image">
+            <a data-action="remove-background" data-id="{{id}}"></a>
+          </div>
+        </div>
+      </div>
+    {{else}}
+
+      <div class="row choose-image form-control">
+        <div class="file-picker-container"><a></a></div>
+      </div>
+
+    {{/if}}
+
+    <div class="help-block">Overrides background color</div>
+  </div>
+</div>

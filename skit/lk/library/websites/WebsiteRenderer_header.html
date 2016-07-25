@@ -1,0 +1,222 @@
+<section class="hero">
+  {{#if template.blurredCover}}
+    <div class="blurred-cover">
+      <div class="darken"></div>
+    </div>
+  {{/if}}
+  {{#if template.bottomShadow}}
+    <div class="bottom-shadow"></div>
+  {{/if}}
+  <div class="container">
+    {{> __module__.nav.html }}
+
+    {{#ifEqual template.id '1'}}
+      <div class="row">
+        <div class="col-sm-5 col-xs-12 text-center">
+          {{#if website.images.screenshots.iPhone}}
+            {{> __module__.carousel.html }}
+          {{else}}
+            <img src="{{frameByDevice '' website.frameScreenshots 'iphone'}}">
+          {{/if}}
+        </div>
+        <div class="col-sm-7 col-xs-12">
+          <h1>{{> __module__.app_logo.html }}</h1>
+          <h2>{{website.tagline}}</h2>
+          {{#if website.shortDescription}}
+            <p>{{website.shortDescription}}</p>
+          {{else}}
+            <p>Donec imperdiet scelerisque pretium. Aliquam erat volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a rutrum risus, et condimentum odio.</p>
+          {{/if}}
+          {{> __module__.download_badges.html }}
+        </div>
+      </div>
+    {{/ifEqual}}
+
+    {{#ifEqual template.id '2'}}
+      <div class="row">
+        <div class="col-sm-5 col-xs-12 text-center">
+          <img src="{{website.images.icon.url}}" class="app-icon img-rounded">
+        </div>
+        <div class="col-sm-7 col-xs-12">
+          <h1>{{> __module__.app_logo.html }}</h1>
+          <h2>{{website.tagline}}</h2>
+          {{> __module__.download_badges.html }}
+        </div>
+      </div>
+    {{/ifEqual}}
+    {{#ifEqual template.id '1color'}}
+      <div class="row">
+        <div class="col-sm-5 col-xs-12 text-center">
+          {{#if website.images.screenshots.iPhone}}
+            {{> __module__.carousel.html }}
+          {{else}}
+            <img src="{{frameByDevice '' website.frameScreenshots 'iphone'}}">
+          {{/if}}
+        </div>
+        <div class="col-sm-7 col-xs-12">
+          <h1>{{> __module__.app_logo.html }}</h1>
+          <h2>{{website.tagline}}</h2>
+          {{#if website.shortDescription}}
+            <p>{{website.shortDescription}}</p>
+          {{else}}
+            <p>Donec imperdiet scelerisque pretium. Aliquam erat volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a rutrum risus, et condimentum odio.</p>
+          {{/if}}
+          {{> __module__.download_badges.html }}
+        </div>
+      </div>
+    {{/ifEqual}}
+
+    {{#ifEqual template.id '2color'}}
+      <div class="row">
+        <div class="col-sm-5 col-xs-12 text-center">
+          <img src="{{website.images.icon.url}}" class="app-icon img-rounded">
+        </div>
+        <div class="col-sm-7 col-xs-12">
+          <h1>{{> __module__.app_logo.html }}</h1>
+          <h2>{{website.tagline}}</h2>
+          {{> __module__.download_badges.html }}
+        </div>
+      </div>
+    {{/ifEqual}}
+
+    {{#ifEqual template.id '3'}}
+      <div class="row">
+        <div class="hero-text-container col-sm-6 col-xs-12">
+          <img src="{{website.images.icon.url}}" class="app-icon img-rounded">
+          <h1>{{> __module__.app_logo.html }}</h1>
+          <h2>{{website.tagline}}</h2>
+          {{> __module__.download_badges.html }}
+        </div>
+        <div class="hero-graphic-container col-sm-6 col-xs-12 text-center">
+          {{#if website.images.screenshots.iPhone}}
+            <img class="hero-graphic" src="{{frameByDevice website.images.screenshots.iPhone.[0].url website.frameScreenshots 'iphone'}}">
+          {{else}}
+            <img class="hero-graphic" src="{{frameByDevice '' website.frameScreenshots 'iphone'}}">
+          {{/if}}
+        </div>
+      </div>
+    {{/ifEqual}}
+
+    {{#ifEqual template.id '4'}}
+      <div class="row">
+        <div class="col-xs-12">
+          {{#if website.images.icon.url}}
+            <img src="{{website.images.icon.url}}" class="app-icon img-rounded">
+          {{/if}}
+          <h1>{{> __module__.app_logo.html }}</h1>
+          <h2>{{website.tagline}}</h2>
+          {{> __module__.download_badges.html }}
+        </div>
+      </div>
+    {{/ifEqual}}
+
+    {{#ifEqual template.id '5'}}
+      <div class="row headernav">
+        <div class="col-sm-12">
+          <img src="{{website.images.icon.url}}" class="app-icon img-rounded"> <h1>{{> __module__.app_logo.html }}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-7 col-xs-12">
+          <h2>{{website.tagline}}</h2>
+          {{#if website.shortDescription}}
+            <p>{{website.shortDescription}}</p>
+          {{else}}
+            <p>Donec imperdiet scelerisque pretium. Aliquam erat volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a rutrum risus, et condimentum odio.</p>
+          {{/if}}
+          {{> __module__.download_badges_white.html }}
+        </div>
+        <div class="col-sm-5 col-xs-12 text-center">
+          {{#if website.images.screenshots.iPhone}}
+            {{> __module__.carousel.html }}
+          {{else}}
+            <img src="{{frameByDevice '' website.frameScreenshots 'iphone'}}">
+          {{/if}}
+        </div>
+      </div>
+    {{/ifEqual}}
+
+    {{#ifEqual template.id '6'}}
+      <div class="row">
+        <div class="col-xs-12">
+          {{#if website.images.icon.url}}
+            <img src="{{website.images.icon.url}}" class="app-icon img-rounded">
+          {{/if}}
+          <h1>{{> __module__.app_logo.html }}</h1>
+          <h2>{{website.tagline}}</h2>
+          {{> __module__.download_badges_white.html }}
+        </div>
+      </div>
+    {{/ifEqual}}
+
+    {{#ifEqual template.id '7'}}
+      <div class="row headernav">
+        <div class="col-sm-12">
+          <h1>{{> __module__.app_logo.html }}</h1>
+        </div>
+      </div>
+      <hr>
+      <div class="row hero-main-content">
+        <div class="hero-text-container col-sm-7 col-xs-12">
+          <h2>{{website.tagline}}</h2>
+          {{#if website.shortDescription}}
+            <p>{{website.shortDescription}}</p>
+          {{else}}
+            <p>Donec imperdiet scelerisque pretium. Aliquam erat volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a rutrum risus, et condimentum odio.</p>
+          {{/if}}
+          {{> __module__.download_badges.html }}
+        </div>
+        <div class="hero-graphic-container col-sm-5 col-xs-12 text-center">
+          <img src="{{frameByDevice website.images.screenshots.iPhone.[0].url website.frameScreenshots 'iphone'}}" class="screenshot">
+        </div>
+      </div>
+    {{/ifEqual}}
+
+    {{#ifEqual template.id '8'}}
+      <div class="row text-center">
+        <div class="graphic">
+          <div>
+          {{#if website.images.screenshots.iPhone}}
+            {{> __module__.carousel.html }}
+          {{else}}
+            <img src="{{frameByDevice '' website.frameScreenshots 'iphone'}}" class="screenshot">
+          {{/if}}
+          </div>
+        </div>
+        <div>
+          <div>
+          <img src="{{website.images.icon.url}}" class="app-icon img-rounded">
+
+          <h1>{{> __module__.app_logo.html }}</h1>
+          <h2>{{website.tagline}}</h2>
+          {{> __module__.download_badges.html }}
+          </div>
+        </div>
+      </div>
+    {{/ifEqual}}
+
+    {{#ifEqual template.id '9'}}
+      <div class="row bg-color"></div>
+      <div class="row content">
+        <div class="text-center graphic">
+          {{#if website.images.screenshots.iPhone}}
+            {{> __module__.carousel.html }}
+          {{else}}
+            <img src="{{frameByDevice '' website.frameScreenshots 'iphone'}}" class="screenshot">
+          {{/if}}
+        </div>
+        <div class="text">
+          <h1>{{> __module__.app_logo.html }}</h1>
+          <h2>{{website.tagline}}</h2>
+          {{#if website.shortDescription}}
+            <p>{{website.shortDescription}}</p>
+          {{else}}
+            <p>Donec imperdiet scelerisque pretium. Aliquam erat volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a rutrum risus, et condimentum odio.</p>
+          {{/if}}
+          {{> __module__.download_badges_white.html }}
+        </div>
+      </div>
+    {{/ifEqual}}
+
+  </div>
+</section>

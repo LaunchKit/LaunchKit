@@ -1,0 +1,44 @@
+<div id="content-header" class="row narrow-header">
+  <div class="col-md-12">
+    <h1>Email Alerts for your Team</h1>
+    <p>
+      <strong>What about your team?</strong> Keep everyone on the same page. Add team members&rsquo; emails and they&rsquo;ll
+      get review alerts like you. They can unsubscribe at any time.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4 text-center">
+    <form id="email-add-form" class="form">
+      {{#if mySubscribedEmail }}
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+            <input class="form-control" value="{{mySubscribedEmail}}" disabled>
+          </div>
+        </div>
+      {{/if}}
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+          <input class="form-control" placeholder="Email" type="email">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+          <input class="form-control" placeholder="Email" type="email">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+          <input class="form-control" placeholder="Email" type="email">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+      <a href="{{nextUrl}}" class="btn btn-link">Skip</a>
+    </form>
+  </div>
+</div>
