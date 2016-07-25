@@ -1,0 +1,14 @@
+*.pyc
+lkvenv
+venv
+*.sqlite
+*.db
+.DS_Store
+.Python
+*.psd
+assets/
+*.log
+.dev_gae_storage
+*.swp
+.vagrant/
+celerybeat-schedule
