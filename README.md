@@ -94,7 +94,7 @@ If you want your LK instance to send emails, you will need to update the followi
 
 ### Screenshot Builder
 
-Screenshot Builder runs locally and in your browser, but has one key dependency: .zip files are uploaded and hosted from Amazon S3. In order to download Screenshot Builder bundles, you must configure an S3 bucket.
+Screenshot Builder runs locally and in your browser, but has one key dependency: in production environments, .zip files should be uploaded and hosted from Amazon S3, rather than the default local configuration.
 
 In `LaunchKit/backend/settings.py`, update:
 
@@ -124,6 +124,7 @@ To test it locally, you can create an App Website and set your domain to "localh
 
 These products use our [LaunchKit iOS SDK](https://github.com/launchkit/launchkit-ios) to send events to the backend. In order to use them, our API webserver &mdash; located at `http://localhost:9101/` &mdash; must be accessible to the network your phone client is on. You can then update the iOS SDK to communicate with your instance of the API webserver, at whichever address you end up hosting it on. If you configure a domain for it, eg. `hosted.yourdomain.com`, you can use that domain as a CNAME endpoint to host many App Websites.
 
+
 ## Architecture Overview
 
 LaunchKit spawns several different *processes* in order to work:
@@ -135,6 +136,7 @@ LaunchKit spawns several different *processes* in order to work:
 * Skit hosted frontend &mdash; `http://localhost:9105/` → Loads and renders custom App Websites according to the current domain (provided in the Host: HTTP header) and is not used by the other products. Daemon: `ansible/roles/lk-skit`, code: `LaunchKit/skit/lk/public_hosted/...`
 * App Engine images host &mdash; `http://localhost:9103/` → Our GAE server handles all image hosting, image uploading and image resizing for LaunchKit products. Daemon: `ansible/roles/lk-google-app-engine`, code: `LaunchKit/gae/...`
 * Dev proxy &mdash; `http://localhost:9102/` → A hack to enable App Engine to work with CORS locally. Daemon: `ansible/roles/lk-go-devproxy`, code: `LaunchKit/devproxy.go`
+
 
 ## Code Organization
 
