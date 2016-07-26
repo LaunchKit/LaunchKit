@@ -150,7 +150,7 @@ var HOSTED_PUBLIC = 'public_hosted';
 var args = minimist(process.argv.slice(2), {
   default: {
     'port': 9100,
-    'api-host': 'http://127.0.0.1:9101/',
+    'api-host': settings.API_URL,
     'package': 'lk',
   },
   string: ['optimize', 'api-host', 'package', 'optimize-static-root',],

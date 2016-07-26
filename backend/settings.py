@@ -75,6 +75,12 @@ HOSTED_WEBSITE_CNAME = "domains.yoursite.com"
 
 SITE_URL = "http://localhost:9100/"
 
+#
+# The path to the LaunchKit API server, from the perspective of a client.
+#
+
+API_URL = "http://localhost:9101/"
+
 # Similar to SITE_URL, if you end up actually creating an App Engine host for
 # your images, you can set that URL here. (eg. "https://foobar.appspot.com")
 # Or, if you host this in an internal network (not localhost), set the
