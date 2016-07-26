@@ -169,7 +169,10 @@ def _build_and_send_bundle(bundle_id):
 
   download_items = []
   for upload_name, image_url in zip(bundle.upload_names, image_urls):
-    if bundle.hq:
+    if '/_ah/img/' in image_url:
+      # for local debug images, don't specify =s0, because quality gets degraded.
+      full_image_url = image_url
+    elif bundle.hq:
       # for an HQ bundle, request PNG format for the download.
       full_image_url = image_url + '=s0-rp'
     else:
