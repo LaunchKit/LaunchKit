@@ -307,7 +307,7 @@ module.exports = Controller.create(Dashboard, {
     var uploadQueue = new AsyncTaskQueue();
     // A lot of the upload time is spent waiting on App Engine to finish,
     // so we can probably afford to do multiple uploads at once.
-    uploadQueue.setConcurrency(2);
+    uploadQueue.setConcurrency(1);
 
     iter.forEach(this.canvasWrappers, function(wrapper, i) {
       var t = new RenderAndConvertCanvasTask(wrapper, hq);
