@@ -23,3 +23,10 @@
     dest=/etc/init/lk-django.conf
     owner=root
     group=root
+
+- name: create archives dir
+  file:
+    path=/var/launchkit/
+    state=directory
+    owner=vagrant
+    group=vagrant
