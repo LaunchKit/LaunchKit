@@ -132,6 +132,7 @@ urlpatterns = patterns('',
     url(r'^screenshot_sets/(?P<set_id>[\w-]{11})/(?P<shot_id>[\w-]{11})/delete$', screenshots.screenshot_delete_shot_view),
     url(r'^screenshot_sets/(?P<set_id>[\w-]{11})/(?P<shot_id>[\w-]{11})/(?P<device_type>\w{1,32})$', screenshots.screenshot_create_override),
     url(r'^screenshot_sets/(?P<set_id>[\w-]{11})/(?P<shot_id>[\w-]{11})/(?P<device_type>\w{1,32})/delete$', screenshots.screenshot_delete_override),
+    url(r'^screenshot_sets/archive_download/(?P<basename>[^/]+)$', screenshots.archive_download_view),
 
 
     # APP WEBSITES

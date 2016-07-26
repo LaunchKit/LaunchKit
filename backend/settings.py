@@ -186,6 +186,9 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 if not SITE_URL.endswith('/'):
   SITE_URL += '/'
 
+if not API_URL.endswith('/'):
+  API_URL += '/'
+
 TWITTER_CONSUMER_KEY = TWITTER_APP_KEY
 TWITTER_CONSUMER_SECRET = TWITTER_APP_SECRET
 

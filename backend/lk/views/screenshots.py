@@ -16,12 +16,15 @@
 
 import functools
 import logging
+import os.path
 import re
 from datetime import datetime
 from datetime import timedelta
 
 from django import forms
 from django.conf import settings
+from django.core.servers.basehttp import FileWrapper
+from django.http import HttpResponse
 
 from backend.lk.models import Image
 from backend.lk.models import ScreenshotSet
@@ -468,3 +471,20 @@ def screenshot_delete_override(request, set_id=None, shot_id=None, device_type=N
 
   return ok_response()
 
+
+@api_view('GET')
+def archive_download_view(request, basename=None):
+  logging.info('basename: %s', basename)
+  
+  filename = os.path.join(screenshot_bundler.LOCAL_ARCHIVE_DIR, basename)
+  if not os.path.isfile(filename):
+    return not_found()
+
+  if not os.path.abspath(filename).startswith(screenshot_bundler.LOCAL_ARCHIVE_DIR):
+    return not_found()
+
+  wrapper = FileWrapper(file(filename))
+  response = HttpResponse(wrapper, content_type='application/zip')
+  response['Content-Length'] = os.path.getsize(filename)
+  response['Content-Disposition'] = 'attachment; filename=%s' % basename
+  return response

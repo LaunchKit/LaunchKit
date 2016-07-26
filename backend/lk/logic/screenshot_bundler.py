@@ -14,8 +14,10 @@
 # limitations under the License.
 #
 
+import errno
 import logging
 import math
+import os
 import os.path
 import re
 import shutil
@@ -53,6 +55,8 @@ MAX_TOTAL_DOWNLOAD_BYTES = 512 * 1024 * 1024
 
 ARCHIVES_AUTODELETE_AFTER_DAYS = 7
 
+LOCAL_ARCHIVE_DIR = '/var/launchkit/'
+
 
 def build_screenshot_bundle(screenshot_set, user, upload_ids, upload_names, hq=False):
   bundle = ScreenshotBundle(user=user, screenshot_set=screenshot_set, upload_ids=upload_ids, upload_names=upload_names, hq=hq)
@@ -64,7 +68,7 @@ def build_screenshot_bundle(screenshot_set, user, upload_ids, upload_names, hq=F
   return bundle
 
 
-def generate_download_url(url, file_basename):
+def _signed_s3_download_url(url, file_basename):
   connection = S3Connection(settings.READONLY_S3_ACCESS_KEY_ID,
         settings.READONLY_S3_SECRET_ACCESS_KEY)
   archives_bucket = Bucket(connection=connection, name=settings.BUNDLES_S3_BUCKET_NAME)
@@ -77,8 +81,16 @@ def generate_download_url(url, file_basename):
   return file_key.generate_url(600, query_auth=True, response_headers=headers)
 
 
+def _local_download_url(path):
+  basename = os.path.basename(path)
+  return '%sv1/screenshot_sets/archive_download/%s' % (settings.API_URL, basename)
+
+
 def build_download_url(bundle):
-  download_url = generate_download_url(bundle.url, bundle.file_basename)
+  if bundle.url.startswith(LOCAL_ARCHIVE_DIR):
+    download_url = _local_download_url(bundle.url)
+  else:
+    download_url = _signed_s3_download_url(bundle.url, bundle.file_basename)
 
   bundle.last_accessed_time = datetime.now()
   bundle.access_count += 1
@@ -95,6 +107,47 @@ def send_bundle(bundle):
   download_url = urlutil.appendparams(download_url, bundle=bundle.encrypted_id, token=email_token.token)
 
   emails.send_bundle_ready_email(bundle.user, bundle.screenshot_set, download_url)
+
+
+def _write_archive_to_s3(bundle, src_filename):
+  connection = S3Connection(settings.READWRITE_S3_ACCESS_KEY_ID,
+      settings.READWRITE_S3_SECRET_ACCESS_KEY)
+  bundles_bucket = Bucket(connection=connection, name=settings.BUNDLES_S3_BUCKET_NAME)
+  path = '%s/Bundle-%s.zip' % (bundle.screenshot_set.encrypted_id, time.time())
+  file_key = Key(bucket=bundles_bucket, name=path)
+
+  attempts = 0
+  while attempts < 3:
+    attempts += 1
+    try:
+      logging.info('Uploading archive... (attempt: %d)', attempts)
+      file_key.set_contents_from_filename(src_filename)
+      return 'https://%s/%s' % (settings.BUNDLES_S3_BUCKET_NAME_HOST, path)
+
+    except (BotoServerError, BotoClientError):
+      logging.exception('Exception during archive upload!')
+    except:
+      logging.exception('Unknown exception during archive upload!')
+
+  return None
+
+
+def mkdir_p(path):
+  try:
+    os.makedirs(path)
+  except OSError as e:
+    if e.errno == errno.EEXIST and os.path.isdir(path):
+      pass
+    else:
+      raise
+
+def _write_archive_to_local(bundle, src_filename):
+  basename = 'Bundle-%s-%d.zip' % (bundle.encrypted_id, time.time())
+  dst_filename = os.path.join(LOCAL_ARCHIVE_DIR, basename)
+  # Ensure this directory exists.
+  mkdir_p(LOCAL_ARCHIVE_DIR)
+  shutil.copyfile(src_filename, dst_filename)
+  return dst_filename
 
 
 # pylint: disable=E1102
@@ -129,30 +182,16 @@ def _build_and_send_bundle(bundle_id):
   with build_archive_file(download_items, bundle.file_basename) as items_count_archive_filename:
     items_count, archive_filename = items_count_archive_filename
 
-    connection = S3Connection(settings.READWRITE_S3_ACCESS_KEY_ID,
-        settings.READWRITE_S3_SECRET_ACCESS_KEY)
-    bundles_bucket = Bucket(connection=connection, name=settings.BUNDLES_S3_BUCKET_NAME)
-    path = '%s/Bundle-%s.zip' % (bundle.screenshot_set.encrypted_id, time.time())
-    file_key = Key(bucket=bundles_bucket, name=path)
+    if settings.BUNDLES_S3_BUCKET_NAME and settings.READWRITE_S3_ACCESS_KEY_ID:
+      final_url = _write_archive_to_s3(bundle, archive_filename)
+    else:
+      final_url = _write_archive_to_local(bundle, archive_filename)
 
-    attempts = 0
-    success = False
-    while not success and attempts < 3:
-      attempts += 1
-      try:
-        logging.info('Uploading archive... (attempt: %d)', attempts)
-        file_key.set_contents_from_filename(archive_filename)
-        success = True
-      except (BotoServerError, BotoClientError):
-        logging.exception('Exception during archive upload!')
-      except:
-        logging.exception('Unknown exception during archive upload!')
-
-    if not success:
+    if not final_url:
       raise _build_and_send_bundle.retry()
 
     bundle.files_count = items_count
-    bundle.url = 'https://%s/%s' % (settings.BUNDLES_S3_BUCKET_NAME_HOST, path)
+    bundle.url = final_url
     bundle.size_bytes = os.stat(archive_filename).st_size
     bundle.save()
 
