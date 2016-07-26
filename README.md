@@ -80,7 +80,7 @@ If you're never going to use LaunchKit again, you can destroy the machine altoge
 
 LaunchKit will work largely out of the box, but each service has some **external dependencies** that you will need to configure if you wish the service to work properly.
 
-We have moved the most common configuration bits for LaunchKit into `launchkit-web/backend/settings.py` so you can easily find and reconfigure your local instance. After changes are made to this file, you should restart your local instance using `vagrant reload` &mdash; changes will not be reflected immediately on a running system.
+We have moved the most common configuration bits for LaunchKit into `LaunchKit/backend/settings.py` so you can easily find and reconfigure your local instance. After changes are made to this file, you should restart your local instance using `vagrant reload` &mdash; changes will not be reflected immediately on a running system.
 
 
 ### Global
@@ -96,7 +96,7 @@ If you want your LK instance to send emails, you will need to update the followi
 
 Screenshot Builder runs locally and in your browser, but has one key dependency: .zip files are uploaded and hosted from Amazon S3. In order to download Screenshot Builder bundles, you must configure an S3 bucket.
 
-In `launchkit-web/backend/settings.py`, update:
+In `LaunchKit/backend/settings.py`, update:
 
 * **BUNDLES_S3_BUCKET_NAME** → Set this to the name of your S3 bucket, eg. `my-screenshot-bundles`
 * **READWRITE_S3_ACCESS_KEY_ID** → Create an IAM role for a user with write access to your S3 bucket, and set the ID here.
@@ -128,13 +128,13 @@ These products use our [LaunchKit iOS SDK](https://github.com/launchkit/launchki
 
 LaunchKit spawns several different *processes* in order to work:
 
-* Skit frontend &mdash; `http://localhost:9100/` → Renders all of our frontend HTML, JavaScript and CSS. This server communicates with our backend API over HTTP in order to load content, and does not access the database itself. Daemon: `ansible/roles/lk-skit`, code: `launchkit-web/skit/...`
-* API backend &mdash; `http://localhost:9101/` → Authenticates users, loads content, renders JSON over a REST API for all services. Daemon: `ansible/roles/lk-django/files/init.lk-django.conf`, code: `launchkit-web/backend/...`
-* Celery task worker → Executes async tasks, spread throughout python codebase. Sends emails, fetches data from iTunes, creates Screenshot Bundles, etc. `ansible/roles/lk-django/files/init.celery.conf`, code: `launchkit-web/backend/...`
-* Review ingester → Loads reviews from iTunes periodically. `ansible/roles/lk-review-ingester`, code: `launchkit-web/backend/review_ingester.py`
-* Skit hosted frontend &mdash; `http://localhost:9105/` → Loads and renders custom App Websites according to the current domain (provided in the Host: HTTP header) and is not used by the other products. Daemon: `ansible/roles/lk-skit`, code: `launchkit-web/skit/lk/public_hosted/...`
-* App Engine images host &mdash; `http://localhost:9103/` → Our GAE server handles all image hosting, image uploading and image resizing for LaunchKit products. Daemon: `ansible/roles/lk-google-app-engine`, code: `launchkit-web/gae/...`
-* Dev proxy &mdash; `http://localhost:9102/` → A hack to enable App Engine to work with CORS locally. Daemon: `ansible/roles/lk-go-devproxy`, code: `launchkit-web/devproxy.go`
+* Skit frontend &mdash; `http://localhost:9100/` → Renders all of our frontend HTML, JavaScript and CSS. This server communicates with our backend API over HTTP in order to load content, and does not access the database itself. Daemon: `ansible/roles/lk-skit`, code: `LaunchKit/skit/...`
+* API backend &mdash; `http://localhost:9101/` → Authenticates users, loads content, renders JSON over a REST API for all services. Daemon: `ansible/roles/lk-django/files/init.lk-django.conf`, code: `LaunchKit/backend/...`
+* Celery task worker → Executes async tasks, spread throughout python codebase. Sends emails, fetches data from iTunes, creates Screenshot Bundles, etc. `ansible/roles/lk-django/files/init.celery.conf`, code: `LaunchKit/backend/...`
+* Review ingester → Loads reviews from iTunes periodically. `ansible/roles/lk-review-ingester`, code: `LaunchKit/backend/review_ingester.py`
+* Skit hosted frontend &mdash; `http://localhost:9105/` → Loads and renders custom App Websites according to the current domain (provided in the Host: HTTP header) and is not used by the other products. Daemon: `ansible/roles/lk-skit`, code: `LaunchKit/skit/lk/public_hosted/...`
+* App Engine images host &mdash; `http://localhost:9103/` → Our GAE server handles all image hosting, image uploading and image resizing for LaunchKit products. Daemon: `ansible/roles/lk-google-app-engine`, code: `LaunchKit/gae/...`
+* Dev proxy &mdash; `http://localhost:9102/` → A hack to enable App Engine to work with CORS locally. Daemon: `ansible/roles/lk-go-devproxy`, code: `LaunchKit/devproxy.go`
 
 ## Code Organization
 
