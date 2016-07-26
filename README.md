@@ -55,9 +55,8 @@ Install **ansible**:
 
 Get the LaunchKit code and configure your LK settings.
 
-    $ git clone git@github.com:clusterinc/launchkit-web.git
-    $ cd launchkit-web
-    $ git checkout oss
+    $ git clone git@github.com:LaunchKit/LaunchKit.git
+    $ cd LaunchKit
 
 Edit your [System Configuration](#system-configuration) according to the various configuration detailed in the next section. (If you do this after the server is started, you will have to reboot.)
 
