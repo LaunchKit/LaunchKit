@@ -118,11 +118,11 @@ If you would like Twitter preview images to work properly, you will need to conf
 
 If you want to use App Websites to host an actual website, you will need to expose the hosted frontend webserver externally. This webserver is accessible locally on `http://localhost:9105/` and works by loading the website configured for the current domain ("localhost" in this case) in order to render it.
 
-To test it locally, you can create an App Website and set your domain to "localhost" &mdash; then your website should show up on `http://localhost:9105/` just like how you made it.
+To test it locally, you can create an App Website and set your domain to "localhost" &mdash; then your website should show up on `http://localhost:9105/` just like how you made it. If you configure a domain for it, eg. `hosted.yourdomain.com`, you can use that domain as a CNAME endpoint to host many App Websites.
 
 ### Super Users & Cloud Config
 
-These products use our [LaunchKit iOS SDK](https://github.com/launchkit/launchkit-ios) to send events to the backend. In order to use them, our API webserver &mdash; located at `http://localhost:9101/` &mdash; must be accessible to the network your phone client is on. You can then update the iOS SDK to communicate with your instance of the API webserver, at whichever address you end up hosting it on. If you configure a domain for it, eg. `hosted.yourdomain.com`, you can use that domain as a CNAME endpoint to host many App Websites.
+These products use our [LaunchKit iOS SDK](https://github.com/launchkit/launchkit-ios) to send events to the backend. In order to use them, our API webserver &mdash; located at `http://localhost:9101/` &mdash; must be accessible to the network your phone client is on. You can then update the iOS SDK to communicate with your instance of the API webserver, at whichever address you end up hosting it on.
 
 
 ## Architecture Overview
