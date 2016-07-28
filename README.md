@@ -16,6 +16,8 @@ Getting your LK instance up and running is fairly simple. This process has been 
 
 ### STEP 1
 
+(OS X only -- on Linux & other systems you might need various other build tools in order to install Vagrant/Ansible.)
+
 Install **Xcode dev tools** if you don’t have them yet. Running `cc` from the command line on OS X Terminal should prompt you to install them.
 
     $ cc
