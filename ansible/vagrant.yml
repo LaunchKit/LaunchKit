@@ -1,20 +1,12 @@
 ---
 - hosts: all
-  sudo: true
+  become: true
   vars:
     document_root: /vagrant
     db_user: vagrant
   pre_tasks:
     - name: update apt cache
       apt: update_cache=yes cache_valid_time=3600
-    - name: get the local user name
-      sudo: false
-      local_action:
-        shell /usr/bin/whoami
-      register: whoami_result
-    - name: store the local user name
-      set_fact:
-        username_on_the_host: "{{ whoami_result.stdout }}"
   roles:
     - common
     - common-python
