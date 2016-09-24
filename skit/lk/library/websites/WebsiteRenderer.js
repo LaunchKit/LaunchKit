@@ -33,25 +33,36 @@ var html = __module__.html;
 var pageHtml = __module__.page.html;
 
 
-Handlebars.registerHelper('frameByDevice', function(screenshotPath, color, platform) {
+Handlebars.registerHelper('frameByDevice', function(screenshotPath, color) {
+  if (!screenshotPath) {
+    screenshotPath = '/__static__/images/pixel.gif';
+  }
+
   if (color == 'no') {
-    return screenshotPath;
+    return new Handlebars.SafeString(
+        '<img src="' + Handlebars.Utils.escapeExpression(screenshotPath) + '" class="framed-screenshot">');
   }
 
   var phoneUrl;
   if (color == 'black') {
-    phoneUrl = 'https://launchkit-io.imgix.net/devices/iPhone6Black.png';
+    phoneUrl = '/__static__/devices/iPhone6Black.png';
   } else {
-    phoneUrl = 'https://launchkit-io.imgix.net/devices/iPhone6White.png';
+    phoneUrl = '/__static__/devices/iPhone6White.png';
   }
 
-  return urls.appendParams(phoneUrl, {
-    'w': '750',
-    'h': '1334',
-    'mark': screenshotPath,
-    'markh': '970',
-    'markalign': 'center,middle'
-  });
+  var style = {
+    'background-image':
+        'url(' + Handlebars.Utils.escapeExpression(screenshotPath) + '), url(' + phoneUrl + ')',
+    'background-size': '79.5%, 100%',
+    'background-position': '50% 51%, center',
+    'background-repeat': 'no-repeat, no-repeat'
+  };
+  var styleStr = '';
+  for (var k in style) {
+    styleStr += k + ':' + style[k] + ';';
+  }
+  return new Handlebars.SafeString('<img src="/__static__/devices/iPhoneBlank.png"' +
+      ' class="framed-screenshot" style="' + styleStr + '">');
 });
 
 Handlebars.registerHelper('ifShowPlatform', function(website, targetPlatform, opts) {

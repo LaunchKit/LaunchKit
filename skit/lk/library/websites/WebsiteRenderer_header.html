@@ -16,7 +16,7 @@
           {{#if website.images.screenshots.iPhone}}
             {{> __module__.carousel.html }}
           {{else}}
-            <img src="{{frameByDevice '' website.frameScreenshots 'iphone'}}">
+            {{frameByDevice '' website.frameScreenshots}}
           {{/if}}
         </div>
         <div class="col-sm-7 col-xs-12">
@@ -50,7 +50,7 @@
           {{#if website.images.screenshots.iPhone}}
             {{> __module__.carousel.html }}
           {{else}}
-            <img src="{{frameByDevice '' website.frameScreenshots 'iphone'}}">
+            {{frameByDevice '' website.frameScreenshots}}
           {{/if}}
         </div>
         <div class="col-sm-7 col-xs-12">
@@ -89,9 +89,9 @@
         </div>
         <div class="hero-graphic-container col-sm-6 col-xs-12 text-center">
           {{#if website.images.screenshots.iPhone}}
-            <img class="hero-graphic" src="{{frameByDevice website.images.screenshots.iPhone.[0].url website.frameScreenshots 'iphone'}}">
+            {{frameByDevice website.images.screenshots.iPhone.[0].url website.frameScreenshots}}
           {{else}}
-            <img class="hero-graphic" src="{{frameByDevice '' website.frameScreenshots 'iphone'}}">
+            {{frameByDevice '' website.frameScreenshots}}
           {{/if}}
         </div>
       </div>
@@ -130,7 +130,7 @@
           {{#if website.images.screenshots.iPhone}}
             {{> __module__.carousel.html }}
           {{else}}
-            <img src="{{frameByDevice '' website.frameScreenshots 'iphone'}}">
+            {{frameByDevice '' website.frameScreenshots}}
           {{/if}}
         </div>
       </div>
@@ -167,7 +167,7 @@
           {{> __module__.download_badges.html }}
         </div>
         <div class="hero-graphic-container col-sm-5 col-xs-12 text-center">
-          <img src="{{frameByDevice website.images.screenshots.iPhone.[0].url website.frameScreenshots 'iphone'}}" class="screenshot">
+          {{frameByDevice website.images.screenshots.iPhone.[0].url website.frameScreenshots}}
         </div>
       </div>
     {{/ifEqual}}
@@ -179,7 +179,7 @@
           {{#if website.images.screenshots.iPhone}}
             {{> __module__.carousel.html }}
           {{else}}
-            <img src="{{frameByDevice '' website.frameScreenshots 'iphone'}}" class="screenshot">
+            {{frameByDevice '' website.frameScreenshots}}
           {{/if}}
           </div>
         </div>
@@ -202,7 +202,7 @@
           {{#if website.images.screenshots.iPhone}}
             {{> __module__.carousel.html }}
           {{else}}
-            <img src="{{frameByDevice '' website.frameScreenshots 'iphone'}}" class="screenshot">
+            {{frameByDevice '' website.frameScreenshots}}
           {{/if}}
         </div>
         <div class="text">

@@ -5,7 +5,7 @@
         {{#if website.images.screenshots.iPhone}}
           {{> __module__.carousel.html }}
         {{else}}
-          <img src="{{frameByDevice '' website.frameScreenshots 'iphone'}}">
+          {{frameByDevice '' website.frameScreenshots}}
         {{/if}}
       </div>
       <div class="col-sm-7 col-xs-12 description-text">

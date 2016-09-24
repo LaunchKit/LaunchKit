@@ -10,11 +10,12 @@
     <div class="carousel-inner" role="listbox">
       {{#each website.images.screenshots.iPhone}}
         <div class="item{{#ifEqual @index 0}} active{{/ifEqual}}">
-          <img src="{{frameByDevice url ../website.frameScreenshots}}" class="screenshot" alt="Screenshot of {{../website.appName}}">
+          {{frameByDevice url ../website.frameScreenshots}}
         </div>
       {{/each}}
     </div>
   </div>
 {{else}}
-  <img src="{{frameByDevice website.images.screenshots.iPhone.[0].url website.frameScreenshots}}" class="screenshot" alt="Screenshot of {{website.appName}}">
+<!-- ohai someshit -->
+  {{frameByDevice website.images.screenshots.iPhone.[0].url website.frameScreenshots}}
 {{/ifGreater}}
