@@ -1,0 +1,14 @@
+FROM python:2.7-alpine
+
+RUN apk update && apk add py-pillow wget unzip
+
+RUN wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.27.zip
+RUN unzip google_appengine_1.9.27.zip -d /usr/local
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY gae /usr/src/app
+COPY docker/cmd.gae.sh /usr/src/app
+
+CMD [ "./cmd.gae.sh" ]

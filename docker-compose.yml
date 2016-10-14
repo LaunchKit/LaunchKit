@@ -1,0 +1,62 @@
+version: '2'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    environment:
+      PORT: 9101
+      POSTGRES_HOST: postgres
+      POSTGRES_NAME: postgres
+      POSTGRES_PASSWORD: ''
+      POSTGRES_USER: postgres
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: CYtDmKetk7QbsCWgSyLWIRo1V57mGXsP
+    links:
+      - postgres
+      - redis
+    ports:
+      - 9101:9101
+  gae:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.gae
+    environment:
+      ADMIN_PORT: 9104
+      PORT: 9103
+    ports:
+      - 9103:9103
+      - 9104:9104
+  reviews:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.reviews
+    environment:
+      PORT: 9101
+      POSTGRES_HOST: postgres
+      POSTGRES_NAME: postgres
+      POSTGRES_PASSWORD: ''
+      POSTGRES_USER: postgres
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: CYtDmKetk7QbsCWgSyLWIRo1V57mGXsP
+    links:
+      - postgres
+      - redis
+  skit:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.skit
+    environment:
+      API_HOST: http://backend:9101/
+      DEBUG: 'true'
+      PORT: 9100
+    links:
+      - backend
+    ports:
+      - 9100:9100
+  redis:
+    image: redis
+  postgres:
+    image: aidanlister/postgres-hstore
+    ports:
+      - 5432:5432

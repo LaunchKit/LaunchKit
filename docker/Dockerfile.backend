@@ -1,0 +1,15 @@
+FROM python:2.7-alpine
+
+RUN apk update && apk add gcc libffi-dev musl-dev postgresql-dev python-dev zlib-dev jpeg-dev libpng-dev libxml2-dev libxslt-dev
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY requirements.txt /usr/src/app/
+RUN LIBRARY_PATH=/lib:/usr/lib pip install --no-cache-dir -r requirements.txt
+
+COPY backend /usr/src/app/backend
+COPY manage.py /usr/src/app
+COPY docker/cmd.backend.sh /usr/src/app/
+
+CMD [ "./cmd.backend.sh" ]
