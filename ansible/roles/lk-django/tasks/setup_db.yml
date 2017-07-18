@@ -3,15 +3,23 @@
   become: true
   become_user: postgres
   postgresql_db: name=lk
+  vars:
+    ansible_ssh_pipelining: true
 - name: add hstore db extension
   become: true
   become_user: postgres
   postgresql_ext: name=hstore db=lk
+  vars:
+    ansible_ssh_pipelining: true
 - name: add {{ db_user }} user to cluster db as superuser
   become: true
   become_user: postgres
   postgresql_user: name={{ db_user }} role_attr_flags=SUPERUSER db=lk
+  vars:
+    ansible_ssh_pipelining: true
 - name: add {{ db_user }} user to postgres as superuser
   become: true
   become_user: postgres
   postgresql_user: name={{ db_user }} role_attr_flags=SUPERUSER
+  vars:
+    ansible_ssh_pipelining: true
