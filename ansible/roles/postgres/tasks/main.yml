@@ -44,3 +44,5 @@
   become: true
   become_user: postgres
   postgresql_user: name=vagrant role_attr_flags=SUPERUSER
+  vars:
+    ansible_ssh_pipelining: true
