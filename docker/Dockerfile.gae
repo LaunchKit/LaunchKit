@@ -1,14 +1,26 @@
 FROM python:2.7-alpine
 
-RUN apk update && apk add py-pillow wget unzip
+RUN apk update && apk add build-base jpeg-dev zlib-dev wget unzip go
 
-RUN wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.27.zip
-RUN unzip google_appengine_1.9.27.zip -d /usr/local
+RUN pip install Pillow
+
+RUN wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.27.zip && unzip google_appengine_1.9.27.zip -d /usr/local && rm google_appengine_1.9.27.zip
+
+ENV PATH="/usr/local/google_appengine:${PATH}"
+
+COPY ansible/roles/lk-google-app-engine/files/home.appcfg_nag /.appcfg_nag
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-COPY gae /usr/src/app
+COPY gae /usr/src/app/gae
 COPY docker/cmd.gae.sh /usr/src/app
+COPY devproxy.go devproxy.go
+
+VOLUME /usr/src/app/.dev_gae_storage
+
+EXPOSE 9102/tcp
+EXPOSE 9103/tcp
+EXPOSE 9104/tcp
 
 CMD [ "./cmd.gae.sh" ]

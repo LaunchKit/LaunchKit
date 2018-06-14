@@ -1,6 +1,7 @@
 FROM python:2.7-alpine
 
-RUN apk update && apk add gcc libffi-dev musl-dev postgresql-dev python-dev zlib-dev jpeg-dev libpng-dev libxml2-dev libxslt-dev
+RUN apk update && apk add make gcc libffi-dev musl-dev postgresql-dev \
+	python-dev zlib-dev jpeg-dev libpng-dev libxml2-dev libxslt-dev
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
