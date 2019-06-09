@@ -100,8 +100,8 @@ Install Docker Compose. You can find installation instructions here: https://doc
 
 Get the LaunchKit code and configure your LK settings.
 
-    $ git clone https://github.com/LaunchKit/LaunchKit.git
-    $ cd LaunchKit
+    $ git clone https://github.com/victorkifer/LaunchKitDocker.git
+    $ cd LaunchKitDocker
 
 ### Step 4
 
