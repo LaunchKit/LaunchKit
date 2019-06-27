@@ -1,0 +1,119 @@
+version: '2.1'
+
+volumes:
+  db-volume:
+    driver: local
+  gae-storage:
+    driver: local
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    restart: unless-stopped
+    environment:
+      PORT: 9101
+      POSTGRES_HOST: postgres
+      POSTGRES_NAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: CYtDmKetk7QbsCWgSyLWIRo1V57mGXsP
+      C_FORCE_ROOT: "true"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      gae:
+        condition: service_started
+    ports:
+      - 9101:9101
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:9101/v1/debug/health_check"]
+      interval: 10s
+      timeout: 15s
+      retries: 6
+
+  gae:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.gae
+    restart: unless-stopped
+    environment:
+      SERVER_SOFTWARE: Dev
+    volumes:
+      - gae-storage:/usr/src/app/.dev_gae_storage
+    ports:
+      - 9102:9102
+      - 9104:9104
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:9102"]
+      interval: 10s
+      timeout: 15s
+      retries: 6
+
+  reviews:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.reviews
+    restart: unless-stopped
+    environment:
+      PORT: 9101
+      POSTGRES_HOST: postgres
+      POSTGRES_NAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: CYtDmKetk7QbsCWgSyLWIRo1V57mGXsP
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  skit:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.skit
+    restart: unless-stopped
+    environment:
+      API_HOST: http://backend:9101/
+      DEBUG: 'true'
+      PORT: 9100
+    depends_on:
+      - backend
+    ports:
+      - 9100:9100
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:9100"]
+      interval: 10s
+      timeout: 15s
+      retries: 6
+
+  redis:
+    image: redis:4-alpine
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  postgres:
+    image: aidanlister/postgres-hstore
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_NAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    volumes:
+      - db-volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 30s
+      retries: 6

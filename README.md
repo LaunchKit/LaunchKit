@@ -18,7 +18,7 @@ We have packaged things up to run easily with [Vagrant](https://www.vagrantup.co
 
 If anything in this guide is not accurate or if you run into any issues installing & running LaunchKit, please send us a pull request. No one is actively addressing bug reports, but we will happily review and integrate pull requests.
 
-## Getting Started
+## Getting Started - Vagrant
 
 Getting your LK instance up and running is fairly simple. This process has been tested thoroughly on **Mac OS 10.11**, but should also work on other systems compatible with Vagrant, VirtualBox and Ansible.
 
@@ -85,6 +85,33 @@ If you're **all done** using LaunchKit, you can stop the machine by running:
 If you're never going to use LaunchKit again, you can destroy the machine altogether:
 
     $ vagrant destroy
+
+## Getting Started - Docker
+
+### Step 1
+
+Install Docker. You can find installation instructions here: https://docs.docker.com/install/
+
+### Step 2
+
+Install Docker Compose. You can find installation instructions here: https://docs.docker.com/compose/install/
+
+### Step 3
+
+Get the LaunchKit code and configure your LK settings.
+
+    $ git clone https://github.com/LaunchKit/LaunchKit.git
+    $ cd LaunchKit
+
+### Step 4
+
+Run Launchkit
+
+    $ docker-compose up -d
+
+It might take some time to initialize all components.
+
+Navigate to http://localhost:9100/
 
 ## System Configuration
 

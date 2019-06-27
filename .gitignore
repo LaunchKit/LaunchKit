@@ -12,3 +12,5 @@ assets/
 *.swp
 .vagrant/
 celerybeat-schedule
+.idea/
+

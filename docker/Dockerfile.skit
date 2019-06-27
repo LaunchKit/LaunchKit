@@ -1,0 +1,15 @@
+FROM node:4.6.0
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+ARG NODE_ENV
+ENV NODE_ENV $NODE_ENV
+
+COPY skit/package.json /usr/src/app/
+RUN npm install
+
+COPY skit /usr/src/app
+COPY docker/cmd.skit.sh /usr/src/app/
+
+CMD [ "./cmd.skit.sh" ]
