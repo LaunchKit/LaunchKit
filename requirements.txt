@@ -2,7 +2,7 @@ boto==2.38.0
 celery[redis]==3.1.17
 cssutils==1.0.1
 django-bitfield==1.7.1
-Django==1.7.3
+Django==1.11.28
 djorm-pgarray==1.2.0
 dnspython==1.12.0
 fabric==1.10.1
