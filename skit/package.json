@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "skit": "latest",
-    "minimist": "1.1.0"
+    "minimist": "1.2.5"
   },
   "description": "...",
   "readme": "...",
